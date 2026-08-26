@@ -3,4 +3,5 @@ dist/
 .DS_Store
 .env
 .agents/skills/*
+!.agents/skills/.gitkeep
 .rooignore
