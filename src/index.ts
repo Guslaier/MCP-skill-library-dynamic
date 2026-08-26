@@ -9,16 +9,36 @@ import {
 import fs from "fs";
 import { promises as fsPromises } from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
 
-// ── Configuration ──────────────────────────────────────────────
-const SKILLS_DIR = process.env.SKILLS_DIR || path.resolve(process.cwd(), ".agents", "skills");
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// ── Configuration & Robust Path Resolution ────────────────────
+function resolveSkillsDir(): string {
+  if (process.env.SKILLS_DIR && fs.existsSync(process.env.SKILLS_DIR)) {
+    return path.resolve(process.env.SKILLS_DIR);
+  }
+  // Try relative to dist/ directory (../../.agents/skills or ../.agents/skills)
+  const distRelative = path.resolve(__dirname, "..", "..", ".agents", "skills");
+  if (fs.existsSync(distRelative)) {
+    return distRelative;
+  }
+  const rootRelative = path.resolve(__dirname, "..", ".agents", "skills");
+  if (fs.existsSync(rootRelative)) {
+    return rootRelative;
+  }
+  return path.resolve(process.cwd(), ".agents", "skills");
+}
+
+const SKILLS_DIR = resolveSkillsDir();
 
 if (!fs.existsSync(SKILLS_DIR)) {
-  console.error(`[ERROR] SKILLS_DIR does not exist: ${SKILLS_DIR}`);
-  console.error(
-    `[HINT]  Set the SKILLS_DIR environment variable to your skills folder, or create the .agents/skills directory.`
-  );
-  process.exit(1);
+  try {
+    fs.mkdirSync(SKILLS_DIR, { recursive: true });
+  } catch (err) {
+    console.error(`[ERROR] Failed to create SKILLS_DIR at: ${SKILLS_DIR}`);
+  }
 }
 
 // ── Global Error & Shutdown Handlers ───────────────────────────
@@ -34,7 +54,7 @@ process.on("unhandledRejection", (reason: unknown) => {
 const server = new Server(
   {
     name: "skill-library-mcp",
-    version: "1.0.0",
+    version: "1.1.0",
   },
   {
     capabilities: { tools: {} },
@@ -53,10 +73,57 @@ process.on("SIGTERM", async () => {
   process.exit(0);
 });
 
+// ── Helper: Recursive Markdown File Finder ────────────────────
+async function getMarkdownFiles(dir: string): Promise<string[]> {
+  const mdFiles: string[] = [];
+  async function scan(currentDir: string) {
+    const entries = await fsPromises.readdir(currentDir, { withFileTypes: true });
+    for (const entry of entries) {
+      const fullPath = path.join(currentDir, entry.name);
+      if (entry.isDirectory()) {
+        await scan(fullPath);
+      } else if (entry.isFile() && entry.name.toLowerCase().endsWith(".md")) {
+        mdFiles.push(fullPath);
+      }
+    }
+  }
+  await scan(dir);
+  return mdFiles;
+}
+
 // ── Cache State ────────────────────────────────────────────────
 let cachedSkillsList: string[] | null = null;
 let skillsCacheTimestamp = 0;
 const CACHE_TTL_MS = 60 * 1000; // 60 seconds cache for directory listing
+
+async function getValidSkillsList(): Promise<string[]> {
+  const now = Date.now();
+  if (cachedSkillsList && now - skillsCacheTimestamp < CACHE_TTL_MS) {
+    return cachedSkillsList;
+  }
+
+  const dirents = await fsPromises.readdir(SKILLS_DIR, { withFileTypes: true });
+  const validSkills: string[] = [];
+
+  for (const dirent of dirents) {
+    if (dirent.isDirectory()) {
+      const fullPath = path.join(SKILLS_DIR, dirent.name);
+      try {
+        const mdFiles = await getMarkdownFiles(fullPath);
+        if (mdFiles.length > 0) {
+          validSkills.push(dirent.name);
+        }
+      } catch {
+        // Skip unreadable directories
+      }
+    }
+  }
+
+  validSkills.sort();
+  cachedSkillsList = validSkills;
+  skillsCacheTimestamp = Date.now();
+  return validSkills;
+}
 
 // ── Tool definitions ───────────────────────────────────────────
 server.setRequestHandler(ListToolsRequestSchema, async () => {
@@ -65,12 +132,21 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       {
         name: "list_skills",
         description:
-          "List all available skills/rules in the knowledge base. Returns folder names.",
-        inputSchema: { type: "object", properties: {} },
+          "List all available skills/rules in the knowledge base. Supports optional search query for token efficiency.",
+        inputSchema: {
+          type: "object",
+          properties: {
+            query: {
+              type: "string",
+              description: "Optional keyword to filter skills (e.g., 'react', 'python', 'review')",
+            },
+          },
+        },
         outputSchema: {
           type: "object",
           properties: {
             skills: { type: "array", items: { type: "string" } },
+            count: { type: "number" },
           },
         },
         annotations: {
@@ -83,13 +159,13 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       {
         name: "fetch_skill_rule",
         description:
-          "Fetch the full markdown content of a specific skill to learn how to do a task.",
+          "Fetch the full markdown content and nested rule guidelines of a specific skill.",
         inputSchema: {
           type: "object",
           properties: {
             skill_name: {
               type: "string",
-              description: "Exact name of the skill folder (e.g., 'code-review')",
+              description: "Exact name of the skill folder (e.g., 'nestjs-best-practices')",
             },
           },
           required: ["skill_name"],
@@ -98,7 +174,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           type: "object",
           properties: {
             skill_name: { type: "string" },
-            file: { type: "string" },
+            files: { type: "array", items: { type: "string" } },
             content: { type: "string" },
           },
         },
@@ -119,41 +195,24 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
   if (name === "list_skills") {
     try {
-      const now = Date.now();
-      // TTL Cache check
-      if (cachedSkillsList && now - skillsCacheTimestamp < CACHE_TTL_MS) {
-        if (cachedSkillsList.length === 0) {
-          return {
-            content: [{ type: "text", text: "No skills found in the library." }],
-            structuredContent: { skills: [] },
-          };
-        }
+      const allSkills = await getValidSkillsList();
+      const query = typeof args?.query === "string" ? args.query.trim().toLowerCase() : "";
+
+      const filteredSkills = query
+        ? allSkills.filter((s) => s.toLowerCase().includes(query))
+        : allSkills;
+
+      if (filteredSkills.length === 0) {
         return {
           content: [
             {
               type: "text",
-              text: `Available skills (${cachedSkillsList.length}):\n${cachedSkillsList.join("\n")}`,
+              text: query
+                ? `No skills found matching query '${query}'.`
+                : "No valid skills with markdown rules found in the library.",
             },
           ],
-          structuredContent: { skills: cachedSkillsList },
-        };
-      }
-
-      // Cache miss, read dynamically using async methods
-      const dirents = await fsPromises.readdir(SKILLS_DIR, { withFileTypes: true });
-      const skills = dirents
-        .filter((dirent: fs.Dirent) => dirent.isDirectory())
-        .map((dirent: fs.Dirent) => dirent.name)
-        .sort();
-
-      // Update Cache
-      cachedSkillsList = skills;
-      skillsCacheTimestamp = Date.now();
-
-      if (skills.length === 0) {
-        return {
-          content: [{ type: "text", text: "No skills found in the library." }],
-          structuredContent: { skills: [] },
+          structuredContent: { skills: [], count: 0 },
         };
       }
 
@@ -161,10 +220,10 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         content: [
           {
             type: "text",
-            text: `Available skills (${skills.length}):\n${skills.join("\n")}`,
+            text: `Available skills (${filteredSkills.length}${query ? ` matching '${query}'` : ""}):\n${filteredSkills.join("\n")}`,
           },
         ],
-        structuredContent: { skills },
+        structuredContent: { skills: filteredSkills, count: filteredSkills.length },
       };
     } catch (error) {
       throw new McpError(
@@ -180,58 +239,82 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     if (!skillName || typeof skillName !== "string") {
       throw new McpError(
         ErrorCode.InvalidParams,
-        "Invalid skill_name."
+        "Invalid skill_name parameter."
       );
     }
 
     // Security check: Path Traversal Prevention
     const resolvedSkillsDir = path.resolve(SKILLS_DIR);
     const targetDir = path.resolve(SKILLS_DIR, skillName);
-    
-    // Ensure the resolved target directory is strictly inside the skills directory
+
     if (!targetDir.startsWith(resolvedSkillsDir + path.sep)) {
       throw new McpError(
         ErrorCode.InvalidParams,
-        "Invalid skill_name path traversal detected."
+        "Invalid skill_name: Path traversal detected."
       );
     }
 
     try {
-      try {
-        const stat = await fsPromises.stat(targetDir);
-        if (!stat.isDirectory()) {
-          throw new Error("Not a directory");
-        }
-      } catch (err) {
-        throw new Error("Directory does not exist");
+      const stat = await fsPromises.stat(targetDir);
+      if (!stat.isDirectory()) {
+        throw new Error("Target is not a directory");
+      }
+    } catch {
+      throw new McpError(
+        ErrorCode.InvalidParams,
+        `Skill folder '${skillName}' not found in ${SKILLS_DIR}.`
+      );
+    }
+
+    try {
+      const mdFiles = await getMarkdownFiles(targetDir);
+
+      if (mdFiles.length === 0) {
+        throw new McpError(
+          ErrorCode.InvalidParams,
+          `Skill '${skillName}' does not contain any valid Markdown (.md) rule files.`
+        );
       }
 
-      const files = await fsPromises.readdir(targetDir);
-      const mdFile = files.find((f: string) => f.endsWith(".md")) || files[0];
+      // Sort files so that SKILL.md / main instructions appear first
+      mdFiles.sort((a, b) => {
+        const baseA = path.basename(a).toLowerCase();
+        const baseB = path.basename(b).toLowerCase();
+        if (baseA === "skill.md" || baseA === "instructions.md") return -1;
+        if (baseB === "skill.md" || baseB === "instructions.md") return 1;
+        return a.localeCompare(b);
+      });
 
-      if (!mdFile) {
-        throw new Error("No markdown file found");
+      const contents: string[] = [];
+      const relativeFilePaths: string[] = [];
+
+      for (const filePath of mdFiles) {
+        const relativePath = path.relative(targetDir, filePath);
+        relativeFilePaths.push(relativePath);
+        const text = await fsPromises.readFile(filePath, "utf-8");
+        contents.push(`### [File: ${relativePath}]\n\n${text}`);
       }
 
-      // Memory-safe asynchronous file read
-      const content = await fsPromises.readFile(path.join(targetDir, mdFile), "utf-8");
+      const combinedContent = contents.join("\n\n---\n\n");
+
       return {
         content: [
           {
             type: "text",
-            text: `--- RULE FOR: ${skillName} ---\n\n${content}`,
+            text: `--- RULES FOR: ${skillName} (${mdFiles.length} file(s)) ---\n\n${combinedContent}`,
           },
         ],
         structuredContent: {
           skill_name: skillName,
-          file: mdFile,
-          content,
+          files: relativeFilePaths,
+          content: combinedContent,
         },
       };
-    } catch (error) {
+    } catch (error: any) {
+      if (error instanceof McpError) throw error;
       throw new McpError(
-        ErrorCode.InvalidParams,
-        `Skill '${skillName}' not found or unreadable. Check that the folder exists in ${SKILLS_DIR} and contains a .md file.`
+        ErrorCode.InternalError,
+        `Error reading skill '${skillName}': ${error.message}`
       );
     }
   }
@@ -243,7 +326,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 async function run() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error("Skill Library MCP Server is running!");
+  console.error(`Skill Library MCP Server v1.1.0 is running! Serving from: ${SKILLS_DIR}`);
 }
 
 run().catch(console.error);
