@@ -5,3 +5,4 @@ dist/
 .agents/skills/*
 !.agents/skills/.gitkeep
 .rooignore
+skills-lock.json
