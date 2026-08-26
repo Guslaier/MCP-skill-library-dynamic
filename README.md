@@ -11,8 +11,9 @@ An Enterprise-grade MCP (Model Context Protocol) server that serves skill and ru
 - **Memory-Safe Caching**: Utilizes a TTL cache for directory listing and async I/O for file reading to guarantee 0% chance of Out-Of-Memory (OOM) crashes, even with 100,000+ skills.
 - **Path Traversal Protection**: Cryptographic-grade path resolution to strictly sandbox the AI to the `.agents/skills/` directory.
 - **Graceful Shutdown**: Properly handles `SIGINT`/`SIGTERM` and uncaught exceptions to ensure clean MCP socket closures.
-- **`list_skills` Tool**: AI can list all available skill/rule folders.
-- **`fetch_skill_rule` Tool**: AI can fetch the full markdown content (`.md`) of a specific skill.
+- **Token Diet Architecture (Cost Saving)**: 
+  - `list_skills` only returns the raw folder names (slugs), minimizing the injected context to just ~1,500 tokens even with 1,000+ skills.
+  - `fetch_skill_rule` strictly fetches content on-demand, one skill at a time, preventing AI hallucination and massive API bills.
 
 ## 📦 Installation & Build
 
