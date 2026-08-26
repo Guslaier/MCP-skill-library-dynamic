@@ -3,7 +3,7 @@
 An Enterprise-grade MCP (Model Context Protocol) server that serves skill and rule files from a local directory to AI agents on demand. It allows AI agents to dynamically list and fetch specific skill instructions formatted in Markdown without suffering from Context Bloat.
 
 
-=======
+
 ## ✨ Features
 
 
