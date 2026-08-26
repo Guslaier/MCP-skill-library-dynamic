@@ -1,0 +1,485 @@
+{
+  "version": 1,
+  "skills": {
+    "academic-paper": {
+      "source": "imbad0202/academic-research-skills",
+      "sourceType": "github",
+      "skillPath": "academic-paper/SKILL.md",
+      "computedHash": "8695aef502c8f09196c743ea2ca6522805dd20538bbe1e2cf28de432edc8136d"
+    },
+    "academic-paper-reviewer": {
+      "source": "imbad0202/academic-research-skills",
+      "sourceType": "github",
+      "skillPath": "academic-paper-reviewer/SKILL.md",
+      "computedHash": "622c8d0f50cbe1571b07c5cfd8a5cbf08c84ea3b2c2e6870b8dfd1ffc0cb3515"
+    },
+    "academic-research-suite": {
+      "source": "imbad0202/academic-research-skills-codex",
+      "sourceType": "github",
+      "skillPath": "skills/academic-research-suite/SKILL.md",
+      "computedHash": "6fe2fe21b2ae4c4fefb4dc1ec6574a61e2762e7201426b07427a4307cf5f0f42"
+    },
+    "agent-reach": {
+      "source": "panniantong/agent-reach",
+      "sourceType": "github",
+      "skillPath": "agent_reach/skill/SKILL.md",
+      "computedHash": "f6b806656fb8850e503c1ba8561abe20b07f8cbf768e3e5c92336e46b395a5f1"
+    },
+    "agent-transcript": {
+      "source": "openclaw/openclaw",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/agent-transcript/SKILL.md",
+      "computedHash": "99e30b39d35e6a4821a466eda3a0e8226b4f34d62bc218978dfcb3acc9c9b7d0"
+    },
+    "article-writing": {
+      "source": "affaan-m/ecc",
+      "sourceType": "github",
+      "skillPath": "skills/article-writing/SKILL.md",
+      "computedHash": "728cf7d0c32b65162d86133a8351398657207dad5d8ef68d031d4a5934a0d4df"
+    },
+    "auto-qa": {
+      "source": "openclaw/openclaw",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/auto-qa/SKILL.md",
+      "computedHash": "9c3978ed333d9bd71ac5d2ffb98dcd6fefb442c9ce3720a725fa9efb302d29ff"
+    },
+    "autoreview": {
+      "source": "openclaw/openclaw",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/autoreview/SKILL.md",
+      "computedHash": "e2b646ac23d9ac645a13bba8494a14208b4d14995181574ecdb2581e53bc8d39"
+    },
+    "backend-patterns": {
+      "source": "affaan-m/ecc",
+      "sourceType": "github",
+      "skillPath": "skills/backend-patterns/SKILL.md",
+      "computedHash": "45bf0c6abd0549b56142690f49437bc59c7b4f55b62dc7717ef295ec6ed6617f"
+    },
+    "banner-design": {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/banner-design/SKILL.md",
+      "computedHash": "f859a951ded1109a38bcc7f18faf4581f9adbf0550df7a11c013e77a5b229541"
+    },
+    "benchmark-methodology": {
+      "source": "affaan-m/ecc",
+      "sourceType": "github",
+      "skillPath": "skills/benchmark-methodology/SKILL.md",
+      "computedHash": "6c131ac0c5f37e7daccb4620fc23dd687586d492a53da9607d763f79c546321d"
+    },
+    "brainstorming": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "skillPath": "skills/brainstorming/SKILL.md",
+      "computedHash": "0eb8e9ba100985eb4da20c46807268cafd72ec1c4ea58132edf9be6c469867fe"
+    },
+    "brand-discovery": {
+      "source": "affaan-m/ecc",
+      "sourceType": "github",
+      "skillPath": "skills/brand-discovery/SKILL.md",
+      "computedHash": "9dbfecde77acfd093e3468e95b615432aa7b56f3e6226c0b9b8c3d8c0ecc16d6"
+    },
+    "browser-use": {
+      "source": "browser-use/browser-use",
+      "sourceType": "github",
+      "skillPath": "skills/browser-use/SKILL.md",
+      "computedHash": "b66d30ad9a847c7b6e218c5b2ba63a8e282b3cf165b0bbd52ccff442ffba0603"
+    },
+    "canvas-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/canvas-design/SKILL.md",
+      "computedHash": "4e8bbc31d3b159efdd32d31a63ba8cd5a44d84911e924c1f2c709c50cbcdd0ec"
+    },
+    "caveman": {
+      "source": "juliusbrussee/caveman",
+      "sourceType": "github",
+      "skillPath": "skills/caveman/SKILL.md",
+      "computedHash": "2bc96f7c5d3c82f76714d9ec5027ef72518ede527b009a4cab6afd6db339ada9"
+    },
+    "channel-message-flows": {
+      "source": "openclaw/openclaw",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/channel-message-flows/SKILL.md",
+      "computedHash": "bfb7df8549d6d513464f12154c6c981ab339c6fda6f2c3925afb03fac21920c1"
+    },
+    "clawdtributor": {
+      "source": "openclaw/openclaw",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/clawdtributor/SKILL.md",
+      "computedHash": "fc717851fe9ddad63764ece4020c61b5650afcdebf4df6112d4cba49b8a1bc6d"
+    },
+    "coding-agent": {
+      "source": "openclaw/openclaw",
+      "sourceType": "github",
+      "skillPath": "skills/coding-agent/SKILL.md",
+      "computedHash": "63ba33408551ef533836a41dd0fb78cdb8c60497b6d900ce1c136d591a5d7949"
+    },
+    "content-engine": {
+      "source": "affaan-m/ecc",
+      "sourceType": "github",
+      "skillPath": "skills/content-engine/SKILL.md",
+      "computedHash": "75bd75aff09c8ca965600df5c58a9e00d72a2c57166976ca45449c726d32e825"
+    },
+    "control-ui-e2e": {
+      "source": "openclaw/openclaw",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/control-ui-e2e/SKILL.md",
+      "computedHash": "9bd1951f5bfe57e0c199b1b4cf16134195308aa9b8febb32439405c9cc7f5e65"
+    },
+    "data-scraper-agent": {
+      "source": "affaan-m/ecc",
+      "sourceType": "github",
+      "skillPath": "skills/data-scraper-agent/SKILL.md",
+      "computedHash": "80fd150e30bf5558464d90b1ae263c58bfebb1922e025ce7ec2b162b09773128"
+    },
+    "deep-research": {
+      "source": "affaan-m/ecc",
+      "sourceType": "github",
+      "skillPath": "skills/deep-research/SKILL.md",
+      "computedHash": "a077ae15135e506490458ac6dacaf17be9dfa61600f1712c6b7dc79a7cef249e"
+    },
+    "design": {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/design/SKILL.md",
+      "computedHash": "bb2e3ffee4b7b69e5a38ce08f6010ca79381d9f53b9dfadb33aee1ece6f1679a"
+    },
+    "diagram-maker": {
+      "source": "openclaw/openclaw",
+      "sourceType": "github",
+      "skillPath": "skills/diagram-maker/SKILL.md",
+      "computedHash": "c0378f61dcfebe4bacf254152836a0c6a848001a088588f271d02e94d54d01db"
+    },
+    "discovery-interview": {
+      "source": "parcadei/continuous-claude-v3",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/discovery-interview/SKILL.md",
+      "computedHash": "934f3f1a7dd3a35e3a74f5716242ca2642a0efc6bee4f0c5f8b2233d7aefa9f3"
+    },
+    "docx": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/productivity/docx/SKILL.md",
+      "computedHash": "b26125000f514232faac4e307539a479d053652c282ab35cbcfc32d6d3cbdd7a"
+    },
+    "fal-ai-media": {
+      "source": "affaan-m/ecc",
+      "sourceType": "github",
+      "skillPath": "skills/fal-ai-media/SKILL.md",
+      "computedHash": "b694dbb54e265bfbe7b27507de51c3841d37a24936b8383ce11a16dde38dba49"
+    },
+    "find-skills": {
+      "source": "bytedance/deer-flow",
+      "sourceType": "github",
+      "skillPath": "skills/public/find-skills/SKILL.md",
+      "computedHash": "202da6ad9e3c65949fa70371e89b1f55a1f5bd6d11b20b4491af17de495a0caf"
+    },
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "computedHash": "93f53fd1c0352d3d7ec17b8f73d7351bf76f4821e55d123c9d2abc2c53ba48e4"
+    },
+    "frontend-design-direction": {
+      "source": "affaan-m/ecc",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-design-direction/SKILL.md",
+      "computedHash": "5e37a3a8e90de1da40881a2ed80de2a7246b46201cc325598c1b60fb3e8c4cfe"
+    },
+    "frontend-patterns": {
+      "source": "affaan-m/ecc",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-patterns/SKILL.md",
+      "computedHash": "cda7d74619e78bc6c58e7f7f4fa7a9d831ec71ae4629550e4d7b53876692e4d3"
+    },
+    "frontend-slides": {
+      "source": "affaan-m/ecc",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-slides/SKILL.md",
+      "computedHash": "afd3f7431b1d017c0f330580b2a7f94a2430ee4a32dfd46de3ba06d0634ba499"
+    },
+    "gc-minimal-zine-poster-v0-3": {
+      "source": "liamgvchi/gc-minimal-zine-poster",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "396056543cded6cc202546c409c0130695645d67ef40e3dcadbddf9e65d8abe0"
+    },
+    "grill-me": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "skillPath": "skills/productivity/grill-me/SKILL.md",
+      "computedHash": "5e0c683385eafd83f106ac6c9d67dfbbfe5aa4b3fe65aad114eb1055a99c818f"
+    },
+    "grill-with-docs": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/grill-with-docs/SKILL.md",
+      "computedHash": "a610223c9796f755b603f15ec114849a4b38b9ba3006acfa9bdf3cc56dd44dad"
+    },
+    "guizang-ppt-skill": {
+      "source": "op7418/guizang-ppt-skill",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "7e89aafbb0f7fbd33b4551fd77d0d0ed1ee856c44f5fadda0f3f9f2238587fc8"
+    },
+    "humanizer-zh": {
+      "source": "op7418/humanizer-zh",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "ad6b2b1f1433413c64f6403dc322d950da175a058f494291bd4399e77cb587c7"
+    },
+    "investor-materials": {
+      "source": "affaan-m/ecc",
+      "sourceType": "github",
+      "skillPath": "skills/investor-materials/SKILL.md",
+      "computedHash": "e1d1c0e530a2f45bb442ffef95aab0eaef5d91757189be9b1d98311268c5308d"
+    },
+    "literature-review": {
+      "source": "affaan-m/ecc",
+      "sourceType": "github",
+      "skillPath": "skills/scientific-thinking-literature-review/SKILL.md",
+      "computedHash": "66644aafa3f87ecd3c10d552081cbf1a47e39213c0dd91520f894c430c4833cc"
+    },
+    "market-research": {
+      "source": "affaan-m/ecc",
+      "sourceType": "github",
+      "skillPath": "skills/market-research/SKILL.md",
+      "computedHash": "9c2f1153dcceb70df1c8e99603ab7d972a67ffe0cc4d1653fb420af0dc904a25"
+    },
+    "marketing-campaign": {
+      "source": "affaan-m/ecc",
+      "sourceType": "github",
+      "skillPath": "skills/marketing-campaign/SKILL.md",
+      "computedHash": "235c4ee2050594e7de2835dc810c38dafc7d044f71b6cee261f6b0e13e988ce8"
+    },
+    "nano-pdf": {
+      "source": "openclaw/openclaw",
+      "sourceType": "github",
+      "skillPath": "skills/nano-pdf/SKILL.md",
+      "computedHash": "5779641e7a0ed61bd0531859dd6a0e195b5d0204606f6d9ea78a428e73326fea"
+    },
+    "nature-academic-search": {
+      "source": "yuan1z0825/nature-skills",
+      "sourceType": "github",
+      "skillPath": "skills/nature-academic-search/SKILL.md",
+      "computedHash": "199e441f82fa7ed36e2112d8a5fcfb388b144c53ca5d88529b1bd81cec90a941"
+    },
+    "nature-citation": {
+      "source": "yuan1z0825/nature-skills",
+      "sourceType": "github",
+      "skillPath": "skills/nature-citation/SKILL.md",
+      "computedHash": "c6392824b9b6628d35dd8a3aebf7c1db35526bd255fe1399f20b60ced5e90650"
+    },
+    "nature-figure": {
+      "source": "yuan1z0825/nature-skills",
+      "sourceType": "github",
+      "skillPath": "skills/nature-figure/SKILL.md",
+      "computedHash": "2f837d70044e7fb6d65459cfaae8dbe0ee8eecf0e22d11dcdea963fb62570983"
+    },
+    "nature-paper2ppt": {
+      "source": "yuan1z0825/nature-skills",
+      "sourceType": "github",
+      "skillPath": "skills/nature-paper2ppt/SKILL.md",
+      "computedHash": "c74e19451baffdd51dcd9fc8b88440b92b6017d7ffad442dfab2ec024bf43e67"
+    },
+    "nature-polishing": {
+      "source": "yuan1z0825/nature-skills",
+      "sourceType": "github",
+      "skillPath": "skills/nature-polishing/SKILL.md",
+      "computedHash": "df6187cdc90c5a58dc87843131cd4d6528672ed10a595467b972a585bdf6c85e"
+    },
+    "nature-reader": {
+      "source": "yuan1z0825/nature-skills",
+      "sourceType": "github",
+      "skillPath": "skills/nature-reader/SKILL.md",
+      "computedHash": "68f532f43832b748e17b4d909ae596b19aa50d52da6736f133fa8d7c41af0bc6"
+    },
+    "nature-shared": {
+      "source": "yuan1z0825/nature-skills",
+      "sourceType": "github",
+      "skillPath": "skills/nature-shared/SKILL.md",
+      "computedHash": "4451d7c64fcc3fa37692aac0ca0791ad53ad6f60a3fa08fc6085dfdc9981f974"
+    },
+    "nature-writing": {
+      "source": "yuan1z0825/nature-skills",
+      "sourceType": "github",
+      "skillPath": "skills/nature-writing/SKILL.md",
+      "computedHash": "992d4ca3f9bd1614368b435db6b2e3c0be90d69b5ffd53a6e3b7165bc23545cb"
+    },
+    "nutrient-document-processing": {
+      "source": "affaan-m/ecc",
+      "sourceType": "github",
+      "skillPath": "skills/nutrient-document-processing/SKILL.md",
+      "computedHash": "bc4c5db6ed080a1588166364fcaa0e86cda18b708363b93c16d14485fd682093"
+    },
+    "obsidian": {
+      "source": "openclaw/openclaw",
+      "sourceType": "github",
+      "skillPath": "skills/obsidian/SKILL.md",
+      "computedHash": "1222d61801d38fb71b63cd990c299f7fabfd66f0920bd0185be6f36ecab31a54"
+    },
+    "openclaw-persona-forge": {
+      "source": "affaan-m/ecc",
+      "sourceType": "github",
+      "skillPath": "skills/openclaw-persona-forge/SKILL.md",
+      "computedHash": "8ddba361ce80b123129d25928d9d3995312faca1373aad0dc3b90b64886f08ca"
+    },
+    "ponytail": {
+      "source": "dietrichgebert/ponytail",
+      "sourceType": "github",
+      "skillPath": "skills/ponytail/SKILL.md",
+      "computedHash": "9e8d05cbbaf6dc38f0cffc924c09b3cbe76d94ba4ba0d09bde803da2f8c6b5a0"
+    },
+    "ppt-generation": {
+      "source": "bytedance/deer-flow",
+      "sourceType": "github",
+      "skillPath": "skills/public/ppt-generation/SKILL.md",
+      "computedHash": "1f95cca84b78975d6552da8e19c31fcb610ac80acc16f29c96c57bc6bc4d2173"
+    },
+    "ppt-keynote": {
+      "source": "nexu-io/open-design",
+      "sourceType": "github",
+      "skillPath": "skills/ppt-keynote/SKILL.md",
+      "computedHash": "192bbee1ffac0985f0a5cc4c3f298e4c5df550dbc78b78093565eb3bd0420a82"
+    },
+    "pptx": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/pptx/SKILL.md",
+      "computedHash": "d6198c2f85d5d1c737d451b98ebacc3bbc187730c9a79252aa738ddb8d818455"
+    },
+    "prompt-optimizer": {
+      "source": "affaan-m/ecc",
+      "sourceType": "github",
+      "skillPath": "skills/prompt-optimizer/SKILL.md",
+      "computedHash": "0b755ab400b415ad26131d902806d8a837447d6e8dcef904952f464c66c9760c"
+    },
+    "remotion-video-creation": {
+      "source": "affaan-m/ecc",
+      "sourceType": "github",
+      "skillPath": "skills/remotion-video-creation/SKILL.md",
+      "computedHash": "bc1054b481bf128749aeb5ecacabd6529e87657dfd84c8f3ec0c4c4fd5111daf"
+    },
+    "research-paper-writing": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/research/research-paper-writing/SKILL.md",
+      "computedHash": "c508227553dffa5c2fa955844fb9de6e2c72a998ae9cd3793e8d71164c6ef83f"
+    },
+    "sag": {
+      "source": "openclaw/openclaw",
+      "sourceType": "github",
+      "skillPath": "skills/sag/SKILL.md",
+      "computedHash": "464b2895859722d6c5ad2dc69eaf8b5343213e8dd34ce33e74e0d22df5957c3c"
+    },
+    "scene-distillation-zine-v1-3": {
+      "source": "zeejay0/gathered-scenes-zine-skill",
+      "sourceType": "github",
+      "skillPath": "skills/scene-distillation-zine-v1-3/SKILL.md",
+      "computedHash": "1a85c74de13c14951de231512afd80cc1458e2121f62beedeb8d8262dc07cbd9"
+    },
+    "scenes-gathered-zine-v1-3": {
+      "source": "zeejay0/gathered-scenes-zine-skill",
+      "sourceType": "github",
+      "skillPath": "skills/scenes-gathered-zine-v1-3/SKILL.md",
+      "computedHash": "1bca51ec05e2bf284118e438b65986b24c8c5c2c53b1f6632d6707732230f90c"
+    },
+    "scholar-evaluation": {
+      "source": "affaan-m/ecc",
+      "sourceType": "github",
+      "skillPath": "skills/scientific-thinking-scholar-evaluation/SKILL.md",
+      "computedHash": "3208cf3582165e27d35c8af9a31b7da4bbc3d50dff0bbd83aae5ca1e4bf5f3f3"
+    },
+    "scientific-brainstorming": {
+      "source": "k-dense-ai/scientific-agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/scientific-brainstorming/SKILL.md",
+      "computedHash": "533d9ac92ec2964760821958f2b0a7c4ef447e43f7c2f16627dfeaebf0c5a526"
+    },
+    "seedance-storyboard-generator": {
+      "source": "liangdabiao/seedance2-storyboard-generator",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/seedance-storyboard-generator/SKILL.md",
+      "computedHash": "f321b7896638c77f392d0fb4967fbfb29a3b1747917d0d279873e01a8d2bbfdf"
+    },
+    "skill-creator": {
+      "source": "openclaw/openclaw",
+      "sourceType": "github",
+      "skillPath": "skills/skill-creator/SKILL.md",
+      "computedHash": "5db89f7a46d3f78918e578b291b987a1cbc3a46aa4d20cbc9ada156e7981b4a0"
+    },
+    "social-publisher": {
+      "source": "affaan-m/ecc",
+      "sourceType": "github",
+      "skillPath": "skills/social-publisher/SKILL.md",
+      "computedHash": "4b1318db57bf4cfe579d6651f0270b59abda161b9ea20e1f55aa5e1f9dd88d98"
+    },
+    "summarize": {
+      "source": "openclaw/openclaw",
+      "sourceType": "github",
+      "skillPath": "skills/summarize/SKILL.md",
+      "computedHash": "67b9a5d86c3d9675e53e8bdb3f336661d55ccc689ecaaa3c99d984aa991458b6"
+    },
+    "taskflow-inbox-triage": {
+      "source": "openclaw/openclaw",
+      "sourceType": "github",
+      "skillPath": "skills/taskflow-inbox-triage/SKILL.md",
+      "computedHash": "dbf68deba410a84a668061e7b40b13f47c150bc11fb0256f994497baf7d366a3"
+    },
+    "taste": {
+      "source": "affaan-m/ecc",
+      "sourceType": "github",
+      "skillPath": "skills/taste/SKILL.md",
+      "computedHash": "d8b4a67b63f5a4f45aa3a8086f96837a85a2b739d23c9f3dabfa4c02a2680343"
+    },
+    "technical-documentation": {
+      "source": "openclaw/openclaw",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/technical-documentation/SKILL.md",
+      "computedHash": "70b11b1a762b62cbaeb4c27bcd19dc7465f7616b2ad8a36c6f86130841c7864e"
+    },
+    "ui-ux-pro-max": {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "computedHash": "d1de8ff8d228cd4204bf06eb959ef4317d5b927908d9f42765971e33e80c8a7e"
+    },
+    "using-superpowers": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "skillPath": "skills/using-superpowers/SKILL.md",
+      "computedHash": "c7abe8bdc2099bbe4f245454d32c7563ccd2bb41dcc218b02b461c2acc3c6ae6"
+    },
+    "vercel-react-best-practices": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/react-best-practices/SKILL.md",
+      "computedHash": "ca7b0c0c6e5f2750043f7f0cd72d16ac4e2abc48f9b5500d047a4b77a2506212"
+    },
+    "video-editing": {
+      "source": "affaan-m/ecc",
+      "sourceType": "github",
+      "skillPath": "skills/video-editing/SKILL.md",
+      "computedHash": "f44c45ed71dec68cf955a316577ddd191248d0c607118c89ffc10f9f3f1ea3a0"
+    },
+    "video-frames": {
+      "source": "openclaw/openclaw",
+      "sourceType": "github",
+      "skillPath": "skills/video-frames/SKILL.md",
+      "computedHash": "77dffe08eb504e9e1187b4f45abe455c586453fd2c9c3a923436ea69353c3e57"
+    },
+    "videodb": {
+      "source": "affaan-m/ecc",
+      "sourceType": "github",
+      "skillPath": "skills/videodb/SKILL.md",
+      "computedHash": "1a63377153e902d049355df33d5d26aa685c66efc9f432f3051208ff938dcb29"
+    },
+    "writing-plans": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "skillPath": "skills/writing-plans/SKILL.md",
+      "computedHash": "27c75044e444a4fc68798c3f799dc23eaff3a6bfabff32e6ad75bb20f881c094"
+    }
+  }
+}

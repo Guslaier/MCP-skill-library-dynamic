@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+
+# Git
+.git/
+
+# Roo Code configuration
+.roo/
+
+# Build outputs
+dist/
+build/
+
+# Package lock (optional - uncomment if needed)
+# package-lock.json
+
+# Large binary files
+*.pdf
+*.tar.gz
+
+# XML Schema files (many large files in skills/xlsx)
+*.xsd
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

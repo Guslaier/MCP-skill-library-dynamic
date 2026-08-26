@@ -1,0 +1,17 @@
+{
+  "name": "skill-library-mcp",
+  "version": "1.0.0",
+  "description": "MCP server that serves skill/rule files from a skills folder to AI agents on demand",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "download": "node download-skills.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.3.0"
+  }
+}
