@@ -11,6 +11,9 @@ node_modules/
 dist/
 build/
 
+# Skills
+.agents/skills/
+
 # Package lock (optional - uncomment if needed)
 # package-lock.json
 
