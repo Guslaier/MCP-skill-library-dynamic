@@ -4,10 +4,13 @@ An Enterprise-grade MCP (Model Context Protocol) server that serves skill and ru
 
 
 
-## ✨ Features
-
+## ✨ Features (v1.1.0)
 
 - **TypeScript Native**: 100% Type-safe, compiled to optimized ES Modules.
+- **Smart Search & Filter**: `list_skills` supports optional `query` parameter (e.g. `list_skills({ query: "react" })`) to filter skills directly and save tokens.
+- **Recursive Multi-File Rule Aggregation**: `fetch_skill_rule` automatically scans and combines all nested Markdown files (e.g. `rules/*.md`, `references/*.md`) without skipping deeper documentation.
+- **Zero-Config Auto-Path Resolution**: Intelligently resolves `.agents/skills` relative to the compiled server location, eliminating manual `SKILLS_DIR` setup issues.
+- **Ghost Skill Elimination**: Automatically ignores empty directories and only serves folders with verified `.md` rule files.
 - **Memory-Safe Caching**: Utilizes a TTL cache for directory listing and async I/O for file reading to guarantee 0% chance of Out-Of-Memory (OOM) crashes, even with 100,000+ skills.
 - **Path Traversal Protection**: Cryptographic-grade path resolution to strictly sandbox the AI to the `.agents/skills/` directory.
 - **Graceful Shutdown**: Properly handles `SIGINT`/`SIGTERM` and uncaught exceptions to ensure clean MCP socket closures.
@@ -97,9 +100,9 @@ If you are using default AI modes (without custom orchestrators), you need to in
 
 ```text
 # UNIVERSAL KNOWLEDGE BASE PROTOCOL
-You are equipped with a "Skill Library MCP". Before starting any architectural planning, refactoring, or feature implementation, you MUST:
-1. Use the `list_skills` tool to check for relevant domain rules or coding standards.
-2. If found, use the `fetch_skill_rule` tool to read the full context.
+You are equipped with the Enterprise "Skill Library MCP". Before starting any architectural planning, refactoring, or feature implementation, you MUST:
+1. Use `list_skills` (or `list_skills({ query: "keyword" })`) to check for relevant domain rules or coding standards.
+2. If found, use `fetch_skill_rule({ skill_name: "..." })` to read the full context and nested rule guidelines.
 3. Explicitly acknowledge the rules and apply them strictly to your code generation.
 ```
 
