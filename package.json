@@ -4,6 +4,7 @@
   "description": "MCP server that serves skill/rule files from a skills folder to AI agents on demand",
   "type": "module",
   "main": "dist/index.js",
+  "license": "MIT",
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
