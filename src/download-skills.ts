@@ -36,54 +36,65 @@ async function installSkillWithRetry(name: string, githubUrl: string, retryCount
   }
 }
 
-async function downloadSkillsmpPage1() {
-  const url = "https://skillsmp.com/skills/page/1";
-  console.log(`Fetching skills from ${url}...`);
+async function downloadSkillsmpAllPages(startPage = 1, maxPages = 15) {
+  for (let page = startPage; page <= maxPages; page++) {
+    const url = `https://skillsmp.com/skills/page/${page}`;
+    console.log(`\n--- Fetching skills from ${url} ---`);
 
-  try {
-    const data = await fetchPage(url);
-    const startStr = '{"@context":"https://schema.org","@type":"CollectionPage"';
-    const endStr = '</script>';
-    const startIndex = data.indexOf(startStr);
-    
-    if (startIndex === -1) throw new Error("Could not find JSON-LD in the page content.");
-    
-    const endIndex = data.indexOf(endStr, startIndex);
-    if (endIndex === -1) throw new Error("Could not find the end of JSON-LD.");
-    
-    const jsonStr = data.substring(startIndex, endIndex);
-    const json = JSON.parse(jsonStr);
-    const items = json.mainEntity.itemListElement;
-
-    // Filter valid items
-    const validSkills = items.map((item: any) => {
-      const match = item.url.match(/https:\/\/skillsmp\.com\/creators\/([^/]+)\/([^/]+)\//);
-      if (match) {
-        return {
-          name: item.name,
-          githubUrl: `https://github.com/${match[1]}/${match[2]}`
-        };
-      }
-      return null;
-    }).filter(Boolean);
-
-    console.log(`Found ${validSkills.length} skills to install. Processing in batches of ${BATCH_SIZE}...`);
-
-    for (let i = 0; i < validSkills.length; i += BATCH_SIZE) {
-      const batch = validSkills.slice(i, i + BATCH_SIZE);
-      console.log(`\n--- Processing Batch ${Math.floor(i / BATCH_SIZE) + 1} ---`);
+    try {
+      const data = await fetchPage(url);
+      const startStr = '{"@context":"https://schema.org","@type":"CollectionPage"';
+      const endStr = '</script>';
+      const startIndex = data.indexOf(startStr);
       
-      await Promise.all(
-        batch.map((skill: { name: string, githubUrl: string }) => 
-          installSkillWithRetry(skill.name, skill.githubUrl)
-        )
-      );
-    }
+      if (startIndex === -1) {
+        console.log(`No skills JSON found on page ${page}. Stopping pagination.`);
+        break; // Probably reached the end of the list
+      }
+      
+      const endIndex = data.indexOf(endStr, startIndex);
+      if (endIndex === -1) throw new Error("Could not find the end of JSON-LD.");
+      
+      const jsonStr = data.substring(startIndex, endIndex);
+      const json = JSON.parse(jsonStr);
+      const items = json.mainEntity?.itemListElement;
 
-    console.log("\nDone downloading skills.");
-  } catch (err) {
-    console.error("Fatal Error:", err);
+      if (!items || items.length === 0) {
+        console.log(`No items found on page ${page}. Stopping.`);
+        break;
+      }
+
+      // Filter valid items
+      const validSkills = items.map((item: any) => {
+        const match = item.url.match(/https:\/\/skillsmp\.com\/creators\/([^/]+)\/([^/]+)\//);
+        if (match) {
+          return {
+            name: item.name,
+            githubUrl: `https://github.com/${match[1]}/${match[2]}`
+          };
+        }
+        return null;
+      }).filter(Boolean);
+
+      console.log(`Found ${validSkills.length} skills on page ${page}. Processing in batches of ${BATCH_SIZE}...`);
+
+      for (let i = 0; i < validSkills.length; i += BATCH_SIZE) {
+        const batch = validSkills.slice(i, i + BATCH_SIZE);
+        console.log(`\nProcessing Batch ${Math.floor(i / BATCH_SIZE) + 1} of Page ${page}...`);
+        
+        await Promise.all(
+          batch.map((skill: { name: string, githubUrl: string }) => 
+            installSkillWithRetry(skill.name, skill.githubUrl)
+          )
+        );
+      }
+    } catch (err: any) {
+      console.error(`Error on page ${page}:`, err.message);
+      break;
+    }
   }
+  
+  console.log("\nDone downloading skills from all pages.");
 }
 
-downloadSkillsmpPage1();
+downloadSkillsmpAllPages(1, 15);
