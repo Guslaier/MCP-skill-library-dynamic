@@ -82,7 +82,10 @@ To use this server with an MCP client (such as Roo Code, Cline, or Cursor), add 
       "command": "node",
       "args": [
         "C:/absolute/path/to/skill-library-mcp/dist/index.js"
-      ]
+      ],
+      "env": {
+        "SKILLS_DIR": "C:/absolute/path/to/skill-library-mcp/.agents/skills"
+      }
     }
   }
 }
