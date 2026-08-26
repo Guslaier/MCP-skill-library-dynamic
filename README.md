@@ -2,7 +2,7 @@
 
 An Enterprise-grade MCP (Model Context Protocol) server that serves skill and rule files from a local directory to AI agents on demand. It allows AI agents to dynamically list and fetch specific skill instructions formatted in Markdown without suffering from Context Bloat.
 
-## ✨Features
+## ✨ Features
 
 - **TypeScript Native**: 100% Type-safe, compiled to optimized ES Modules.
 - **Memory-Safe Caching**: Utilizes a TTL cache for directory listing and async I/O for file reading to guarantee 0% chance of Out-Of-Memory (OOM) crashes, even with 100,000+ skills.
