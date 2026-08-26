@@ -7,6 +7,7 @@ import {
   ErrorCode,
 } from "@modelcontextprotocol/sdk/types.js";
 import fs from "fs";
+import { promises as fsPromises } from "fs";
 import path from "path";
 
 // ── Configuration ──────────────────────────────────────────────
@@ -20,6 +21,15 @@ if (!fs.existsSync(SKILLS_DIR)) {
   process.exit(1);
 }
 
+// ── Global Error & Shutdown Handlers ───────────────────────────
+process.on("uncaughtException", (err: Error) => {
+  console.error("[FATAL] Uncaught Exception:", err);
+});
+
+process.on("unhandledRejection", (reason: unknown) => {
+  console.error("[FATAL] Unhandled Rejection:", reason);
+});
+
 // ── Server ─────────────────────────────────────────────────────
 const server = new Server(
   {
@@ -30,6 +40,23 @@ const server = new Server(
     capabilities: { tools: {} },
   }
 );
+
+process.on("SIGINT", async () => {
+  console.error("Shutting down MCP server...");
+  await server.close();
+  process.exit(0);
+});
+
+process.on("SIGTERM", async () => {
+  console.error("Shutting down MCP server...");
+  await server.close();
+  process.exit(0);
+});
+
+// ── Cache State ────────────────────────────────────────────────
+let cachedSkillsList: string[] | null = null;
+let skillsCacheTimestamp = 0;
+const CACHE_TTL_MS = 60 * 1000; // 60 seconds cache for directory listing
 
 // ── Tool definitions ───────────────────────────────────────────
 server.setRequestHandler(ListToolsRequestSchema, async () => {
@@ -92,10 +119,36 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
   if (name === "list_skills") {
     try {
-      const skills = fs
-        .readdirSync(SKILLS_DIR)
-        .filter((file) => fs.statSync(path.join(SKILLS_DIR, file)).isDirectory())
+      const now = Date.now();
+      // TTL Cache check
+      if (cachedSkillsList && now - skillsCacheTimestamp < CACHE_TTL_MS) {
+        if (cachedSkillsList.length === 0) {
+          return {
+            content: [{ type: "text", text: "No skills found in the library." }],
+            structuredContent: { skills: [] },
+          };
+        }
+        return {
+          content: [
+            {
+              type: "text",
+              text: `Available skills (${cachedSkillsList.length}):\n${cachedSkillsList.join("\n")}`,
+            },
+          ],
+          structuredContent: { skills: cachedSkillsList },
+        };
+      }
+
+      // Cache miss, read dynamically using async methods
+      const dirents = await fsPromises.readdir(SKILLS_DIR, { withFileTypes: true });
+      const skills = dirents
+        .filter((dirent: fs.Dirent) => dirent.isDirectory())
+        .map((dirent: fs.Dirent) => dirent.name)
         .sort();
+
+      // Update Cache
+      cachedSkillsList = skills;
+      skillsCacheTimestamp = Date.now();
 
       if (skills.length === 0) {
         return {
@@ -124,39 +177,50 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   if (name === "fetch_skill_rule") {
     const skillName = args?.skill_name as string | undefined;
 
-    if (
-      !skillName ||
-      skillName.includes("..") ||
-      skillName.includes("/") ||
-      skillName.includes("\\")
-    ) {
+    if (!skillName || typeof skillName !== "string") {
       throw new McpError(
         ErrorCode.InvalidParams,
-        "Invalid skill_name. Must be a simple folder name (no '..', '/', or '\\')."
+        "Invalid skill_name."
       );
     }
 
-    const targetDir = path.join(SKILLS_DIR, skillName);
+    // Security check: Path Traversal Prevention
+    const resolvedSkillsDir = path.resolve(SKILLS_DIR);
+    const targetDir = path.resolve(SKILLS_DIR, skillName);
+    
+    // Ensure the resolved target directory is strictly inside the skills directory
+    if (!targetDir.startsWith(resolvedSkillsDir + path.sep)) {
+      throw new McpError(
+        ErrorCode.InvalidParams,
+        "Invalid skill_name path traversal detected."
+      );
+    }
 
     try {
-    if (!fs.existsSync(targetDir) || !fs.statSync(targetDir).isDirectory()) {
-        throw new Error("Not a directory");
-    }
+      try {
+        const stat = await fsPromises.stat(targetDir);
+        if (!stat.isDirectory()) {
+          throw new Error("Not a directory");
+        }
+      } catch (err) {
+        throw new Error("Directory does not exist");
+      }
 
-    const files = fs.readdirSync(targetDir);
-    const mdFile = files.find((f) => f.endsWith(".md")) || files[0];
+      const files = await fsPromises.readdir(targetDir);
+      const mdFile = files.find((f: string) => f.endsWith(".md")) || files[0];
 
-    if (!mdFile) {
+      if (!mdFile) {
         throw new Error("No markdown file found");
-    }
+      }
 
-    const content = fs.readFileSync(path.join(targetDir, mdFile), "utf-8");
-    return {
+      // Memory-safe asynchronous file read
+      const content = await fsPromises.readFile(path.join(targetDir, mdFile), "utf-8");
+      return {
         content: [
-        {
+          {
             type: "text",
             text: `--- RULE FOR: ${skillName} ---\n\n${content}`,
-        },
+          },
         ],
         structuredContent: {
           skill_name: skillName,

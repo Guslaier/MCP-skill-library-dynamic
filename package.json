@@ -3,15 +3,17 @@
   "version": "1.0.0",
   "description": "MCP server that serves skill/rule files from a skills folder to AI agents on demand",
   "type": "module",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "node index.js",
-    "download": "node download-skills.js"
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "download": "node dist/download-skills.js"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.30.0"
   },
   "devDependencies": {
-    "@types/node": "^26.3.0"
+    "@types/node": "^26.3.0",
+    "typescript": "^7.0.2"
   }
 }
