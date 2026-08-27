@@ -2,11 +2,13 @@
 
 An Enterprise-grade MCP (Model Context Protocol) server that serves skill and rule files from a local directory to AI agents on demand. It allows AI agents to dynamically list and fetch specific skill instructions formatted in Markdown without suffering from Context Bloat.
 
+---
 
-
-## ✨ Features (v1.1.0)
+## ✨ Features (v1.2.0)
 
 - **TypeScript Native**: 100% Type-safe, compiled to optimized ES Modules.
+- **Curated 200+ Core Skills Base**: High-quality, deduplicated, and community-standard skill set pre-indexed in [`skills-base.json`](skills-base.json).
+- **Deterministic Offline-First Downloader**: Fast, reliable batch downloads directly from the curated base list using `npx skills add` with exponential backoff retries.
 - **Smart Search & Filter**: `list_skills` supports optional `query` parameter (e.g. `list_skills({ query: "react" })`) to filter skills directly and save tokens.
 - **Recursive Multi-File Rule Aggregation**: `fetch_skill_rule` automatically scans and combines all nested Markdown files (e.g. `rules/*.md`, `references/*.md`) without skipping deeper documentation.
 - **Zero-Config Auto-Path Resolution**: Intelligently resolves `.agents/skills` relative to the compiled server location, eliminating manual `SKILLS_DIR` setup issues.
@@ -15,72 +17,84 @@ An Enterprise-grade MCP (Model Context Protocol) server that serves skill and ru
 - **Path Traversal Protection**: Cryptographic-grade path resolution to strictly sandbox the AI to the `.agents/skills/` directory.
 - **Graceful Shutdown**: Properly handles `SIGINT`/`SIGTERM` and uncaught exceptions to ensure clean MCP socket closures.
 - **Token Diet Architecture (Cost Saving)**: 
-  - `list_skills` only returns the raw folder names (slugs), minimizing the injected context to just ~1,500 tokens even with 1,000+ skills.
+  - `list_skills` only returns raw folder names (slugs), minimizing injected context to just ~1,500 tokens even with 1,000+ skills.
   - `fetch_skill_rule` strictly fetches content on-demand, one skill at a time, preventing AI hallucination and massive API bills.
+
+---
 
 ## 📦 Installation & Build
 
-1. Clone or download the repository.
-2. Install the dependencies:
+1. Clone or download the repository:
+```bash
+git clone https://github.com/Guslaier/MCP-skill-library-dynamic.git
+cd skill-library-mcp
+```
+
+2. Install dependencies:
 ```bash
 npm install
 ```
-3. Compile the TypeScript source code:
+
+3. Compile TypeScript source code:
 ```bash
 npm run build
 ```
 
-## 🧠 Adding Skills
+---
 
-The server reads from the `.agents/skills` folder located in the root of the project by default (you can override this with the `SKILLS_DIR` environment variable). If it doesn't exist, it will be created automatically upon running the server.
+## 🧠 Downloading & Managing Skills
 
-Each skill should be in its own subfolder inside `.agents/skills` and contain a Markdown (`.md`) file.
+Skills are loaded into `.agents/skills/` located in the root of the project (or configured via `SKILLS_DIR`).
 
-### Downloading Skills Automatically
+### Curated Base Skills (`skills-base.json`)
 
-The [`download-skills`](src/download-skills.ts) script fetches skills from [skillsmp.com](https://skillsmp.com) and installs them locally. It works by:
+The downloader uses [`skills-base.json`](skills-base.json) as the single source of truth containing 200+ curated and deduplicated skills from official and top-tier repositories (`anthropics/skills`, `obra/superpowers`, `affaan-m/ecc`, `browser-use`, etc.).
 
-1. **Fetching pages** — Iterates through paginated results on skillsmp.com.
-2. **Extracting data** — Parses the JSON-LD metadata embedded in each page to get skill details.
-3. **Installing skills** — Runs `npx skills add` for each discovered skill.
-4. **Progress reporting** — Displays real-time progress (pages fetched, skills found, install success/failure).
-
-> **Note:** The downloader runs in parallel batches with Exponential Backoff Retries to handle network instability.
-
-#### CLI Usage
+### CLI Commands
 
 | Command | Description |
 | --- | --- |
-| `npm run download` | Fetch and install skills (default: 15 pages) |
-| `npm run download -- <pages>` | Fetch and install skills from a custom number of pages |
+| `npm run download` | Download and install all 200+ base skills |
+| `npm run download -- <skill-name>` | Download only skills matching the given name filter |
 
 #### Examples
 
 ```bash
-# Fetch skills from 5 pages (fewer skills, faster run)
-npm run download -- 5
+# Download all 200+ curated base skills
+npm run download
 
-# Fetch skills from 100 pages (large batch, more skills)
-npm run download -- 100
+# Download only specific skills matching 'caveman'
+npm run download -- caveman
+
+# Download all React / Frontend related skills
+npm run download -- react
 ```
 
-### Example Directory Structure
+---
+
+## 📁 Directory Structure
 
 ```text
 skill-library-mcp/
 ├── package.json
 ├── tsconfig.json
+├── skills-base.json        # Curated index of 200+ skills (name, repo url, description)
 ├── src/
-│   └── index.ts
+│   ├── index.ts            # MCP Server entry point
+│   └── download-skills.ts  # Batch downloader from skills-base.json
 ├── dist/
-│   └── index.js
+│   ├── index.js
+│   └── download-skills.js
 └── .agents/
-    └── skills/
+    └── skills/             # Local skill files served to AI agents
         ├── code-review/
         │   └── SKILL.md
-        └── database-setup/
-            └── instructions.md
+        ├── test-driven-development/
+        │   └── SKILL.md
+        └── ...
 ```
+
+---
 
 ## 🚀 Running the Server
 
@@ -90,11 +104,11 @@ Start the server using:
 npm start
 ```
 
+---
+
 ## ⚙️ MCP Configuration
 
-To use this server with an MCP client (such as Roo Code, Cline, or Cursor), add the following configuration to your client's settings file. Make sure to replace `C:/absolute/path/to/skill-library-mcp` with the actual absolute path where you cloned this repository.
-
-> **Important:** The path must point to the compiled `dist/index.js`, NOT the root folder.
+To connect this server with an MCP client (such as **Antigravity**, **Cursor**, **Roo Code**, or **Cline**), add the following configuration to your client's settings file:
 
 ```json
 {
@@ -102,19 +116,23 @@ To use this server with an MCP client (such as Roo Code, Cline, or Cursor), add 
     "skill-library": {
       "command": "node",
       "args": [
-        "C:/absolute/path/to/skill-library-mcp/dist/index.js"
+        "C:/path/to/skill-library-mcp/dist/index.js"
       ],
       "env": {
-        "SKILLS_DIR": "C:/absolute/path/to/skill-library-mcp/.agents/skills"
+        "SKILLS_DIR": "C:/path/to/skill-library-mcp/.agents/skills"
       }
     }
   }
 }
 ```
 
-## 🤖 System Prompt (For Default AI Agents)
+> **Important:** Replace `C:/path/to/skill-library-mcp` with your actual repository path, pointing to `dist/index.js`.
 
-If you are using default AI modes (without custom orchestrators), you need to instruct the AI to actively use this MCP server. Copy and paste the following **UNIVERSAL KNOWLEDGE BASE PROTOCOL** into your `.clinerules`, `.cursorrules`, or the Custom Instructions field of your extension:
+---
+
+## 🤖 System Prompt (Knowledge Base Protocol)
+
+Add the following prompt to your AI agent rules (`.clinerules`, `.cursorrules`, or Custom Instructions) so the agent automatically uses the Skill Library:
 
 ```text
 # UNIVERSAL KNOWLEDGE BASE PROTOCOL
@@ -124,7 +142,7 @@ You are equipped with the Enterprise "Skill Library MCP". Before starting any ar
 3. Explicitly acknowledge the rules and apply them strictly to your code generation.
 ```
 
-By adding this prompt, your AI will proactively check the skill library before writing any complex code, ensuring it follows your project's specific best practices!
+---
 
 ## 📜 License
 

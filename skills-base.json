@@ -1,0 +1,1007 @@
+[
+  {
+    "name": "agent-transcript",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "\"Add a redacted agent transcript section to GitHub PR or issue bodies during OpenClaw agent-created PR/issue workflows.\""
+  },
+  {
+    "name": "ai-regression-testing",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Regression testing strategies for AI-assisted development. Sandbox-mode API testing without database dependencies, automated bug-check workflows, and patterns to catch AI blind spots where the same model writes and reviews code. Use when adding regression coverage to AI-assisted code, or when the same model both wrote and reviewed a change."
+  },
+  {
+    "name": "amazon-listing-builder",
+    "githubUrl": "https://github.com/liangdabiao/amazon-sorftime-research-mcp-skill",
+    "description": "亚马逊爆款 Listing 打造助手（基于 Cosmo 语义算法 + Alexa/Rufus 对话式购物趋势）。通过\"先分析、再生成、最后校验\"的 AI 工程化流程，把 Listing 从\"关键词堆砌\"升级为\"语义覆盖 + 需求证据 + 答案型内容\"。提供八步工作流（关键词分层词库 → 用户问题库 → 卖点证据库 → 标题 → 五点 → 描述A+ → Search Terms → QA）、给 Codex 的可复用提示词、真实案例（抗 UV 户外仿真植物、down filled pillows QA）以及五大常见误区检查。触发场景：(1) 用户说\"帮我写 Listing / 写标题 / 写五点 / 写描述 / 写 A+ / 写 QA / 写 Search Terms\"(2) 用户输入 /listing-builder, /build-listing, /cosmo-listing, /alexa-qa, /listing-title, /listing-bullets, /listing-aplus, /listing-st, /listing-qa(3) 用户提及 Cosmo 算法、Alexa 算法、Rufus、对话式购物、语义搜索、答案型 Listing(4) 用户希望结合卖家精灵 MCP 数据做关键词分层与痛点映射。适用于亚马逊美国站等站点的运营、Listing 优化师、产品开发、跨境营销人员。"
+  },
+  {
+    "name": "api-design-restful",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": ""
+  },
+  {
+    "name": "arxiv",
+    "githubUrl": "https://github.com/nousresearch/hermes-agent",
+    "description": "\"Search arXiv papers by keyword, author, category, or ID.\""
+  },
+  {
+    "name": "ask-matt",
+    "githubUrl": "https://github.com/mattpocock/skills",
+    "description": "Ask which skill or flow fits your situation. A router over the skills in this repo."
+  },
+  {
+    "name": "auto-qa",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "\"Continuously audit, live-test, and stress-test the current OpenClaw codebase across at least ten independently scoped subsystem lanes; default to 100 independently verified, landed root-cause fixes, maintain an evidence-backed report, and announce each merged pull request immediately. Use for OpenClaw-wide autonomous QA, live-provider campaigns, gateway, CLI, web, plugin, native-app, scenario, packaging, and extended soak testing.\""
+  },
+  {
+    "name": "autonomous-agent-harness",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Transform Claude Code into a fully autonomous agent system with persistent memory, scheduled operations, computer use, and task queuing. Replaces standalone agent frameworks (Hermes, AutoGPT) by leveraging Claude Code's native crons, dispatch, MCP tools, and memory. Use when the user wants continuous autonomous operation, scheduled tasks, or a self-directing agent loop."
+  },
+  {
+    "name": "backend-patterns",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Backend architecture patterns, API design, database optimization, and server-side best practices for Node.js, Express, and Next.js API routes. Use when building or reviewing Node.js, Express, or Next.js API routes and their data access."
+  },
+  {
+    "name": "banner-design",
+    "githubUrl": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+    "description": "\"Design banners for social media, ads, website heroes, creative assets, and print. Multiple art direction options with AI-generated visuals. Actions: design, create, generate banner. Platforms: Facebook, Twitter/X, LinkedIn, YouTube, Instagram, Google Display, website hero, print. Styles: minimalist, gradient, bold typography, photo-based, illustrated, geometric, retro, glassmorphism, 3D, neon, duotone, editorial, collage. Uses ui-ux-pro-max, frontend-design, ai-artist, ai-multimodal skills.\""
+  },
+  {
+    "name": "baoyu-infographic",
+    "githubUrl": "https://github.com/nousresearch/hermes-agent",
+    "description": "\"Infographics: 21 layouts x 21 styles (信息图, 可视化).\""
+  },
+  {
+    "name": "baoyu-xhs-images",
+    "githubUrl": "https://github.com/jimliu/baoyu-skills",
+    "description": "Generates infographic image card series with 12 visual styles, 8 layouts, and 3 color palettes. Breaks content into 1-10 cartoon-style image cards optimized for social media engagement. Use when user mentions \"小红书图片\", \"小红书种草\", \"小绿书\", \"微信图文\", \"微信贴图\", \"image cards\", \"图片卡片\", baoyu-xhs-images, or wants social media infographic series."
+  },
+  {
+    "name": "bazi",
+    "githubUrl": "https://github.com/jinchenma94/bazi-skill",
+    "description": ">"
+  },
+  {
+    "name": "benchmark-methodology",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": ">-"
+  },
+  {
+    "name": "blender-motion-state-inspection",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Use this skill when inspecting Blender characters, rigs, poses, animation retargeting, ground contact, facing direction, or model-vs-motion alignment where screenshots alone are not enough."
+  },
+  {
+    "name": "brainstorming",
+    "githubUrl": "https://github.com/nexu-io/open-design",
+    "description": "\"You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.\""
+  },
+  {
+    "name": "brand",
+    "githubUrl": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+    "description": "Brand voice, visual identity, messaging frameworks, asset management, brand consistency. Activate for branded content, tone of voice, marketing assets, brand compliance, style guides."
+  },
+  {
+    "name": "brand-discovery",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": ">-"
+  },
+  {
+    "name": "brand-guidelines",
+    "githubUrl": "https://github.com/anthropics/skills",
+    "description": "Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit from having Anthropic's look-and-feel. Use it when brand colors or style guidelines, visual formatting, or company design standards apply."
+  },
+  {
+    "name": "brand-voice",
+    "githubUrl": "https://github.com/luongnv89/claude-howto",
+    "description": "Build a source-derived writing style profile from real posts, essays, launch notes, docs, or site copy, then reuse that profile across content, outreach, and social workflows. Use when the user wants voice consistency without generic AI writing tropes."
+  },
+  {
+    "name": "brandkit",
+    "githubUrl": "https://github.com/nexu-io/open-design",
+    "description": "Premium brand-kit image generation skill for creating high-end brand-guidelines boards, logo systems, identity decks, and visual-world presentations. Trained for minimalist, cinematic, editorial, dark-tech, luxury, cultural, security, gaming, developer-tool, and consumer-app brand systems. Optimized for intentional logo concepting, refined composition, sparse typography, strong symbolic meaning, premium mockups, art-directed imagery, and flexible grid layouts."
+  },
+  {
+    "name": "browser-use",
+    "githubUrl": "https://github.com/browser-use/browser-use",
+    "description": "\"Direct browser control via CDP for web interaction: automation, scraping, testing, screenshots, and site/app work.\""
+  },
+  {
+    "name": "cangjie-skill",
+    "githubUrl": "https://github.com/kangarooking/cangjie-skill",
+    "description": "Distill a book, long-video transcript, podcast, course, or interview into a coherent set of executable skills. Use when the user asks to \"拆书\" / \"蒸馏一本书\" / \"把 XX 书做成 skill\" / \"把这个视频/播客/课程蒸馏成 skill\" / \"turn a book or video into skills\" — i.e. wants the frameworks, principles, and methodologies in long-form content extracted into atomic, reusable Claude skills that an agent can invoke in real-world situations. NOT for simple summarization, book reviews, or role-playing as the author (that is nuwa-skill's job)."
+  },
+  {
+    "name": "canvas-design",
+    "githubUrl": "https://github.com/anthropics/skills",
+    "description": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations."
+  },
+  {
+    "name": "career-ops",
+    "githubUrl": "https://github.com/santifer/career-ops",
+    "description": ">-"
+  },
+  {
+    "name": "caveman",
+    "githubUrl": "https://github.com/juliusbrussee/caveman",
+    "description": ">"
+  },
+  {
+    "name": "channel-message-flows",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "\"Use when running QA Lab channel message flow evidence.\""
+  },
+  {
+    "name": "chinese-novelist",
+    "githubUrl": "https://github.com/penglonghuang/chinese-novelist-skill",
+    "description": "|"
+  },
+  {
+    "name": "claude-api",
+    "githubUrl": "https://github.com/anthropics/skills",
+    "description": "|-"
+  },
+  {
+    "name": "claw-score",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "Audit or refresh OpenClaw maturity scorecard docs from root taxonomy, maturity scores, and QA evidence artifacts without using maintainer discrawl data or committed inventory reports."
+  },
+  {
+    "name": "clawdtributor",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "\"Use for OpenClaw clawtributors PR/issue triage: Discrawl discovery, live-open rechecks, deep review, topic grouping, and compact @handle/LOC/type/blast/verification summaries.\""
+  },
+  {
+    "name": "clawsweeper",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "\"Use for all ClawSweeper work: OpenClaw issue/PR sweep reports, repair jobs, cloud fix PRs, @clawsweeper maintainer mention commands, trusted ClawSweeper-reviewed autofix/automerge, GitHub Actions monitoring, permissions, gates, and manual backfills.\""
+  },
+  {
+    "name": "clean-code-principles",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": ""
+  },
+  {
+    "name": "cli-anything-freecad",
+    "githubUrl": "https://github.com/hkuds/cli-anything",
+    "description": "\"Complete CLI harness for FreeCAD parametric 3D CAD modeler (258 commands). Covers ALL workbenches: Part (29 primitives + boolean + mirror + loft + sweep), Sketcher (26 cmds: geometry + constraints + editing), PartDesign (38 cmds: pad/pocket/groove/fillet/chamfer/patterns/hole/datum), Assembly (11 cmds), Mesh (16 cmds), TechDraw (15 cmds: views + dimensions + PDF/SVG), Draft (33 cmds: 2D shapes + arrays + transforms), FEM (12 cmds), CAM/CNC (10 cmds), Surface (6 cmds), Spreadsheet (7 cmds), Import (13 formats), Export (17 formats), Measure (12 cmds), Materials (21 presets). Headless FreeCAD export to STEP/IGES/STL/OBJ/DXF/PDF/glTF/3MF.\""
+  },
+  {
+    "name": "code-review",
+    "githubUrl": "https://github.com/shareai-lab/learn-claude-code",
+    "description": "\"Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes: Standards (does the code follow this repo's documented coding standards?) and Spec (does the code match what the originating issue/spec asked for?). Runs both reviews in parallel sub-agents and reports them side by side. Use when the user wants to review a branch, a PR, work-in-progress changes, or asks to \\\"review since X\\\".\""
+  },
+  {
+    "name": "codebase-design",
+    "githubUrl": "https://github.com/mattpocock/skills",
+    "description": "Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find deepening opportunities, decide where a seam goes, make code more testable or AI-navigable, or when another skill needs the deep-module vocabulary."
+  },
+  {
+    "name": "codebase-onboarding",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Analyze an unfamiliar codebase and generate a structured onboarding guide with architecture map, key entry points, conventions, and a starter CLAUDE.md. Use when joining a new project or setting up Claude Code for the first time in a repo."
+  },
+  {
+    "name": "coding-agent",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "\"Delegate coding work to Codex, Claude Code, or OpenCode as background workers; not simple edits or read-only code lookup.\""
+  },
+  {
+    "name": "comfyui",
+    "githubUrl": "https://github.com/calesthio/openmontage",
+    "description": "Generate images, video, and audio via diffusion workflows."
+  },
+  {
+    "name": "competitive-platform-analysis",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": ">-"
+  },
+  {
+    "name": "competitive-report-structure",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": ">-"
+  },
+  {
+    "name": "computer-use",
+    "githubUrl": "https://github.com/nousresearch/hermes-agent",
+    "description": "\"Drive the desktop background-first; escalate on signal.\""
+  },
+  {
+    "name": "content-engine",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Create platform-native content systems for X, LinkedIn, TikTok, YouTube, newsletters, and repurposed multi-platform campaigns. Use when the user wants social posts, threads, scripts, content calendars, or one source asset adapted cleanly across platforms."
+  },
+  {
+    "name": "continuous-learning-v2",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Instinct-based learning system that observes sessions via hooks, creates atomic instincts with confidence scoring, and evolves them into skills/commands/agents. v2.1 adds project-scoped instincts to prevent cross-project contamination. Use when capturing lessons from a session, managing instincts, or promoting them into skills, commands, or agents."
+  },
+  {
+    "name": "control-ui-e2e",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "Use when testing, fixing, or extending the OpenClaw Control UI GUI with Vitest + Playwright end-to-end checks, mocked Gateway WebSocket flows, mocked dashboard runs, screenshots/videos, or agent-verifiable browser proof."
+  },
+  {
+    "name": "copywriting",
+    "githubUrl": "https://github.com/coreyhaines31/marketingskills",
+    "description": "Write or audit UI copy (buttons, labels, empty states, error messages, tooltips, form text) anywhere in the monorepo. Load it before shipping or reviewing any user-facing text — including when copy is incidental to the task, like a new feature that adds buttons, toasts, dialogs, or validation messages."
+  },
+  {
+    "name": "creating-financial-models",
+    "githubUrl": "https://github.com/anthropics/claude-cookbooks",
+    "description": "This skill provides an advanced financial modeling suite with DCF analysis, sensitivity testing, Monte Carlo simulations, and scenario planning for investment decisions"
+  },
+  {
+    "name": "data-analysis",
+    "githubUrl": "https://github.com/bytedance/deer-flow",
+    "description": "Use this skill when the user uploads Excel (.xlsx/.xls) or CSV files and wants to perform data analysis, generate statistics, create summaries, pivot tables, SQL queries, or any form of structured data exploration. Supports multi-sheet Excel workbooks, aggregation, filtering, joins, and exporting results to CSV/JSON/Markdown."
+  },
+  {
+    "name": "data-scraper-agent",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Build a fully automated AI-powered data collection agent for any public source — job boards, prices, news, GitHub, sports, anything. Runs on a schedule, enriches data with a free LLM (Gemini Flash), stores results in Notion/Sheets/Supabase, and learns from user feedback. Runs 100% free on GitHub Actions. Use when the user wants to monitor, collect, or track any public data automatically."
+  },
+  {
+    "name": "database-design-basics",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": ""
+  },
+  {
+    "name": "design-system",
+    "githubUrl": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+    "description": "Use this skill to generate or audit design systems, check visual consistency, and review PRs that touch styling. Use when generating or auditing a design system, checking visual consistency, or reviewing a PR that touches styling."
+  },
+  {
+    "name": "diagnosing-bugs",
+    "githubUrl": "https://github.com/mattpocock/skills",
+    "description": "Diagnosis loop for hard bugs and performance regressions. Use when the user says \"diagnose\"/\"debug this\", or reports something broken/throwing/failing/slow."
+  },
+  {
+    "name": "diagram-maker",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "Create SVG/HTML or Excalidraw diagrams for concepts, architecture, flows, and whiteboards."
+  },
+  {
+    "name": "discord-clawd",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "Use to talk to the Discord-backed OpenClaw agent/session; not for archive search."
+  },
+  {
+    "name": "discord-user-post",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "Post an approved message as the logged-in Discord user through the Discord desktop app. Use for release announcements or other direct user-authored Discord posts; not for OpenClaw channel sends, bots, webhooks, relays, agent sessions, or archive search."
+  },
+  {
+    "name": "discovery-interview",
+    "githubUrl": "https://github.com/parcadei/continuous-claude-v3",
+    "description": "Deep interview process to transform vague ideas into detailed specs. Works for technical and non-technical users."
+  },
+  {
+    "name": "dispatching-parallel-agents",
+    "githubUrl": "https://github.com/obra/superpowers",
+    "description": "Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies"
+  },
+  {
+    "name": "doc-coauthoring",
+    "githubUrl": "https://github.com/anthropics/skills",
+    "description": "Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer context, refine content through iteration, and verify the doc works for readers. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks."
+  },
+  {
+    "name": "docx",
+    "githubUrl": "https://github.com/nexu-io/open-design",
+    "description": "\"Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files) or Word templates (.dotx files). Triggers include: any mention of 'Word doc', 'word document', '.docx', '.dotx', or requests to produce professional documents with formatting like tables of contents, headings, page numbers, or letterheads. Also use when extracting or reorganizing content from .docx or .dotx files, inserting or replacing images in documents, performing find-and-replace in Word files, working with tracked changes or comments, or converting content into a polished Word document. If the user asks for a 'report', 'memo', 'letter', 'template', or similar deliverable as a Word or .docx file, use this skill. Do NOT use for PDFs, spreadsheets, Google Docs, or general coding tasks unrelated to document generation.\""
+  },
+  {
+    "name": "domain-modeling",
+    "githubUrl": "https://github.com/mattpocock/skills",
+    "description": "Build and sharpen a project's domain model. Use when the user wants to pin down domain terminology or a ubiquitous language, record an architectural decision, or when another skill needs to maintain the domain model."
+  },
+  {
+    "name": "drawio-skill",
+    "githubUrl": "https://github.com/agents365-ai/drawio-skill",
+    "description": "Use when the user requests diagrams, flowcharts, architecture diagrams, ER diagrams, UML / sequence / class diagrams, SysML / MBSE diagrams (block definition, internal block, requirement, parametric), BPMN business process diagrams, swimlane / cross-functional flowcharts, network topology, cloud architecture from Terraform or Kubernetes manifests, ML/DL model figures (Transformer/CNN/LSTM), mind maps, or any visualization. Also use proactively when explaining systems with 3+ components, complex data flows, or relationships that benefit from visual representation. Best suited when the diagram needs custom styling, rich shape vocabulary, swimlanes, or exportable images (PNG/SVG/PDF/JPG). Generates .drawio XML and exports locally via the native draw.io desktop CLI."
+  },
+  {
+    "name": "e2e-testing",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Playwright E2E testing patterns, Page Object Model, configuration, CI/CD integration, artifact management, and flaky test strategies. Use when writing Playwright tests, structuring page objects, or fixing flaky E2E runs in CI."
+  },
+  {
+    "name": "ecommerce-image-suite",
+    "githubUrl": "https://github.com/wzj177/ecommerce-image-suite",
+    "description": ">"
+  },
+  {
+    "name": "ecommerce-visual-copywriting",
+    "githubUrl": "https://github.com/feichanggege/ecommerce-visual-copywriting-skill",
+    "description": "|"
+  },
+  {
+    "name": "executing-plans",
+    "githubUrl": "https://github.com/obra/superpowers",
+    "description": "Use when you have a written implementation plan to execute in a separate session with review checkpoints"
+  },
+  {
+    "name": "extract-errors",
+    "githubUrl": "https://github.com/react/react",
+    "description": "Use when adding new error messages to React, or seeing \"unknown error code\" warnings."
+  },
+  {
+    "name": "fal-ai-media",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Unified media generation via fal.ai MCP — image, video, and audio. Covers text-to-image (Nano Banana), text/image-to-video (Seedance, Kling, Veo 3), text-to-speech (CSM-1B), and video-to-audio (ThinkSound). Use when the user wants to generate images, videos, or audio with AI."
+  },
+  {
+    "name": "find-skills",
+    "githubUrl": "https://github.com/cherryhq/cherry-studio",
+    "description": "Helps users discover and install agent skills when they ask questions like \"how do I do X\", \"find a skill for X\", \"is there a skill that can...\", or express interest in extending capabilities. This skill should be used when the user is looking for functionality that might exist as an installable skill."
+  },
+  {
+    "name": "frontend-design",
+    "githubUrl": "https://github.com/xstongxue/best-skills",
+    "description": "Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one. Helps with aesthetic direction, typography, and making choices that don't read as templated defaults."
+  },
+  {
+    "name": "frontend-patterns",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Frontend development patterns for React, Next.js, state management, performance optimization, and UI best practices. Use when building or reviewing React or Next.js components, state, or render performance."
+  },
+  {
+    "name": "frontend-slides",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Create stunning, animation-rich HTML presentations from scratch or by converting PowerPoint files. Use when the user wants to build a presentation, convert a PPT/PPTX to web, or create slides for a talk/pitch. Helps non-designers discover their aesthetic through visual exploration rather than abstract choices."
+  },
+  {
+    "name": "gan-style-harness",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "\"GAN-inspired Generator-Evaluator agent harness for building high-quality applications autonomously. Based on Anthropic's March 2026 harness design paper. Use when a feature should be built autonomously through generator and evaluator iteration until it clears a quality bar.\""
+  },
+  {
+    "name": "gc-minimal-zine-poster-v0-3",
+    "githubUrl": "https://github.com/liamgvchi/gc-minimal-zine-poster",
+    "description": "Generate or analyze poetic paper-texture minimal zine posters with large negative space, a small editorial collage or focal element, experimental typography, and one clear color accent. Use when the user gives a theme, sentence, article, mood, object, photo, content brief, reference images, or an image folder and wants a final poster image, a production-ready image prompt, reusable style rules, or varied layouts that stay in one visual family."
+  },
+  {
+    "name": "gemini",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "\"Gemini CLI one-shot prompts, summaries, generation, skills, hooks, MCP, or Gemma routing.\""
+  },
+  {
+    "name": "git-conventional-commits",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": ""
+  },
+  {
+    "name": "github",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "\"GitHub CLI for issues, PRs, CI/check logs, comments, reviews, releases, repos, and gh api queries.\""
+  },
+  {
+    "name": "gongkao-huasheng13",
+    "githubUrl": "https://github.com/wangjunqing-coder/huasheng13-skill",
+    "description": "公务员考试（国考/省考/联考）行测申论解题技巧与备考助手。基于花生十三公开教学体系，覆盖资料分析（ABRX体系、截位直除、415份数法、假设分配法）、数量关系（工程/行程/利润/排列组合/容斥/最值/年龄/几何）、言语理解（逻辑填空语境分析、片段阅读中心理解、语句排序）、判断推理（图形推理规律体系、定义判断要素法、类比推理关系层级、逻辑判断翻译推理与加强削弱）、申论（单一题/综合题/公文题/大作文结构）、常识判断、答题顺序与时间分配策略、套题实战复盘。当用户说\"公考\"\"国考\"\"省考\"\"行测\"\"申论\"\"花生十三\"\"资料分析怎么提速\"\"数量关系怎么蒙\"\"逻辑填空\"\"图形推理\"\"定义判断\"\"类比推理\"\"逻辑判断\"\"申论大作文\"\"公文写作\"\"行测做题顺序\"\"套题复盘\"\"415份数\"\"截位直除\"\"ABRX\"时触发本 skill。提供解题步骤、速算技巧、真题示例、错题归因、备考计划。"
+  },
+  {
+    "name": "gpt-image-2",
+    "githubUrl": "https://github.com/conardli/garden-skills",
+    "description": "面向 GPT Image 2 的图像生成 / 编辑技能。可在 3 种环境下使用：(A) Garden 本地模式，通过 OpenAI 兼容接口直接出图并落盘；(B) Host-Native 模式，把本 Skill 当作提示词工程指引，把渲染好的 prompt 交给宿主 Agent 自带的图像工具出图；(C) Advisor 模式，宿主无任何图像工具时退化为高质量 prompt 顾问。涵盖 18 大类、80+ 个结构化模板，覆盖海报 / UI / 产品 / 信息图 / 学术图 / 技术架构图 / 漫画 / 头像 / 流程板 / 电影分镜 / IP 周边 / 编辑工作流等场景。"
+  },
+  {
+    "name": "graincrawl",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "\"Granola archive: search, sync freshness, notes, transcripts, panels, SQL counts, and Graincrawl repo work.\""
+  },
+  {
+    "name": "graphify",
+    "githubUrl": "https://github.com/graphify-labs/graphify",
+    "description": "\"Use for any question about a codebase, its architecture, file relationships, or project content — especially when graphify-out/ exists, where the question should be treated as a graphify query first. Turns any input (code, docs, papers, images, videos) into a persistent knowledge graph with god nodes, community detection, and query/path/explain tools.\""
+  },
+  {
+    "name": "grill-me",
+    "githubUrl": "https://github.com/yikart/aitoearn",
+    "description": "A relentless interview to sharpen a plan or design."
+  },
+  {
+    "name": "handoff",
+    "githubUrl": "https://github.com/nexu-io/open-design",
+    "description": "Compact the current conversation into a handoff document for another agent to pick up."
+  },
+  {
+    "name": "huashu-nuwa",
+    "githubUrl": "https://github.com/alchaincyf/nuwa-skill",
+    "description": "|"
+  },
+  {
+    "name": "humanizer",
+    "githubUrl": "https://github.com/blader/humanizer",
+    "description": "\"Humanize text: strip AI-isms and add real voice.\""
+  },
+  {
+    "name": "humanizer-zh",
+    "githubUrl": "https://github.com/op7418/humanizer-zh",
+    "description": "|"
+  },
+  {
+    "name": "ida-reverse",
+    "githubUrl": "https://github.com/zhaoxuya520/reverse-skill",
+    "description": "|"
+  },
+  {
+    "name": "impeccable-design-polish",
+    "githubUrl": "https://github.com/nexu-io/open-design",
+    "description": "|"
+  },
+  {
+    "name": "implement",
+    "githubUrl": "https://github.com/mattpocock/skills",
+    "description": "\"Implement a piece of work based on a spec or set of tickets.\""
+  },
+  {
+    "name": "improve-codebase-architecture",
+    "githubUrl": "https://github.com/mattpocock/skills",
+    "description": "Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick."
+  },
+  {
+    "name": "internal-comms",
+    "githubUrl": "https://github.com/anthropics/skills",
+    "description": "A set of resources to help me write all kinds of internal communications, using the formats that my company likes to use. Claude should use this skill whenever asked to write some sort of internal communications (status reports, leadership updates, 3P updates, company newsletters, FAQs, incident reports, project updates, etc.)."
+  },
+  {
+    "name": "investor-materials",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Create and update pitch decks, one-pagers, investor memos, accelerator applications, financial models, and fundraising materials. Use when the user needs investor-facing documents, projections, use-of-funds tables, milestone plans, or materials that must stay internally consistent across multiple fundraising assets."
+  },
+  {
+    "name": "java-coding-standards",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "\"Java coding standards for Spring Boot and Quarkus services: naming, immutability, Optional usage, streams, exceptions, generics, CDI, reactive patterns, and project layout. Automatically applies framework-specific conventions. Use when writing or reviewing Java in a Spring Boot or Quarkus service.\""
+  },
+  {
+    "name": "jianying-editor",
+    "githubUrl": "https://github.com/luoluoluo22/jianying-editor-skill",
+    "description": "剪映 (JianYing) AI自动化剪辑的高级封装 API (JyWrapper)，提供开箱即用的 Python 接口，支持录屏、素材导入、字幕生成、Web 动效合成及项目导出。全面适配 MacOS (Apple Silicon/Intel) 与 Windows，支持 v5.9+ (draft_info.json) 架构、工程自修复、智能配音字幕及录屏变焦。"
+  },
+  {
+    "name": "job-article",
+    "githubUrl": "https://github.com/itwanger/tobebetterjavaer",
+    "description": "根据指定选题，按照二哥的写作风格完成求职/校招/面试/职场类文章撰写。专注于秋招春招建议、公司薪资爆料+学习路线、面经八股解析、求职心态与球友故事分享。触发关键词：写一篇求职文章、秋招、春招、校招、offer、面经、薪资、面试、八股、简历、求职建议、球友故事、学习路线等。"
+  },
+  {
+    "name": "karpathy-guidelines",
+    "githubUrl": "https://github.com/multica-ai/andrej-karpathy-skills",
+    "description": "Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid overcomplication, make surgical changes, surface assumptions, and define verifiable success criteria."
+  },
+  {
+    "name": "khazix-writer",
+    "githubUrl": "https://github.com/kkkkhazix/khazix-skills",
+    "description": "|"
+  },
+  {
+    "name": "lead-intelligence",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "AI-native lead intelligence and outreach pipeline. Replaces Apollo, Clay, and ZoomInfo with agent-powered signal scoring, mutual ranking, warm path discovery, source-derived voice modeling, and channel-specific outreach across email, LinkedIn, and X. Use when the user wants to find, qualify, and reach high-value contacts."
+  },
+  {
+    "name": "literature-review",
+    "githubUrl": "https://github.com/davila7/claude-code-templates",
+    "description": "Systematic literature-review workflow for academic, biomedical, technical, and scientific topics, including search planning, source screening, synthesis, citation checks, and evidence logging. Use when the task is to find, screen, synthesize, and cite a body of academic or technical literature."
+  },
+  {
+    "name": "llm-wiki",
+    "githubUrl": "https://github.com/nousresearch/hermes-agent",
+    "description": "\"Karpathy's LLM Wiki: build/query interlinked markdown KB.\""
+  },
+  {
+    "name": "market-research",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Conduct market research, competitive analysis, investor due diligence, and industry intelligence with source attribution and decision-oriented summaries. Use when the user wants market sizing, competitor comparisons, fund research, technology scans, or research that informs business decisions."
+  },
+  {
+    "name": "marketing-campaign",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "End-to-end marketing campaign planning and execution. Covers audience research, positioning, campaign angle definition, landing page copy, email sequences, social posts, ad copy, short-form video scripts, and content calendars. Use as the orchestration layer for multi-channel product launches. Use when planning or executing a multi-channel product launch, or producing landing page, email, social, or ad copy."
+  },
+  {
+    "name": "math-modeling",
+    "githubUrl": "https://github.com/xiaomacoltai/math-modeling-skill",
+    "description": "当用户要求数学建模、建模竞赛、建模分析、代码求解、结果可视化或生成数学建模论文时使用。支持完整三阶段流程、单独执行任一角色，以及在关键节点使用独立 Subagent 进行阶段内质检；默认只启用质检 Subagent，用户可明确选择额外协作。"
+  },
+  {
+    "name": "matlab",
+    "githubUrl": "https://github.com/synthetic-sciences/openscience",
+    "description": "Build, review, migrate, and safely plan MATLAB or GNU Octave numerical workflows, including arrays, tabular/time data, tests, projects, graphics, MAT files, and explicit Python interoperability."
+  },
+  {
+    "name": "mcp-builder",
+    "githubUrl": "https://github.com/anthropics/skills",
+    "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK)."
+  },
+  {
+    "name": "meme-maker",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "Search meme templates, suggest formats, and generate local or hosted image memes."
+  },
+  {
+    "name": "mle-workflow",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Production machine-learning engineering workflow for data contracts, reproducible training, model evaluation, deployment, monitoring, and rollback. Use when building, reviewing, or hardening ML systems beyond one-off notebooks."
+  },
+  {
+    "name": "model-usage",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "\"Summarize CodexBar local cost logs by model for Codex or Claude, including current or full breakdowns.\""
+  },
+  {
+    "name": "mx-xuangu",
+    "githubUrl": "https://github.com/datawhalechina/hello-agents",
+    "description": "本 Skill 支持基于股票选股条件，如行情指标、财务指标等，筛选满足条件的股票；可查询指定行业 / 板块内的股票、上市公司，以及板块指数的成分股；同时支持股票、上市公司、板块 / 指数推荐等相关任务，采用此skill可避免大模型在选股时使用了过时信息。"
+  },
+  {
+    "name": "nano-pdf",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "\"Edit PDFs with natural-language instructions using the nano-pdf CLI.\""
+  },
+  {
+    "name": "nature-academic-search",
+    "githubUrl": "https://github.com/yuan1z0825/nature-skills",
+    "description": ">-"
+  },
+  {
+    "name": "nature-citation",
+    "githubUrl": "https://github.com/yuan1z0825/nature-skills",
+    "description": ">-"
+  },
+  {
+    "name": "nature-data",
+    "githubUrl": "https://github.com/yuan1z0825/nature-skills",
+    "description": ">-"
+  },
+  {
+    "name": "nature-downloader",
+    "githubUrl": "https://github.com/yuan1z0825/nature-skills",
+    "description": "Use when a user needs lawful academic full text, CNKI institutional access, English OA retrieval, publisher API access, institutional browser fallback, or supporting information downloads."
+  },
+  {
+    "name": "nature-figure",
+    "githubUrl": "https://github.com/researai/deepscientist",
+    "description": ">-"
+  },
+  {
+    "name": "nature-paper-card",
+    "githubUrl": "https://github.com/yuan1z0825/nature-skills",
+    "description": "Build a source-grounded deep-reading Paper Card for one scientific paper, preprint, PDF, DOI, arXiv page, publisher article, or pasted paper text. Use when the user asks for a Paper Card, deep-reading literature card, single-paper deep analysis, module-by-module analysis, experiment-to-claim evidence chain, conclusion-boundary audit, critical analysis, knowledge connections, or candidate research ideas. Produce the fixed Sections 01-16 covering bibliographic position, research question, background route, pain point, core insight, method and module logic, essential formulas, experiment-to-claim evidence, conclusion boundaries, author-stated limitations, critical analysis, learned knowledge, knowledge connections, and testable research ideas. Do not use for full-paper bilingual translation, formal peer-review reports, batch literature monitoring, academic-English collection, comprehension quizzes, or public-article writing."
+  },
+  {
+    "name": "nature-paper2ppt",
+    "githubUrl": "https://github.com/yuan1z0825/nature-skills",
+    "description": "Build a complete Nature-style Chinese PPTX presentation from a scientific paper, preprint, PDF, article text, figure legends, or reading notes. Use for journal club, group meeting, thesis seminar, paper sharing, conference or defense decks, and Chinese requests such as 论文做PPT、论文汇报、组会PPT、文献汇报、学术汇报、做幻灯片、读书报告PPT. It classifies paper type, builds an evidence-led story, selects key figures, writes Chinese slide content and speaker notes, creates the actual .pptx, and runs corrective QA for complete figure crops, stable alignment, text overflow, and de-templated Chinese academic expression. Also trigger when improving weak paper-to-PPT output with cropped figures, loose alignment, obvious AI-style wording, or heavy manual rework."
+  },
+  {
+    "name": "nature-reader",
+    "githubUrl": "https://github.com/yuan1z0825/nature-skills",
+    "description": "Build full-paper Chinese-English side-by-side, figure/table/equation-aware, source-grounded Markdown readers for journal or conference papers from PDF, DOI, arXiv, publisher HTML, or pasted text. Use whenever the user asks to translate or read a paper, make 中英文对照/原文对照/全文翻译解读, render equations instead of exposing raw LaTeX, extract figures or tables into the right positions, preserve figure/table placement near relevant prose, or keep exact source anchors for every block. This skill must not degrade into a summary-only output unless the user explicitly asks for a summary. Also trigger on general paper-reading and translation requests even without the word \"Nature\", such as reading/translating an academic paper, literature reading, understanding a paper, and Chinese phrasings like 读论文、精读论文、论文翻译、文献翻译、文献阅读、学术阅读、帮我读这篇文章、翻译这篇paper."
+  },
+  {
+    "name": "nature-ref-verifier",
+    "githubUrl": "https://github.com/yuan1z0825/nature-skills",
+    "description": ">-"
+  },
+  {
+    "name": "nature-response",
+    "githubUrl": "https://github.com/yuan1z0825/nature-skills",
+    "description": ">-"
+  },
+  {
+    "name": "nature-reviewer",
+    "githubUrl": "https://github.com/yuan1z0825/nature-skills",
+    "description": ">-"
+  },
+  {
+    "name": "nature-shared",
+    "githubUrl": "https://github.com/yuan1z0825/nature-skills",
+    "description": "Internal shared-reference support package for installed Nature Skills, including nature-writing, nature-polishing, nature-response, nature-reader, and nature-paper2ppt. Do not invoke it as a standalone user workflow. Load only the specific core or journal-format file requested by another Nature skill."
+  },
+  {
+    "name": "nature-statistics",
+    "githubUrl": "https://github.com/yuan1z0825/nature-skills",
+    "description": ">-"
+  },
+  {
+    "name": "nature-writing",
+    "githubUrl": "https://github.com/yuan1z0825/nature-skills",
+    "description": "Draft, restructure, or plan Nature-style manuscript sections and initial-submission materials from author-provided claims, results, figures, notes, or Chinese drafts. Use for abstracts, introductions, related work, methods, Results or experiments, discussions, conclusions, titles, full manuscript arguments, and first-submission packages such as cover letters, title pages, highlights, author contributions, availability or declaration text, and reviewer suggestions. Also use to classify Results evidence, decide what belongs in main text, captions, Methods or source data, or Supplementary Information, compress Results to the shortest sufficient evidence chain, prevent revision accretion, and audit paragraph necessity or claim repetition. Trigger on drafting a paper or section, structuring a manuscript, academic writing, first submission, 投稿材料、首次投稿、投稿信、标题页、亮点、作者贡献、数据可用性声明、推荐审稿人."
+  },
+  {
+    "name": "nestjs-best-practices",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "\"Guidelines and best practices for creating NestJS Entities, Services, and Controllers using TypeORM and PostgreSQL.\""
+  },
+  {
+    "name": "nutrient-document-processing",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Process, convert, OCR, extract, redact, sign, and fill documents using the Nutrient DWS API. Works with PDFs, DOCX, XLSX, PPTX, HTML, and images. Use when converting, OCRing, extracting from, redacting, signing, or filling documents via the Nutrient DWS API."
+  },
+  {
+    "name": "obsidian",
+    "githubUrl": "https://github.com/nousresearch/hermes-agent",
+    "description": "\"Work with Obsidian vaults using the official obsidian CLI: read/search/create/edit notes, tasks, links, properties, plugins.\""
+  },
+  {
+    "name": "openclaw-docker-e2e-authoring",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "\"Author OpenClaw Docker E2E and live provider Docker lanes.\""
+  },
+  {
+    "name": "openclaw-persona-forge",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "\"为 OpenClaw AI Agent 锻造完整的龙虾灵魂方案。根据用户偏好或随机抽卡， 输出身份定位、灵魂描述(SOUL.md)、角色化底线规则、名字和头像生图提示词。 如当前环境提供已审核的生图 skill，可自动生成统一风格头像图片。 当用户需要创建、设计或定制 OpenClaw 龙虾灵魂时使用。 不适用于：微调已有 SOUL.md、非 OpenClaw 平台的角色设计、纯工具型无性格 Agent。 触发词：龙虾灵魂、虾魂、OpenClaw 灵魂、养虾灵魂、龙虾角色、龙虾定位、 龙虾剧本杀角色、龙虾游戏角色、龙虾 NPC、龙虾性格、龙虾背景故事、 lobster soul、lobster character、抽卡、随机龙虾、龙虾 SOUL、gacha。 Use when creating, designing, or customizing an OpenClaw lobster persona — identity, SOUL.md, name, or avatar prompt.\""
+  },
+  {
+    "name": "oracle",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "\"Oracle CLI second-model review/debug/refactor/design with selected files, dry-run token checks, API or browser engine.\""
+  },
+  {
+    "name": "paper-spine",
+    "githubUrl": "https://github.com/wubing2023/paperspine",
+    "description": "Write, rewrite, or build a paper or report (journal, conference, report, review, competition) end to end, then output LaTeX/PDF/Word. The main PaperSpine entry point that orchestrates every step."
+  },
+  {
+    "name": "patent-disclosure-skill",
+    "githubUrl": "https://github.com/handsomestwei/patent-disclosure-skill",
+    "description": "\"中国专利技能：专利点挖掘与交底书（发明/实用/外观）编写，通俗解读专利，嗅探政策动向，辅助审查答复。| China patents skill: mine patent points and draft disclosures (invention / utility model / design), plain-language reading, policy sniffing, assisted office-action response.\""
+  },
+  {
+    "name": "pentest-tools",
+    "githubUrl": "https://github.com/zhaoxuya520/reverse-skill",
+    "description": "|"
+  },
+  {
+    "name": "photo-abstract-editorial",
+    "githubUrl": "https://github.com/zzzlc0405/photo-abstract-editorial",
+    "description": "Create a clean, vertical editorial artwork that preserves an uploaded photograph as the original image and pairs it with a restrained, photo-derived abstract memory panel and poetic English title. Use when asked to transform a photo into an abstract editorial diptych, photo-plus-abstraction composition, visual memory panel, or minimalist archival poster without redrawing or stylizing the source photo."
+  },
+  {
+    "name": "ponytail",
+    "githubUrl": "https://github.com/dietrichgebert/ponytail",
+    "description": ">"
+  },
+  {
+    "name": "pordee",
+    "githubUrl": "https://github.com/kerlos/pordee",
+    "description": "|"
+  },
+  {
+    "name": "powerbi-modeling",
+    "githubUrl": "https://github.com/github/awesome-copilot",
+    "description": "'Power BI semantic modeling assistant for building optimized data models. Use when working with Power BI semantic models, creating measures, designing star schemas, configuring relationships, implementing RLS, or optimizing model performance. Triggers on queries about DAX calculations, table relationships, dimension/fact table design, naming conventions, model documentation, cardinality, cross-filter direction, calculation groups, and data model best practices. Always connects to the active model first using power-bi-modeling MCP tools to understand the data structure before providing guidance.'"
+  },
+  {
+    "name": "pptx",
+    "githubUrl": "https://github.com/agentscope-ai/qwenpaw",
+    "description": "从论文、大纲或结构化文本生成 PowerPoint (.pptx) 演示文稿。Use when 用户需要把一篇论文/文章/大纲做成幻灯片、slides、演示文稿、PPT、deck。Don't use when 只需纯文本总结、生成 Word/PDF、或修改已有 pptx 的单个像素级样式。"
+  },
+  {
+    "name": "pptx-generator",
+    "githubUrl": "https://github.com/nexu-io/open-design",
+    "description": "|"
+  },
+  {
+    "name": "product-capability",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Translate PRD intent, roadmap asks, or product discussions into an implementation-ready capability plan that exposes constraints, invariants, interfaces, and unresolved decisions before multi-service work starts. Use when the user needs an ECC-native PRD-to-SRS lane instead of vague planning prose."
+  },
+  {
+    "name": "product-decision-agent",
+    "githubUrl": "https://github.com/davila7/claude-code-templates",
+    "description": "中文产品决策 Agent。用于中国大陆互联网产品、运营、增长、商业化、数据、项目推进和组织协作场景：产品规划、需求分析、PRD、需求优先级、排期、版本规划、Roadmap、MVP、灰度、上线、迭代、增长停滞、拉新、投放、渠道、裂变、CAC、LTV、ROI、留存、转化、DAU/MAU、GMV、漏斗、社区运营、内容供给、创作者、用户运营、活动运营、私域、会员、定价、指标异常、数据口径、埋点、A/B Test、用户反馈、客服/销售反馈、竞品冲击、资源不足、项目延期、需求反复、老板临时插需求、跨部门协作、团队冲突、OKR/KPI、目标拆解、复盘等。触发时像资深互联网产品负责人一样，先判断真实问题、当前阶段、核心阻塞、关键约束、相关方和证据充分性，再给出最值得执行的下一步。默认中文回答，不讲理论、不引用原文、不解释历史、不暴露后台方法来源。"
+  },
+  {
+    "name": "production-scheduling",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": ">"
+  },
+  {
+    "name": "prompt-optimizer",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": ">-"
+  },
+  {
+    "name": "prototype",
+    "githubUrl": "https://github.com/mattpocock/skills",
+    "description": "Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or logic feels right, or explore what a UI should look like."
+  },
+  {
+    "name": "pubmed-database",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Direct PubMed and NCBI E-utilities search workflows for biomedical literature, MeSH queries, PMID lookup, citation retrieval, and API-backed literature monitoring. Use when a task needs biomedical literature from PubMed rather than general web search."
+  },
+  {
+    "name": "python-debugpy",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "Debug Python with pdb, breakpoint(), post-mortem inspection, and debugpy remote attach."
+  },
+  {
+    "name": "python-patterns",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Pythonic idioms, PEP 8 standards, type hints, and best practices for building robust, efficient, and maintainable Python applications. Use when writing or reviewing Python code and idiomatic structure, typing, or PEP 8 is in question."
+  },
+  {
+    "name": "receiving-code-review",
+    "githubUrl": "https://github.com/obra/superpowers",
+    "description": "Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation"
+  },
+  {
+    "name": "release-openclaw-maintainer",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "\"Prepare or verify OpenClaw stable, beta, and extended-stable releases, including backport discovery, changelogs, release notes, publish commands, and artifacts.\""
+  },
+  {
+    "name": "remotion-video-creation",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Best practices for Remotion - Video creation in React. 29 domain-specific rules covering 3D, animations, audio, captions, charts, transitions, and more. Use when building video in React with Remotion — animations, audio, captions, charts, or transitions."
+  },
+  {
+    "name": "requesting-code-review",
+    "githubUrl": "https://github.com/obra/superpowers",
+    "description": "Use when completing tasks, implementing major features, or before merging to verify work meets requirements"
+  },
+  {
+    "name": "research",
+    "githubUrl": "https://github.com/mattpocock/skills",
+    "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use when the user wants a topic researched, docs or API facts gathered, or reading legwork delegated to a background agent."
+  },
+  {
+    "name": "research-paper-writing",
+    "githubUrl": "https://github.com/master-cai/research-paper-writing-skills",
+    "description": "\"Write ML papers for NeurIPS/ICML/ICLR: design→submit.\""
+  },
+  {
+    "name": "resolving-merge-conflicts",
+    "githubUrl": "https://github.com/mattpocock/skills",
+    "description": "\"Use when you need to resolve an in-progress git merge/rebase conflict.\""
+  },
+  {
+    "name": "sag",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "\"ElevenLabs text-to-speech with mac-style say UX.\""
+  },
+  {
+    "name": "scene-distillation-zine-v1-3",
+    "githubUrl": "https://github.com/zeejay0/gathered-scenes-zine-skill",
+    "description": "\"Transform a user-supplied photo into an expressive minimal zine poster made only from original source-derived illustration, an artistic proposition, emotional tension, visual metaphor, spacious negative space, art-directed high-chroma color, and unconstrained authorial typography. Let wording, language, amount, placement, type voices, scale, direction, legibility, and image interaction follow expression and aesthetic judgment rather than presets. Preserve source orientation by default with a 3:5 portrait output or 5:3 landscape output. Add source-derived distributed supporting accents and a natural isolated-contour option alongside adaptive paper-edge transitions. Support an exact `单色块模式` trigger for one contiguous saturated color field with all remaining forms in neutral ink. Use for authored abstract or editorial reinterpretations that communicate an emotion or idea without embedding, cropping, tracing, or preserving the original photographic material in the final image.\""
+  },
+  {
+    "name": "scenes-gathered-zine-v1-3",
+    "githubUrl": "https://github.com/zeejay0/gathered-scenes-zine-skill",
+    "description": "\"Transform a user-supplied photo into a vertical 3:5 Gathered Scenes Zine poster that anchors truthful photography inside a spacious source-derived abstract illustration field, aggressively compresses dense foliage and other micro-detail into a few large quiet forms, integrates one high-chroma hue as compositional structure, and preserves a visibly hand-torn fibrous photo-to-paper edge. Use when the user wants a tactile minimal paper collage with simplified illustration, active negative space, restrained English-default, Chinese, or bilingual micro-text, and an unmistakable but quiet torn-paper boundary.\""
+  },
+  {
+    "name": "scholar-evaluation",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Structured scholarly-work evaluation for papers, proposals, literature reviews, methods sections, evidence quality, citation support, and research-writing feedback. Use when evaluating academic or scientific work — papers, proposals, methods sections, or evidence quality — against a repeatable rubric."
+  },
+  {
+    "name": "scientific-brainstorming",
+    "githubUrl": "https://github.com/davila7/claude-code-templates",
+    "description": "Facilitates evidence-aware scientific ideation with independent generation, structured discussion, explicit assumptions, transparent evaluation, adversarial review, and decision logs. Use for early-stage research brainstorming or prioritizing candidate directions; hand off empirical validation, study design, ethics or regulatory review, and clinical questions to appropriate experts or skills."
+  },
+  {
+    "name": "scientific-visualization",
+    "githubUrl": "https://github.com/k-dense-ai/scientific-agent-skills",
+    "description": "Create and audit truthful, accessible, publication-ready scientific figures with Matplotlib, Seaborn, or Plotly. Use for figure design, multi-panel layouts, uncertainty and missing-data displays, color/contrast review, image metadata validation, and journal export planning."
+  },
+  {
+    "name": "scipilot-figure-skill",
+    "githubUrl": "https://github.com/haojae/scipilot-figure-skill",
+    "description": ">-"
+  },
+  {
+    "name": "security-fundamentals",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": ""
+  },
+  {
+    "name": "security-review",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Use this skill when adding authentication, handling user input, working with secrets, creating API endpoints, or implementing payment/sensitive features. Provides comprehensive security checklist and patterns."
+  },
+  {
+    "name": "seedance-2-0",
+    "githubUrl": "https://github.com/calesthio/openmontage",
+    "description": "|"
+  },
+  {
+    "name": "seedance-storyboard-generator",
+    "githubUrl": "https://github.com/liangdabiao/seedance2-storyboard-generator",
+    "description": "专业的Seedance 2.0平台AI视频脚本和分镜生成器。当用户要求：(1) 将文章/故事转换为视频脚本，(2) 生成Seedance 2.0分镜提示词，(3) 规划多集AI视频系列，(4) 为GPT-Image-2、Seedream、Nano Banana Pro等图像模型创建角色/场景/道具生成提示词时使用。输入可以是完整的小说、文章或简短的故事大纲。输出包括标准脚本格式的完整剧本（△镜头描述+对白+OS/VO+闪回+字幕）、剧集分解、资产生成提示词和Seedance 2.0格式的分镜脚本。支持\"文-资-视-剪\"工作流，包含剧本创作、资产构建、视频生成、分镜优化和声音设计全流程。"
+  },
+  {
+    "name": "seo",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Audit, plan, and implement SEO improvements across technical SEO, on-page optimization, structured data, Core Web Vitals, and content strategy. Use when the user wants better search visibility, SEO remediation, schema markup, sitemap/robots work, or keyword mapping."
+  },
+  {
+    "name": "setup-matt-pocock-skills",
+    "githubUrl": "https://github.com/mattpocock/skills",
+    "description": "Configure this repo for the engineering skills — set up its issue tracker, triage label vocabulary, and domain doc layout. Run once before first use of the other engineering skills."
+  },
+  {
+    "name": "skill-creator",
+    "githubUrl": "https://github.com/google-gemini/gemini-cli",
+    "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy."
+  },
+  {
+    "name": "slack-gif-creator",
+    "githubUrl": "https://github.com/anthropics/skills",
+    "description": "Knowledge and utilities for creating animated GIFs optimized for Slack. Provides constraints, validation tools, and animation concepts. Use when users request animated GIFs for Slack like \"make me a GIF of X doing Y for Slack.\""
+  },
+  {
+    "name": "social-publisher",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Agent-driven scheduling and publishing of social media posts across 13 platforms via SocialClaw. Use when the user wants to publish to X, LinkedIn, Instagram, Facebook Pages, TikTok, Discord, Telegram, YouTube, Reddit, WordPress, or Pinterest — or when managing campaigns, uploading media, or monitoring post delivery status."
+  },
+  {
+    "name": "solidworks-automation",
+    "githubUrl": "https://github.com/delancy827/solidworks-skills",
+    "description": "\"SolidWorks CAD 自动化技能，优先覆盖经验证的零件、孔槽、装配、工程图、导出和交付复核；所有能力等级以 capabilities.yaml 为准，未验证能力必须走人工复核。\""
+  },
+  {
+    "name": "songsee",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "\"Generate spectrograms and feature-panel visualizations from audio with the songsee CLI.\""
+  },
+  {
+    "name": "springboot-patterns",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Spring Boot architecture patterns, REST API design, layered services, data access, caching, async processing, and logging. Use for Java Spring Boot backend work. Use when building or reviewing a Spring Boot backend — REST layer, services, data access, caching, or async work."
+  },
+  {
+    "name": "story-short-analyze",
+    "githubUrl": "https://github.com/worldwonderer/oh-story-claudecode",
+    "description": "\"短篇网文拆文。拆解爆款短篇小说（番茄短篇 / 故事会 / 知乎盐选 / 追妻 / 世情 / 重生 / 虐渣等通俗题材）的故事核、结构、情感线、反转设计、写作手法、共鸣层次。单一全量拆解管道：跑完 Stage 2-6 产出完整拆文报告，落盘到 拆文库/{书名}/，下游 story-short-write 同时读拆文报告 + 情节节点 + 写作手法 + 原文 + _meta.json 写下一篇。触发方式：/story-short-analyze、/短篇拆文、「拆短篇」「拆这篇短文」「短篇拆文」「精细拆解短篇」「8000 字短篇拆解」「番茄短篇拆文」「故事会拆解」「盐言故事拆解」「分析这篇短篇」——均进入同一管道。\""
+  },
+  {
+    "name": "subagent-driven-development",
+    "githubUrl": "https://github.com/obra/superpowers",
+    "description": "Use when executing implementation plans with independent tasks in the current session"
+  },
+  {
+    "name": "summarize",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "\"Summarize or transcribe URLs, YouTube/videos, podcasts, articles, transcripts, PDFs, and local files.\""
+  },
+  {
+    "name": "systematic-debugging",
+    "githubUrl": "https://github.com/obra/superpowers",
+    "description": "Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes"
+  },
+  {
+    "name": "taskflow-inbox-triage",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "\"Example TaskFlow pattern for inbox triage, intent routing, waiting on replies, and later summaries.\""
+  },
+  {
+    "name": "taste",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "A creative-direction (taste) layer for music videos and short-form edits in the angelcore / cloud-trance / hyperpop visual family. Distills a named-genre aesthetic vocabulary, a mood + color + light system, and a beat-synced editing grammar, then chains ECC's video skills (video-editing, fal-ai-media, remotion-video-creation, motion-*, content-engine) into one production pipeline. Use when the work is not just making a video function but making it feel intentional, when building a music video, a fancam/edit, a moodboard-driven reel, or when choosing a coherent visual direction for AI-generated b-roll."
+  },
+  {
+    "name": "teach",
+    "githubUrl": "https://github.com/mattpocock/skills",
+    "description": "Teach the user a new skill or concept, within this workspace."
+  },
+  {
+    "name": "technical-documentation",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "Build and review high-quality technical docs as well as agent instruction files in your repository."
+  },
+  {
+    "name": "test-driven-development",
+    "githubUrl": "https://github.com/obra/superpowers",
+    "description": "Use when implementing any feature or bugfix, before writing implementation code"
+  },
+  {
+    "name": "to-tickets",
+    "githubUrl": "https://github.com/mattpocock/skills",
+    "description": "Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, published to the configured tracker — edges as text in one file per ticket locally, or native blocking links on a real tracker."
+  },
+  {
+    "name": "triage",
+    "githubUrl": "https://github.com/obra/superpowers",
+    "description": "Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write agent-ready briefs."
+  },
+  {
+    "name": "ui-demo",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Record polished UI demo videos using Playwright. Use when the user asks to create a demo, walkthrough, screen recording, or tutorial video of a web application. Produces WebM videos with visible cursor, natural pacing, and professional feel."
+  },
+  {
+    "name": "ui-ux-pro-max",
+    "githubUrl": "https://github.com/davila7/claude-code-templates",
+    "description": "\"UI/UX design intelligence for web, mobile, and desktop. This skill should be used when designing, building, reviewing, or fixing interfaces, including pages, components, design systems, accessibility, interaction, responsive layout, typography, color, charts, and stack-specific UI implementation. Searchable local data: 79 searchable styles (50 active), 192 product palettes and reasoning profiles, 74 font pairings, 119 UX guidelines, 105 icons, 17 GSAP presets, 25 chart types, and 22 stacks.\""
+  },
+  {
+    "name": "unified-memory",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Share durable, inspectable context and handoffs between Claude, Codex, Hermes, Cursor, OpenCode, and other agents through the local ECC Memory Vault. Use when an agent must save work state, transfer context, resume another agent's task, or search shared project knowledge."
+  },
+  {
+    "name": "using-superpowers",
+    "githubUrl": "https://github.com/yinqd3/workbuddy-skills",
+    "description": "Use when starting any conversation - establishes how to find and use skills, requiring skill invocation before ANY response including clarifying questions"
+  },
+  {
+    "name": "vercel-react-best-practices",
+    "githubUrl": "https://github.com/significant-gravitas/autogpt",
+    "description": "React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching, bundle optimization, or performance improvements."
+  },
+  {
+    "name": "video-cover-image",
+    "githubUrl": "https://github.com/itwanger/tobebetterjavaer",
+    "description": "Generate matched 3:4, 16:9, and 4:3 short-video cover images from toBeBetterJavaer video scripts or AI/Java technical topics. Use when the user asks for 视频封面, 封面图, 横版和竖版, 小红书/抖音/B站/快手封面, pure-text covers with 白色大字+黄色小字, reference-image-matched covers, or wants a repeatable cover workflow for Markdown scripts under docs/src/ai/video/."
+  },
+  {
+    "name": "video-editing",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "AI-assisted video editing workflows for cutting, structuring, and augmenting real footage. Covers the full pipeline from raw capture through FFmpeg, Remotion, ElevenLabs, fal.ai, and final polish in Descript or CapCut. Use when the user wants to edit video, cut footage, create vlogs, or build video content."
+  },
+  {
+    "name": "video-frames",
+    "githubUrl": "https://github.com/openclaw/openclaw",
+    "description": "\"Extract frames or short clips from videos using ffmpeg.\""
+  },
+  {
+    "name": "video-script",
+    "githubUrl": "https://github.com/itwanger/tobebetterjavaer",
+    "description": "为短视频/口播生成或优化脚本。适用于 AI 技术科普、Agent/Skill/RAG 等技术概念讲解、工具实测、热点拆解类短视频。支持两种模式：给定主题从零产出口播稿、对已有口播稿进行优化。触发关键词包括：口播、口播稿、视频脚本、短视频文案、录视频、拍视频、video script。"
+  },
+  {
+    "name": "videodb",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "See, Understand, Act on video and audio. See- ingest from local files, URLs, RTSP/live feeds, or live record desktop; return realtime context and playable stream links. Understand- extract frames, build visual/semantic/temporal indexes, and search moments with timestamps and auto-clips. Act- transcode and normalize (codec, fps, resolution, aspect ratio), perform timeline edits (subtitles, text/image overlays, branding, audio overlays, dubbing, translation), generate media assets (image, audio, video), and create real time alerts for events from live streams or desktop capture. Use when ingesting, indexing, searching, editing, transcoding, or alerting on video or audio content."
+  },
+  {
+    "name": "vue-patterns",
+    "githubUrl": "https://github.com/affaan-m/ecc",
+    "description": "Vue.js 3 Composition API patterns, component architecture, reactivity best practices, Pinia state management, Vue Router navigation, and Nuxt SSR patterns. Activates for Vue, Nuxt, Vite, or Pinia projects. Use when building or reviewing Vue 3, Nuxt, or Pinia code — Composition API, reactivity, or router navigation."
+  },
+  {
+    "name": "wayfinder",
+    "githubUrl": "https://github.com/mattpocock/skills",
+    "description": "Plan a huge chunk of work — more than one agent session can hold — as a shared map of decision tickets on your issue tracker, and resolve them one at a time until the way to the destination is clear."
+  },
+  {
+    "name": "web-artifacts-builder",
+    "githubUrl": "https://github.com/anthropics/skills",
+    "description": "Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts requiring state management, routing, or shadcn/ui components - not for simple single-file HTML/JSX artifacts."
+  },
+  {
+    "name": "web-clone",
+    "githubUrl": "https://github.com/nexu-io/open-design",
+    "description": ">"
+  },
+  {
+    "name": "webapp-testing",
+    "githubUrl": "https://github.com/anthropics/skills",
+    "description": "Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs."
+  },
+  {
+    "name": "writing-plans",
+    "githubUrl": "https://github.com/obra/superpowers",
+    "description": "Use when you have a spec or requirements for a multi-step task, before touching code"
+  },
+  {
+    "name": "wxjava-module-selector",
+    "githubUrl": "https://github.com/binarywang/wxjava",
+    "description": "根据微信公众号、小程序、微信支付、企业微信、开放平台、视频号或微信小店、腾讯企点和微信智能对话等业务场景，为用户选择合适的 WxJava Maven 模块、BOM 和示例入口。适用于用户询问“该用哪个模块”、依赖坐标、产品边界或单/多账号 Starter 选择时。"
+  },
+  {
+    "name": "xlsx",
+    "githubUrl": "https://github.com/agentscope-ai/qwenpaw",
+    "description": "\"Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .xltx, .csv, or .tsv file (e.g., adding columns, computing formulas, formatting, charting, cleaning messy data); create a new spreadsheet from scratch or from other data sources; or convert between tabular file formats. Trigger especially when the user references a spreadsheet file by name or path — even casually (like \\\"the xlsx in my downloads\\\") — and wants something done to it or produced from it. Also trigger for cleaning or restructuring messy tabular data files (malformed rows, misplaced headers, junk data) into proper spreadsheets. The deliverable must be a spreadsheet file. Do NOT trigger when the primary deliverable is a Word document, HTML report, standalone Python script, database pipeline, or Google Sheets API integration, even if tabular data is involved.\""
+  }
+]
