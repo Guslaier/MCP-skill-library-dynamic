@@ -56,7 +56,7 @@ Add to your IDE's `mcp_config.json` or MCP settings:
   }
 }
 ```
-*(Replace `<ROOT_DIR>` with the absolute path to the project directory, e.g. `C:/Users/GOOL/Desktop/New folder (2)/skill-library-mcp`)*
+*(Replace `<ROOT_DIR>` with the absolute path to the project directory, e.g. `C:/Users/admin/Desktop/skill-library-mcp`)*
 
 ---
 

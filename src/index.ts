@@ -43,28 +43,43 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // ── Configuration & Robust Path Resolution ────────────────────
-function resolveSkillsDir(): string {
-  if (process.env.SKILLS_DIR && fs.existsSync(process.env.SKILLS_DIR)) {
-    return path.resolve(process.env.SKILLS_DIR);
+function resolveSkillsDirs(): string[] {
+  const candidates: string[] = [];
+
+  if (process.env.SKILLS_DIR) {
+    candidates.push(path.resolve(process.env.SKILLS_DIR));
   }
-  const distRelative = path.resolve(__dirname, "..", "..", ".agents", "skills");
-  if (fs.existsSync(distRelative)) {
-    return distRelative;
-  }
-  const rootRelative = path.resolve(__dirname, "..", ".agents", "skills");
-  if (fs.existsSync(rootRelative)) {
-    return rootRelative;
-  }
-  return path.resolve(process.cwd(), ".agents", "skills");
+
+  // Standard locations (workspace & global)
+  candidates.push(
+    path.resolve(process.cwd(), ".agents", "skills"),
+    path.resolve(process.cwd(), ".ggggagents", "skills"),
+    path.resolve(process.cwd(), "skills"),
+    path.resolve(__dirname, "..", ".agents", "skills"),
+    path.resolve(__dirname, "..", ".ggggagents", "skills"),
+    path.resolve(__dirname, "..", "skills"),
+    path.resolve(__dirname, "..", "..", ".agents", "skills"),
+    path.resolve(__dirname, "..", "..", ".ggggagents", "skills"),
+    path.resolve(__dirname, "..", "..", "skills"),
+    path.join(os.homedir(), ".gemini", "config", "skills"),
+    path.join(os.homedir(), ".agents", "skills")
+  );
+
+  const existingDirs = candidates.filter((dir, idx, self) => {
+    return self.indexOf(dir) === idx && fs.existsSync(dir);
+  });
+
+  return existingDirs.length > 0 ? existingDirs : [path.resolve(process.cwd(), "skills")];
 }
 
-const SKILLS_DIR = resolveSkillsDir();
+const SKILLS_DIRS = resolveSkillsDirs();
 
-if (!fs.existsSync(SKILLS_DIR)) {
+// Ensure at least primary skills dir exists
+if (!fs.existsSync(SKILLS_DIRS[0])) {
   try {
-    fs.mkdirSync(SKILLS_DIR, { recursive: true });
+    fs.mkdirSync(SKILLS_DIRS[0], { recursive: true });
   } catch (err) {
-    console.error(`[ERROR] Failed to create SKILLS_DIR at: ${SKILLS_DIR}`);
+    console.error(`[ERROR] Failed to create primary SKILLS_DIR at: ${SKILLS_DIRS[0]}`);
   }
 }
 
@@ -216,27 +231,44 @@ async function getValidSkillsList(): Promise<string[]> {
     return cachedSkillsList;
   }
 
-  const dirents = await fsPromises.readdir(SKILLS_DIR, { withFileTypes: true });
-  const validSkills: string[] = [];
+  const validSkillsSet = new Set<string>();
 
-  for (const dirent of dirents) {
-    if (dirent.isDirectory()) {
-      const fullPath = path.join(SKILLS_DIR, dirent.name);
-      try {
-        const mdFiles = await getMarkdownFiles(fullPath);
-        if (mdFiles.length > 0) {
-          validSkills.push(dirent.name);
+  for (const dir of SKILLS_DIRS) {
+    try {
+      const dirents = await fsPromises.readdir(dir, { withFileTypes: true });
+      for (const dirent of dirents) {
+        if (dirent.isDirectory()) {
+          const fullPath = path.join(dir, dirent.name);
+          try {
+            const mdFiles = await getMarkdownFiles(fullPath);
+            if (mdFiles.length > 0) {
+              validSkillsSet.add(dirent.name);
+            }
+          } catch {
+            // Skip unreadable directories
+          }
         }
-      } catch {
-        // Skip unreadable directories
       }
+    } catch {
+      // Skip unreadable directories
     }
   }
 
-  validSkills.sort();
+  const validSkills = Array.from(validSkillsSet).sort();
   cachedSkillsList = validSkills;
   skillsCacheTimestamp = Date.now();
   return validSkills;
+}
+
+async function findSkillDirectory(skillName: string): Promise<string | null> {
+  const cleanName = skillName.trim();
+  for (const baseDir of SKILLS_DIRS) {
+    const targetDir = path.resolve(baseDir, cleanName);
+    if (fs.existsSync(targetDir)) {
+      return targetDir;
+    }
+  }
+  return null;
 }
 
 const systemStatusTool: Tool = {
@@ -429,9 +461,9 @@ function createMcpServerInstance(role: "admin" | "standard" = "standard"): Serve
       }
 
       const cleanSkillName = skillName.trim();
-      const targetDir = path.resolve(SKILLS_DIR, cleanSkillName);
+      const targetDir = await findSkillDirectory(cleanSkillName);
 
-      if (!targetDir.startsWith(SKILLS_DIR) || !fs.existsSync(targetDir)) {
+      if (!targetDir) {
         throw new McpError(ErrorCode.InvalidRequest, `Skill directory not found: ${cleanSkillName}`);
       }
 
@@ -564,15 +596,43 @@ function createMcpServerInstance(role: "admin" | "standard" = "standard"): Serve
 }
 
 // ── Run ────────────────────────────────────────────────────────
+function determineExecutionMode(): { isHttpMode: boolean; port: number } {
+  const argv = process.argv.slice(2);
+  const hasHttpFlag = argv.includes("--http") || argv.includes("--server") || argv.includes("--sse") || argv.includes("-s");
+  const hasStdioFlag = argv.includes("--stdio") || argv.includes("-i");
+
+  // Check port flag --port 8787 or --port=8787
+  let portFromArg: number | undefined;
+  for (let i = 0; i < argv.length; i++) {
+    if (argv[i] === "--port" && argv[i + 1]) {
+      const p = parseInt(argv[i + 1], 10);
+      if (!isNaN(p)) portFromArg = p;
+    } else if (argv[i].startsWith("--port=")) {
+      const p = parseInt(argv[i].split("=")[1], 10);
+      if (!isNaN(p)) portFromArg = p;
+    }
+  }
+
+  const transportEnv = (process.env.MCP_TRANSPORT || process.env.MCP_MODE || "").toLowerCase();
+
+  // If stdio flag or env is explicitly requested -> Stdio
+  if (hasStdioFlag || transportEnv === "stdio") {
+    return { isHttpMode: false, port: 8787 };
+  }
+
+  // If HTTP flag or env is requested -> HTTP mode
+  if (hasHttpFlag || transportEnv === "http" || transportEnv === "server" || transportEnv === "sse" || portFromArg !== undefined) {
+    const port = portFromArg ?? parseInt(process.env.PORT ?? "8787", 10);
+    return { isHttpMode: true, port: isNaN(port) ? 8787 : port };
+  }
+
+  // Default: STDIO mode (Standard for AI coding tools like Claude Desktop, Antigravity, Roo Code)
+  return { isHttpMode: false, port: 8787 };
+}
+
 async function run() {
   const fallbackToken = resolveFallbackToken();
-  const port = parseInt(process.env.PORT ?? "8787", 10);
-  const isHttpMode = !!(
-    process.env.PORT ||
-    process.env.SKILL_LIBRARY_API_TOKEN ||
-    fs.existsSync(path.resolve(process.cwd(), ".mcp-token")) ||
-    fs.existsSync(path.join(resolveDataDir(), "oauth-keys.json"))
-  );
+  const { isHttpMode, port } = determineExecutionMode();
 
   if (isHttpMode) {
     const sseTransports = new Map<string, SSEServerTransport>();
@@ -711,7 +771,7 @@ async function run() {
 
     httpServer.listen(port, "0.0.0.0", () => {
       console.error(
-        `Skill Library MCP Server v1.1.0 (HTTP + SSE + RBAC) listening on 0.0.0.0:${port}! Serving from: ${SKILLS_DIR}`
+        `Skill Library MCP Server v1.1.0 (HTTP + SSE + RBAC) listening on 0.0.0.0:${port}! Serving from: ${SKILLS_DIRS.join(", ")}`
       );
     });
   } else {
@@ -719,7 +779,7 @@ async function run() {
     const stdioServer = createMcpServerInstance("admin");
     const transport = new StdioServerTransport();
     await stdioServer.connect(transport);
-    console.error(`Skill Library MCP Server v1.1.0 (stdio) is running! Serving from: ${SKILLS_DIR}`);
+    console.error(`Skill Library MCP Server v1.1.0 (stdio) is running! Serving from: ${SKILLS_DIRS.join(", ")}`);
   }
 }
 

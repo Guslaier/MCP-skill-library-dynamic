@@ -3,6 +3,7 @@ module.exports = {
     {
       name: "skill-library-mcp",
       script: "dist/index.js",
+      args: "--http",
       instances: 1,
       autorestart: true,
       watch: false,
@@ -10,7 +11,7 @@ module.exports = {
       env: {
         NODE_ENV: "production",
         PORT: 8787,
-        SKILLS_DIR: "./.agents/skills",
+        MCP_TRANSPORT: "http",
         SKILL_LIBRARY_DATA_DIR: "./.data",
       },
     },
