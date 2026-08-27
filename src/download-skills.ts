@@ -1,4 +1,4 @@
-import { spawn } from 'child_process';
+import { spawn, spawnSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 
@@ -115,7 +115,7 @@ async function downloadFromBaseJson() {
   const totalSkills = missingSkills.length;
   if (totalSkills === 0) {
     console.log('\nAll targeted skills are already installed!');
-    cleanup();
+    await cleanup();
     return;
   }
 
@@ -142,18 +142,31 @@ async function downloadFromBaseJson() {
   }
 
   console.log(`\nDone! Successfully processed ${totalSkills} skills.`);
-  cleanup();
+  await cleanup();
 }
 
-function cleanup() {
-  const dirsToRemove = ['.claude', 'agent'];
-  for (const dir of dirsToRemove) {
+async function cleanup() {
+  console.log('\n=== Cleaning up redundant folders (.claude, agent, scratch) ===');
+  await sleep(1000); // Give OS time to release file locks
+
+  const targets = ['.claude', 'agent', 'scratch'];
+  for (const dir of targets) {
     const fullPath = path.join(process.cwd(), dir);
-    try {
-      if (fs.existsSync(fullPath)) {
-        fs.rmSync(fullPath, { recursive: true, force: true, maxRetries: 3, retryDelay: 500 });
+    if (fs.existsSync(fullPath)) {
+      try {
+        if (process.platform === 'win32') {
+          spawnSync('powershell', ['-Command', `Remove-Item -Recurse -Force -ErrorAction SilentlyContinue '${dir}'`], {
+            cwd: process.cwd(),
+            stdio: 'ignore'
+          });
+        } else {
+          fs.rmSync(fullPath, { recursive: true, force: true });
+        }
+        console.log(`  ✓ Removed ${dir}/`);
+      } catch (err: any) {
+        console.warn(`  ! Could not remove ${dir}/: ${err.message}`);
       }
-    } catch {}
+    }
   }
 }
 
