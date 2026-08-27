@@ -1,149 +1,158 @@
-# MCP-skill-library-dynamic 🚀
+# 🚀 Skill Library MCP Server
 
-An Enterprise-grade MCP (Model Context Protocol) server that serves skill and rule files from a local directory to AI agents on demand. It allows AI agents to dynamically list and fetch specific skill instructions formatted in Markdown without suffering from Context Bloat.
-
----
-
-## ✨ Features (v1.2.0)
-
-- **TypeScript Native**: 100% Type-safe, compiled to optimized ES Modules.
-- **Curated 200+ Core Skills Base**: High-quality, deduplicated, and community-standard skill set pre-indexed in [`skills-base.json`](skills-base.json).
-- **Deterministic Offline-First Downloader**: Fast, reliable batch downloads directly from the curated base list using `npx skills add` with exponential backoff retries.
-- **Smart Search & Filter**: `list_skills` supports optional `query` parameter (e.g. `list_skills({ query: "react" })`) to filter skills directly and save tokens.
-- **Recursive Multi-File Rule Aggregation**: `fetch_skill_rule` automatically scans and combines all nested Markdown files (e.g. `rules/*.md`, `references/*.md`) without skipping deeper documentation.
-- **Zero-Config Auto-Path Resolution**: Intelligently resolves `.agents/skills` relative to the compiled server location, eliminating manual `SKILLS_DIR` setup issues.
-- **Ghost Skill Elimination**: Automatically ignores empty directories and only serves folders with verified `.md` rule files.
-- **Memory-Safe Caching**: Utilizes a TTL cache for directory listing and async I/O for file reading to guarantee 0% chance of Out-Of-Memory (OOM) crashes, even with 100,000+ skills.
-- **Path Traversal Protection**: Cryptographic-grade path resolution to strictly sandbox the AI to the `.agents/skills/` directory.
-- **Graceful Shutdown**: Properly handles `SIGINT`/`SIGTERM` and uncaught exceptions to ensure clean MCP socket closures.
-- **Token Diet Architecture (Cost Saving)**: 
-  - `list_skills` only returns raw folder names (slugs), minimizing injected context to just ~1,500 tokens even with 1,000+ skills.
-  - `fetch_skill_rule` strictly fetches content on-demand, one skill at a time, preventing AI hallucination and massive API bills.
+An enterprise-grade Model Context Protocol (MCP) server for automatically discovering, indexing, and serving **580+ AI Skill Guidelines and Engineering Best Practices**. Features built-in **PM2 Daemon Management**, an interactive **TUI Control Dashboard**, **OAuth Token Lifecycle Management**, and a **Persistent AI Session Memory Store**.
 
 ---
 
-## 📦 Installation & Build
+## ⚡ Quick Start
 
-1. Clone or download the repository:
-```bash
-git clone https://github.com/Guslaier/MCP-skill-library-dynamic.git
-cd skill-library-mcp
-```
-
-2. Install dependencies:
+### 1. Install & Build
 ```bash
 npm install
-```
-
-3. Compile TypeScript source code:
-```bash
 npm run build
 ```
 
----
-
-## 🧠 Downloading & Managing Skills
-
-Skills are loaded into `.agents/skills/` located in the root of the project (or configured via `SKILLS_DIR`).
-
-### Curated Base Skills (`skills-base.json`)
-
-The downloader uses [`skills-base.json`](skills-base.json) as the single source of truth containing 200+ curated and deduplicated skills from official and top-tier repositories (`anthropics/skills`, `obra/superpowers`, `affaan-m/ecc`, `browser-use`, etc.).
-
-### CLI Commands
-
-| Command | Description |
-| --- | --- |
-| `npm run download` | Download and install all 200+ base skills |
-| `npm run download -- <skill-name>` | Download only skills matching the given name filter |
-
-#### Examples
-
+### 2. Launch Interactive Control Dashboard (TUI)
 ```bash
-# Download all 200+ curated base skills
-npm run download
-
-# Download only specific skills matching 'caveman'
-npm run download -- caveman
-
-# Download all React / Frontend related skills
-npm run download -- react
+npm run menu
 ```
+> 💡 Navigate smoothly using **Arrow Keys (▲ / ▼) + Enter** or press numeric shortcut keys `[0-6]` directly. Mouse tracking is disabled to guarantee 100% native terminal copy/paste.
 
 ---
 
-## 📁 Directory Structure
+## ⚙️ MCP Client Configuration
 
-```text
-skill-library-mcp/
-├── package.json
-├── tsconfig.json
-├── skills-base.json        # Curated index of 200+ skills (name, repo url, description)
-├── src/
-│   ├── index.ts            # MCP Server entry point
-│   └── download-skills.ts  # Batch downloader from skills-base.json
-├── dist/
-│   ├── index.js
-│   └── download-skills.js
-└── .agents/
-    └── skills/             # Local skill files served to AI agents
-        ├── code-review/
-        │   └── SKILL.md
-        ├── test-driven-development/
-        │   └── SKILL.md
-        └── ...
-```
-
----
-
-## 🚀 Running the Server
-
-Start the server using:
-
-```bash
-npm start
-```
-
----
-
-## ⚙️ MCP Configuration
-
-To connect this server with an MCP client (such as **Antigravity**, **Cursor**, **Roo Code**, or **Cline**), add the following configuration to your client's settings file:
+### 1. Remote HTTP / SSE Mode (Recommended for Antigravity, Gemini IDE, Claude Desktop, Cursor)
+Add to your IDE's `mcp_config.json` or MCP settings:
 
 ```json
 {
   "mcpServers": {
     "skill-library": {
-      "command": "node",
-      "args": [
-        "C:/path/to/skill-library-mcp/dist/index.js"
-      ],
-      "env": {
-        "SKILLS_DIR": "C:/path/to/skill-library-mcp/.agents/skills"
+      "url": "http://localhost:8787",
+      "headers": {
+        "Authorization": "Bearer <YOUR_API_TOKEN>"
       }
     }
   }
 }
 ```
-
-> **Important:** Replace `C:/path/to/skill-library-mcp` with your actual repository path, pointing to `dist/index.js`.
+*(Generate Bearer Tokens anytime from `[3] API Keys & Auth` in `npm run menu`)*
 
 ---
 
-## 🤖 System Prompt (Knowledge Base Protocol)
+### 2. Local Stdio Mode (Direct Process Spawn)
+```json
+{
+  "mcpServers": {
+    "skill-library": {
+      "command": "node",
+      "args": ["<ROOT_DIR>/dist/index.js"],
+      "env": {
+        "SKILLS_DIR": "<ROOT_DIR>/.agents/skills",
+        "SKILL_LIBRARY_DATA_DIR": "<ROOT_DIR>/.data"
+      }
+    }
+  }
+}
+```
+*(Replace `<ROOT_DIR>` with the absolute path to the project directory, e.g. `C:/Users/GOOL/Desktop/New folder (2)/skill-library-mcp`)*
 
-Add the following prompt to your AI agent rules (`.clinerules`, `.cursorrules`, or Custom Instructions) so the agent automatically uses the Skill Library:
+---
+
+## 🚀 PM2 Background Daemon Management
+
+The project includes built-in PM2 orchestration for running as a reliable background service:
+
+```bash
+# Start server daemon in background
+npm run pm2:start
+
+# View process table, memory usage & uptime
+npm run pm2:status
+
+# Stream realtime logs
+npm run pm2:logs
+
+# Restart or stop the daemon
+npm run pm2:restart
+npm run pm2:stop
+```
+
+---
+
+## 🎮 Control Dashboard Features (`npm run menu`)
 
 ```text
-# UNIVERSAL KNOWLEDGE BASE PROTOCOL
-You are equipped with the Enterprise "Skill Library MCP". Before starting any architectural planning, refactoring, or feature implementation, you MUST:
-1. Use `list_skills` (or `list_skills({ query: "keyword" })`) to check for relevant domain rules or coding standards.
-2. If found, use `fetch_skill_rule({ skill_name: "..." })` to read the full context and nested rule guidelines.
-3. Explicitly acknowledge the rules and apply them strictly to your code generation.
+╔══════════════════════════════════════════════════════════════════════╗
+║  ⚡ SKILL LIBRARY MCP — CONTROL DASHBOARD                            ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  MCP Status: ● ONLINE (Port 8787) Skills: 589  Active Services: 1   ║
+╚══════════════════════════════════════════════════════════════════════╝
+```
+
+1. **⚡ MCP Server & Port Config**
+   - Instant 1-click START / STOP toggle.
+   - Dynamic Port switching with port collision prevention.
+2. **🚀 PM2 Process Manager**
+   - Manage background daemon operations (Start, Stop, Restart, Status, Logs) through the TUI.
+3. **🔑 API Keys & Auth**
+   - Generate OAuth Bearer Keys with customizable TTL (Permanent, 1 day, 7 days, 30 days, or custom).
+   - Regenerate existing keys while preserving IDs, and delete keys.
+   - Clean sequential ID formatting (`KEY-001`, `KEY-002`).
+4. **💾 Memory & Sessions**
+   - Store and retrieve cross-session AI state and context notes.
+   - Built-in TTL auto-cleanup to prevent disk bloat.
+5. **📊 Logs & Outbound IP**
+   - Realtime network interface inspection (Tailscale, LAN, Ethernet, Localhost).
+   - Top 5 most recent live activity logs.
+6. **🧠 Skill Library Explorer**
+   - Search and browse 580+ indexed engineering and domain-specific rules.
+
+---
+
+## 🛠️ Available MCP Tools & Role Permissions (RBAC)
+
+The server enforces strict **Role-Based Access Control (RBAC)**:
+
+| Category | Tool Name | Permission Role | Description |
+| :--- | :--- | :---: | :--- |
+| **Skill Library** | **`list_skills`** | `🤖 Public AI` | Search available skills/rules by keyword (e.g. `react`, `python`, `nestjs`). |
+| | **`fetch_skill_rule`** | `🤖 Public AI` | Fetch full markdown guidelines and best practices for a skill. |
+| **AI Sessions** | **`session_create`** | `👑 Admin Only` | Persist arbitrary JSON session state with TTL expiration. |
+| | **`session_get`** | `👑 Admin Only` | Retrieve stored session data by name. |
+| | **`session_list`** | `👑 Admin Only` | List all active sessions (auto-purges expired records). |
+| | **`session_delete`** | `👑 Admin Only` | Delete session record. |
+| **Auth & Keys** | **`oauth_generate_key`** | `👑 Admin Only` | Issue new API tokens with custom roles and TTL expiration. |
+| | **`oauth_regen_key`** | `👑 Admin Only` | Re-issue new token for an existing key ID. |
+| | **`oauth_delete_key`** | `👑 Admin Only` | Delete an API key permanently. |
+| | **`oauth_validate_key`** | `👑 Admin Only` | Verify token validity, expiration, and associated role. |
+| | **`oauth_list_keys`** | `👑 Admin Only` | List stored API key metadata and usage audit logs. |
+| **System Status** | **`system_status`** | `👑 Admin Only` | View network IPs (Tailscale/LAN/Localhost) and recent activity logs. |
+| | **`service_list`** | `👑 Admin Only` | List all registered and active background services (read-only). |
+
+> 🔒 **Security Notice:** Starting and stopping the server/services (`service_start`, `service_stop`) is strictly restricted to manual control via **PM2**, **CLI**, and **TUI Menu (`npm run menu`)** to prevent unauthorized AI process modifications.
+
+---
+
+## 🛡️ Architecture & Performance Highlights
+
+- **Universal Transport:** Seamlessly handles standard Server-Sent Events (SSE `GET /`, `GET /sse`) and Streamable HTTP JSON-RPC `POST` requests.
+- **Dynamic Multi-Session Pooling:** Multiple concurrent client sessions are isolated dynamically without session collisions or initialization errors.
+- **Zero Memory Leak & GC:** In-memory Garbage Collector periodically purges inactive sessions (30-min TTL) and limits active session pool size with LRU eviction.
+
+---
+
+## 🤖 Recommended AI Agent System Prompt
+
+```text
+Before planning, designing, or coding any feature:
+1. Search relevant skills: list_skills({ query: "<keyword>" })
+2. Fetch details: fetch_skill_rule({ skill_name: "<name>" })
+3. Strictly follow fetched guidelines.
 ```
 
 ---
 
 ## 📜 License
-
 MIT

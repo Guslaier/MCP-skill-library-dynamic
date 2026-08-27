@@ -4,11 +4,24 @@
   "description": "MCP server that serves skill/rule files from a skills folder to AI agents on demand",
   "type": "module",
   "main": "dist/index.js",
+  "bin": {
+    "skill-library": "dist/cli.js"
+  },
   "license": "MIT",
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "download": "node dist/download-skills.js"
+    "download": "node dist/download-skills.js",
+    "menu": "node dist/menu.js",
+    "cli": "node dist/cli.js",
+    "service": "node dist/cli.js service",
+    "session": "node dist/cli.js session",
+    "oauth": "node dist/cli.js oauth",
+    "pm2:start": "npx pm2 start ecosystem.config.cjs",
+    "pm2:stop": "npx pm2 stop skill-library-mcp",
+    "pm2:restart": "npx pm2 restart skill-library-mcp",
+    "pm2:status": "npx pm2 status",
+    "pm2:logs": "npx pm2 logs skill-library-mcp"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.30.0"
