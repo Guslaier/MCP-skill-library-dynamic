@@ -36,15 +36,33 @@ The server reads from the `.agents/skills` folder located in the root of the pro
 
 Each skill should be in its own subfolder inside `.agents/skills` and contain a Markdown (`.md`) file.
 
-### Downloading Skills Automatically (Concurrent)
+### Downloading Skills Automatically
 
-You can automatically fetch and install skills from [skillsmp.com](https://skillsmp.com) by running:
+The [`download-skills`](src/download-skills.ts) script fetches skills from [skillsmp.com](https://skillsmp.com) and installs them locally. It works by:
+
+1. **Fetching pages** — Iterates through paginated results on skillsmp.com.
+2. **Extracting data** — Parses the JSON-LD metadata embedded in each page to get skill details.
+3. **Installing skills** — Runs `npx skills add` for each discovered skill.
+4. **Progress reporting** — Displays real-time progress (pages fetched, skills found, install success/failure).
+
+> **Note:** The downloader runs in parallel batches with Exponential Backoff Retries to handle network instability.
+
+#### CLI Usage
+
+| Command | Description |
+| --- | --- |
+| `npm run download` | Fetch and install skills (default: 15 pages) |
+| `npm run download -- <pages>` | Fetch and install skills from a custom number of pages |
+
+#### Examples
 
 ```bash
-npm run download
-```
+# Fetch skills from 5 pages (fewer skills, faster run)
+npm run download -- 5
 
-*Note: The downloader runs in parallel batches with Exponential Backoff Retries to handle network instability.*
+# Fetch skills from 100 pages (large batch, more skills)
+npm run download -- 100
+```
 
 ### Example Directory Structure
 
