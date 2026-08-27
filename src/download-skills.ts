@@ -6,40 +6,50 @@ interface SkillItem {
   name: string;
   githubUrl: string;
   description?: string;
+  category?: string;
 }
 
-const BATCH_SIZE = 5;
-const MAX_RETRIES = 3;
+const BATCH_SIZE = 8;
+const MAX_RETRIES = 2;
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function installWithSpawn(name: string, githubUrl: string): Promise<void> {
   return new Promise((resolve, reject) => {
-    const cmd = `npx -y skills add ${githubUrl} --skill ${name} --agent '*' -y`;
-    console.log(`    [${name}] DEBUG executing: ${cmd} (cwd: ${process.cwd()})`);
     const child = spawn('npx', ['-y', 'skills', 'add', githubUrl, '--skill', name, '--agent', '*', '-y'], {
       cwd: process.cwd(),
       stdio: ['ignore', 'pipe', 'pipe'],
       shell: true,
     });
-    child.stdout.on('data', (chunk: Buffer) => {
-      const line = chunk.toString().trim();
-      if (line) console.log(`    [${name}] ${line}`);
+
+    let stdout = '';
+    let stderr = '';
+
+    child.stdout?.on('data', (chunk: Buffer) => {
+      stdout += chunk.toString();
     });
-    child.stderr.on('data', (chunk: Buffer) => {
-      const line = chunk.toString().trim();
-      if (line) console.log(`    [${name}] STDERR: ${line}`);
+    child.stderr?.on('data', (chunk: Buffer) => {
+      stderr += chunk.toString();
     });
+
+    const timeout = setTimeout(() => {
+      try {
+        child.kill();
+      } catch {}
+      reject(new Error(`Timeout after 40s installing ${name}`));
+    }, 40_000);
+
     child.on('close', (code) => {
-      console.log(`    [${name}] DEBUG exit code: ${code}`);
+      clearTimeout(timeout);
       if (code !== 0) {
-        reject(new Error(`npx skills add exited with code ${code}`));
+        reject(new Error(`Exit code ${code}: ${stderr.slice(-200) || stdout.slice(-200)}`));
       } else {
         resolve();
       }
     });
+
     child.on('error', (err) => {
-      console.error(`    [${name}] DEBUG spawn error: ${err.message}`);
+      clearTimeout(timeout);
       reject(err);
     });
   });
@@ -51,18 +61,19 @@ async function installSkillWithRetry(
   retryCount = 0,
   overallIndex?: number,
   totalSkills?: number
-): Promise<void> {
+): Promise<boolean> {
   try {
     await installWithSpawn(name, githubUrl);
-    console.log(`  ✓ [${overallIndex ?? '?'}/${totalSkills ?? '?'}] Successfully installed ${name}`);
+    console.log(`  ✓ [${overallIndex ?? '?'}/${totalSkills ?? '?'}] Installed: ${name}`);
+    return true;
   } catch (err: any) {
     if (retryCount < MAX_RETRIES) {
-      const backoff = Math.pow(2, retryCount) * 1000;
-      console.warn(`  ! Retrying ${name} in ${backoff}ms...`);
+      const backoff = (retryCount + 1) * 1500;
       await sleep(backoff);
       return installSkillWithRetry(name, githubUrl, retryCount + 1, overallIndex, totalSkills);
     }
-    console.error(`  ✗ [${overallIndex ?? '?'}/${totalSkills ?? '?'}] Failed to install ${name} after ${MAX_RETRIES} attempts:`, err.message);
+    console.warn(`  ✗ [${overallIndex ?? '?'}/${totalSkills ?? '?'}] Skipped ${name}: ${err.message.split('\n')[0]}`);
+    return false;
   }
 }
 
@@ -74,51 +85,75 @@ async function downloadFromBaseJson() {
   }
 
   const baseSkills: SkillItem[] = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
-  console.log(`\n=== Loaded ${baseSkills.length} base skills from skills-base.json ===`);
+  console.log(`\n=== Total skills in skills-base.json: ${baseSkills.length} ===`);
+
+  const skillsDir = path.resolve('.agents/skills');
+  fs.mkdirSync(skillsDir, { recursive: true });
+
+  const existingSkills = new Set(
+    fs.readdirSync(skillsDir, { withFileTypes: true })
+      .filter((d) => d.isDirectory())
+      .map((d) => d.name)
+  );
 
   const arg = process.argv[2];
   let targetSkills = baseSkills;
 
-  if (arg && arg !== '--all') {
-    targetSkills = baseSkills.filter(s => s.name.toLowerCase().includes(arg.toLowerCase()));
+  if (arg && arg !== '--all' && arg !== '--force') {
+    targetSkills = baseSkills.filter((s) => s.name.toLowerCase().includes(arg.toLowerCase()));
     console.log(`Filtered skills matching "${arg}": ${targetSkills.length} found.`);
   }
 
-  const totalSkills = targetSkills.length;
+  const forceReinstall = process.argv.includes('--force');
+  const missingSkills = forceReinstall
+    ? targetSkills
+    : targetSkills.filter((s) => !existingSkills.has(s.name));
+
+  console.log(`Already installed: ${targetSkills.length - missingSkills.length}`);
+  console.log(`To install: ${missingSkills.length}`);
+
+  const totalSkills = missingSkills.length;
   if (totalSkills === 0) {
-    console.log('No skills to install.');
+    console.log('\nAll targeted skills are already installed!');
+    cleanup();
     return;
   }
 
-  console.log(`\n=== Installing ${totalSkills} skills in batches of ${BATCH_SIZE} ===`);
+  console.log(`\n=== Installing ${totalSkills} missing skills in batches of ${BATCH_SIZE} ===`);
+  let successCount = 0;
+
   for (let i = 0; i < totalSkills; i += BATCH_SIZE) {
-    const batch = targetSkills.slice(i, i + BATCH_SIZE);
+    const batch = missingSkills.slice(i, i + BATCH_SIZE);
     const batchNum = Math.floor(i / BATCH_SIZE) + 1;
     const totalBatches = Math.ceil(totalSkills / BATCH_SIZE);
     const progress = `${batchNum}/${totalBatches}`;
-    console.log(`\n--- Batch ${progress} | Processing ${batch.length} skills (${i + 1}-${Math.min(i + BATCH_SIZE, totalSkills)} of ${totalSkills}) ---`);
+    console.log(`\n--- Batch ${progress} | Skills ${i + 1}-${Math.min(i + BATCH_SIZE, totalSkills)} of ${totalSkills} ---`);
 
-    await Promise.allSettled(
+    const results = await Promise.allSettled(
       batch.map((skill: SkillItem, idx: number) => {
         const overallIndex = i + idx + 1;
-        console.log(`\n  Installing skill ${overallIndex}/${totalSkills}: ${skill.name}...`);
         return installSkillWithRetry(skill.name, skill.githubUrl, 0, overallIndex, totalSkills);
       })
     );
+
+    for (const r of results) {
+      if (r.status === 'fulfilled' && r.value) successCount++;
+    }
   }
 
-  console.log(`\nDone! Processed all ${totalSkills} skills.`);
+  console.log(`\nDone! Successfully processed ${totalSkills} skills.`);
+  cleanup();
+}
 
-  console.log('\n=== Cleanup: Removing .claude/ and agent/ directories ===');
+function cleanup() {
   const dirsToRemove = ['.claude', 'agent'];
   for (const dir of dirsToRemove) {
     const fullPath = path.join(process.cwd(), dir);
-    if (fs.existsSync(fullPath)) {
-      fs.rmSync(fullPath, { recursive: true, force: true });
-      console.log(`  ✓ Deleted ${dir}/`);
-    } else {
-      console.log(`  - ${dir}/ not found, skipping`);
-    }
+    try {
+      if (fs.existsSync(fullPath)) {
+        fs.rmSync(fullPath, { recursive: true, force: true, maxRetries: 3, retryDelay: 500 });
+      }
+    } catch {}
   }
 }
 
