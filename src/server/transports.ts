@@ -14,7 +14,7 @@ import { createMcpServerInstance } from "./server.js";
  * Starts the MCP Server using Stdio transport (Default for AI IDEs/Clients).
  */
 export async function startStdioTransport(): Promise<void> {
-  const stdioServer = createMcpServerInstance("admin");
+  const stdioServer = createMcpServerInstance();
   const transport = new StdioServerTransport();
   await stdioServer.connect(transport);
   console.error(`Skill Library MCP Server v1.1.0 (stdio) is running! Serving from: ${SKILLS_DIRS.join(", ")}`);
@@ -33,7 +33,6 @@ export async function startHttpTransport(port: number, fallbackToken: string | n
   interface ManagedStreamableSession {
     transport: StreamableHTTPServerTransport;
     server: Server;
-    role: "admin" | "standard";
     lastActive: number;
   }
   const streamableSessions = new Map<string, ManagedStreamableSession>();
@@ -55,8 +54,7 @@ export async function startHttpTransport(port: number, fallbackToken: string | n
   gcTimer.unref();
 
   async function getOrCreateStreamableSession(
-    sessionId?: string,
-    role: "admin" | "standard" = "standard"
+    sessionId?: string
   ): Promise<{ transport: StreamableHTTPServerTransport; server: Server; isNew: boolean }> {
     if (sessionId && streamableSessions.has(sessionId)) {
       const entry = streamableSessions.get(sessionId)!;
@@ -84,13 +82,13 @@ export async function startHttpTransport(port: number, fallbackToken: string | n
     }
 
     const newSessionId = sessionId || randomUUID();
-    const server = createMcpServerInstance(role);
+    const server = createMcpServerInstance();
     const transport = new StreamableHTTPServerTransport({
       sessionIdGenerator: () => newSessionId,
       enableJsonResponse: true,
     });
     await server.connect(transport);
-    const entry: ManagedStreamableSession = { transport, server, role, lastActive: Date.now() };
+    const entry: ManagedStreamableSession = { transport, server, lastActive: Date.now() };
     streamableSessions.set(newSessionId, entry);
     return { ...entry, isNew: true };
   }
@@ -117,7 +115,7 @@ export async function startHttpTransport(port: number, fallbackToken: string | n
     const url = new URL(req.url ?? "/", `http://${req.headers.host ?? "localhost"}`);
 
     if (req.method === "GET") {
-      const sseServer = createMcpServerInstance(authResult.role);
+      const sseServer = createMcpServerInstance();
       const sseTransport = new SSEServerTransport("/message", res);
       
       sseTransports.set(sseTransport.sessionId, sseTransport);
@@ -146,14 +144,14 @@ export async function startHttpTransport(port: number, fallbackToken: string | n
     }
 
     const incomingSessionId = (req.headers["mcp-session-id"] || req.headers["x-session-id"]) as string | undefined;
-    const { transport } = await getOrCreateStreamableSession(incomingSessionId, authResult.role);
+    const { transport } = await getOrCreateStreamableSession(incomingSessionId);
 
     await transport.handleRequest(req, res);
   });
 
   httpServer.listen(port, "0.0.0.0", () => {
     console.error(
-      `Skill Library MCP Server v1.1.0 (HTTP + SSE + RBAC) listening on 0.0.0.0:${port}! Serving from: ${SKILLS_DIRS.join(", ")}`
+      `Skill Library MCP Server v1.1.0 (Skill Tools Only) listening on 0.0.0.0:${port}! Serving from: ${SKILLS_DIRS.join(", ")}`
     );
   });
 }
