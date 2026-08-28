@@ -3,8 +3,7 @@ import {
   CallToolRequestSchema,
   ListToolsRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
-import { getActiveTools } from "./tools.js";
-import { handleToolCall } from "./handlers.js";
+import { getActiveTools, executeTool } from "../tools/index.js";
 
 /**
  * Creates and configures a new Model Context Protocol Server instance.
@@ -25,7 +24,7 @@ export function createMcpServerInstance(role: "admin" | "standard" = "standard")
 
   srv.setRequestHandler(CallToolRequestSchema, async (request) => {
     const { name, arguments: args } = request.params;
-    return await handleToolCall(name, args, role);
+    return await executeTool(name, args, role);
   });
 
   return srv;
