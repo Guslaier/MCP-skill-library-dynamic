@@ -8,13 +8,13 @@ import { getActiveTools, executeTool } from "../tools/index.js";
 /**
  * Creates and configures a new Model Context Protocol Server instance.
  */
-export function createMcpServerInstance(): Server {
+export function createMcpServerInstance(role: "admin" | "standard" = "standard"): Server {
   const srv = new Server(
     { name: "skill-library-mcp", version: "1.1.0" },
     { capabilities: { tools: {} } }
   );
 
-  const activeTools = getActiveTools();
+  const activeTools = getActiveTools(role);
 
   srv.setRequestHandler(ListToolsRequestSchema, async () => {
     return {
@@ -24,7 +24,7 @@ export function createMcpServerInstance(): Server {
 
   srv.setRequestHandler(CallToolRequestSchema, async (request) => {
     const { name, arguments: args } = request.params;
-    return await executeTool(name, args);
+    return await executeTool(name, args, role);
   });
 
   return srv;
