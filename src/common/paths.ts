@@ -19,13 +19,10 @@ export function resolveSkillsDirs(): string[] {
   // Standard locations (workspace & global)
   candidates.push(
     path.resolve(process.cwd(), ".agents", "skills"),
-    path.resolve(process.cwd(), ".ggggagents", "skills"),
     path.resolve(process.cwd(), "skills"),
     path.resolve(__dirname, "..", "..", ".agents", "skills"),
-    path.resolve(__dirname, "..", "..", ".ggggagents", "skills"),
     path.resolve(__dirname, "..", "..", "skills"),
     path.resolve(__dirname, "..", ".agents", "skills"),
-    path.resolve(__dirname, "..", ".ggggagents", "skills"),
     path.resolve(__dirname, "..", "skills"),
     path.join(os.homedir(), ".gemini", "config", "skills"),
     path.join(os.homedir(), ".agents", "skills")
