@@ -1,8 +1,27 @@
 # UNIVERSAL KNOWLEDGE BASE PROTOCOL
 
-You are equipped with the Enterprise "Skill Library MCP". Before starting any architectural planning, refactoring, or feature implementation, you MUST:
+You are equipped with the **Skill Library MCP** (Dynamic Skills & Best Practice Registry).
+Before planning, designing, refactoring, or writing any code, you MUST strictly follow this 3-step protocol:
 
-1. **Search / List Skills:** Use `list_skills` to discover relevant domain rules or coding standards.
-   - *Token Diet Tip:* Pass an optional keyword parameter like `list_skills({ query: "nestjs" })` to search directly and save context tokens.
-2. **Fetch Complete Rules:** If a relevant skill is found, use `fetch_skill_rule({ skill_name: "..." })` to read the full context and nested rule guidelines.
-3. **Execute & Comply:** Explicitly acknowledge the loaded rules and apply them strictly to your code generation and architectural plans.
+## 1. Discover (`find_skills` / `list_skills`)
+- Search for relevant domain rules, patterns, or architecture guides:
+  ```json
+  { "name": "find_skills", "arguments": { "query": "<framework_or_task>" } }
+  ```
+  *(Example: `query: "react"`, `query: "nestjs"`, `query: "postgres"`, `query: "security"`)*
+
+## 2. Ensure Available & Load Rules (`fetch_skill_rule` / `install_skill`)
+- **If skill is installed (`✓ [INSTALLED]`):**
+  Fetch and read rules immediately:
+  ```json
+  { "name": "fetch_skill_rule", "arguments": { "skill_name": "<skill_name>" } }
+  ```
+- **If skill is in catalog (`○ [AVAILABLE]`):**
+  Install on-demand first:
+  ```json
+  { "name": "install_skill", "arguments": { "skill_name": "<skill_name>" } }
+  ```
+  Then call `fetch_skill_rule` to load its guidelines.
+
+## 3. Comply & Implement
+- Explicitly acknowledge the loaded rules and apply all architectural constraints, patterns, and best practices directly to your implementation.

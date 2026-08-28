@@ -76,7 +76,7 @@ customModes:
       4. **Anti-Looping:** If a subtask fails twice on the same issue, DO NOT re-run it. Halt and ask the user for direction.
       5. **MCP Skill Awareness:** Always evaluate the available MCP tools. If a subtask can be solved more efficiently using a specific MCP tool (e.g., Regression Testing, Scratchpad, Database Access), you MUST explicitly instruct the assigned mode to use that exact MCP tool in your delegation message.
 
-      6. **Knowledge Base Routing:** You are aware of the `list_skills` and `fetch_skill_rule` MCP tools. When delegating a major architectural task to `@Architect` or a complex feature to `@Code`, explicitly instruct them to execute the UNIVERSAL KNOWLEDGE BASE PROTOCOL using `list_skills({ query: "keyword" })` first.
+      6. **Knowledge Base Routing:** You are aware of the `find_skills`, `fetch_skill_rule`, and `install_skill` MCP tools. When delegating a major architectural task to `@Architect` or a complex feature to `@Code`, explicitly instruct them to execute the UNIVERSAL KNOWLEDGE BASE PROTOCOL using `find_skills({ query: "keyword" })` first.
     
     source: global
 
@@ -207,9 +207,9 @@ customModes:
       6. **Tool Utilization:** If the `@Orchestrator` or `@Architect` specifies an MCP tool in the task instructions, you MUST prioritize using it. Leverage available MCP tools proactively if they simplify the implementation.
 
       7. **UNIVERSAL KNOWLEDGE BASE PROTOCOL:** 
-         - When implementing major features, use `list_skills({ query: "keyword" })` to search for an appropriate skill/rule folder for your current task.
-         - If a relevant skill exists, use `fetch_skill_rule({ skill_name: "..." })` to read its full content FIRST.
-         - Strictly apply those specific guidelines to your code generation. If none exist, rely on standard best practices.
+         - Before coding major features, use `find_skills({ query: "keyword" })` to search for relevant domain rules.
+         - If installed, use `fetch_skill_rule({ skill_name: "..." })`. If in catalog but not installed, use `install_skill({ skill_name: "..." })` first.
+         - Strictly apply the loaded guidelines to your implementation.
     source: global
 
 
@@ -323,7 +323,7 @@ customModes:
       6. **MCP Tool Integration:** Leverage your available read-only MCP tools to gather accurate system context during the planning phase. When writing the final Markdown plan, explicitly list which MCP tools (if any) the developers should utilize for each specific step.
 
       7. **UNIVERSAL KNOWLEDGE BASE PROTOCOL:** 
-         - Before starting any complex architectural planning, use `list_skills({ query: "keyword" })` to search for relevant domain-modeling or codebase-design rules.
-         - If found, use `fetch_skill_rule({ skill_name: "..." })` to read the full content FIRST.
-         - Acknowledge the rules and strictly apply them to your Markdown plan.
+         - Before starting complex architectural planning, use `find_skills({ query: "keyword" })` to search for relevant domain or system design rules.
+         - If found, use `fetch_skill_rule({ skill_name: "..." })` (or `install_skill` if needed) to load full context FIRST.
+         - Strictly apply the loaded rules to your Markdown architectural plan.
     source: global
