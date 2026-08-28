@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { timingSafeEqual } from "node:crypto";
 import type { IncomingMessage } from "node:http";
-import { oauthValidateKey } from "../auth.js";
+import { oauthValidateKey } from "../modules/index.js";
 
 /**
  * Resolves static fallback Bearer token from env, .mcp-token, or setting_mcp.json.

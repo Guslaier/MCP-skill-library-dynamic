@@ -147,7 +147,7 @@ async function downloadFromBaseJson() {
 
 async function cleanup() {
   console.log('\n=== Cleaning up redundant folders (.claude, agent, scratch) ===');
-  await sleep(1000); // Give OS time to release file locks
+  await sleep(1000);
 
   const targets = ['.claude', 'agent', 'scratch'];
   for (const dir of targets) {

@@ -1,7 +1,18 @@
 #!/usr/bin/env node
-import { serviceStart, serviceStop, serviceList } from "./service.js";
-import { oauthGenerateKey, oauthValidateKey, oauthListKeys, oauthRegenKey, oauthDeleteKey } from "./auth.js";
-import { sessionCreate, sessionGet, sessionList, sessionDelete } from "./session.js";
+import {
+  serviceStart,
+  serviceStop,
+  serviceList,
+  oauthGenerateKey,
+  oauthValidateKey,
+  oauthListKeys,
+  oauthRegenKey,
+  oauthDeleteKey,
+  sessionCreate,
+  sessionGet,
+  sessionList,
+  sessionDelete,
+} from "./modules/index.js";
 
 interface ParsedArgs {
   flags: Record<string, string>;

@@ -1,6 +1,5 @@
 import type { Tool } from "@modelcontextprotocol/sdk/types.js";
-import { sessionToolDefinitions } from "../session.js";
-import { authToolDefinitions } from "../auth.js";
+import { sessionToolDefinitions, authToolDefinitions } from "../modules/index.js";
 import { systemStatusTool } from "../common/index.js";
 
 export const publicAiTools: Tool[] = [

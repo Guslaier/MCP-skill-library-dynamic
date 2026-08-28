@@ -4,10 +4,23 @@ import path from "node:path";
 import os from "node:os";
 import { execSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { serviceStart, serviceStop, serviceList, type ServiceRecord } from "./service.js";
-import { oauthGenerateKey, oauthValidateKey, oauthListKeys, oauthRegenKey, oauthDeleteKey } from "./auth.js";
-import { sessionCreate, sessionGet, sessionList, sessionDelete } from "./session.js";
-import { resolveDataDir, readJsonFile } from "./storage.js";
+import {
+  serviceStart,
+  serviceStop,
+  serviceList,
+  type ServiceRecord,
+  oauthGenerateKey,
+  oauthValidateKey,
+  oauthListKeys,
+  oauthRegenKey,
+  oauthDeleteKey,
+  sessionCreate,
+  sessionGet,
+  sessionList,
+  sessionDelete,
+  resolveDataDir,
+  readJsonFile,
+} from "../modules/index.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -78,7 +91,7 @@ async function renderHeaderWidget() {
       }
     }
 
-    const skillsDir = path.resolve(__dirname, "..", ".agents", "skills");
+    const skillsDir = path.resolve(__dirname, "..", "..", ".agents", "skills");
     const entries = await fs.readdir(skillsDir, { withFileTypes: true });
     skillCount = entries.filter((e) => e.isDirectory()).length;
   } catch {
@@ -144,7 +157,6 @@ async function selectInteractiveMenu(
   await drawMenu();
 
   return new Promise<string>((resolve) => {
-    // Hide cursor during arrow menu
     process.stdout.write("\x1b[?25l");
     process.stdin.setRawMode(true);
     process.stdin.resume();
@@ -152,34 +164,29 @@ async function selectInteractiveMenu(
     function onData(data: Buffer) {
       const input = data.toString();
 
-      // Ctrl+C
       if (input === "\u0003") {
         cleanup();
         process.exit(0);
       }
 
-      // Arrow Up (\x1b[A or \x1bOA)
       if (input === "\x1b[A" || input === "\x1bOA" || input === "k" || input === "K") {
         selectedIndex = (selectedIndex - 1 + items.length) % items.length;
         drawMenu();
         return;
       }
 
-      // Arrow Down (\x1b[B or \x1bOB)
       if (input === "\x1b[B" || input === "\x1bOB" || input === "j" || input === "J") {
         selectedIndex = (selectedIndex + 1) % items.length;
         drawMenu();
         return;
       }
 
-      // Enter key
       if (input === "\r" || input === "\n" || input === " ") {
         cleanup();
         resolve(items[selectedIndex].key);
         return;
       }
 
-      // Direct Shortcut key match (e.g. '1', '2', 'P', '0')
       const matched = items.find(
         (it) => it.key.toLowerCase() === input.trim().toLowerCase()
       );
@@ -195,7 +202,6 @@ async function selectInteractiveMenu(
       if (process.stdin.isTTY) {
         process.stdin.setRawMode(false);
       }
-      // Restore cursor
       process.stdout.write("\x1b[?25h");
     }
 
@@ -687,7 +693,7 @@ async function handleSkills() {
 
   const choice = await selectInteractiveMenu("🧠 SKILL LIBRARY EXPLORER", items, renderHeaderWidget);
 
-  const skillsDir = path.resolve(__dirname, "..", ".agents", "skills");
+  const skillsDir = path.resolve(__dirname, "..", "..", ".agents", "skills");
   if (choice === "1" || choice === "2") {
     const query = choice === "2" ? await promptText("Enter search keyword: ") : "";
     try {

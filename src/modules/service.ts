@@ -76,7 +76,6 @@ export async function serviceStart(args: unknown) {
 
   const now = new Date().toISOString();
   let serviceId = existing?.id;
-  // If id is missing or old UUID format, convert to sequential run-number
   if (!serviceId || serviceId.length > 10) {
     serviceId = generateNextServiceId(services);
   }

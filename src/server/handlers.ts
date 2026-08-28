@@ -15,20 +15,16 @@ import {
   serviceStart,
   serviceStop,
   serviceList,
-} from "../service.js";
-import {
   oauthGenerateKey,
   oauthValidateKey,
   oauthListKeys,
   oauthRegenKey,
   oauthDeleteKey,
-} from "../auth.js";
-import {
   sessionCreate,
   sessionGet,
   sessionList,
   sessionDelete,
-} from "../session.js";
+} from "../modules/index.js";
 
 /**
  * Handle incoming MCP tool call execution with role-based permission checks.

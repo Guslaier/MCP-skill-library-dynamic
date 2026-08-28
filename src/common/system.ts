@@ -1,7 +1,7 @@
 import os from "node:os";
 import path from "node:path";
 import type { Tool } from "@modelcontextprotocol/sdk/types.js";
-import { resolveDataDir, readJsonFile } from "../storage.js";
+import { resolveDataDir, readJsonFile } from "../modules/index.js";
 
 /**
  * Get network IP info (LAN/Tailscale/Localhost) and recent activity logs from the MCP dashboard.
