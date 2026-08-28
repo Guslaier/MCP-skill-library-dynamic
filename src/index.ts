@@ -2,9 +2,8 @@ import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
-import { timingSafeEqual, randomUUID } from "node:crypto";
+import { randomUUID } from "node:crypto";
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
-import os from "node:os";
 import {
   CallToolRequestSchema,
   ListToolsRequestSchema,
@@ -12,15 +11,12 @@ import {
   ErrorCode,
   Tool,
 } from "@modelcontextprotocol/sdk/types.js";
-import fs from "fs";
-import { promises as fsPromises } from "fs";
+import fs, { promises as fsPromises } from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
 import {
   serviceStart,
   serviceStop,
   serviceList,
-  serviceToolDefinitions,
 } from "./service.js";
 import {
   oauthGenerateKey,
@@ -37,112 +33,21 @@ import {
   sessionDelete,
   sessionToolDefinitions,
 } from "./session.js";
-import { resolveDataDir, readJsonFile } from "./storage.js";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// ── Configuration & Robust Path Resolution ────────────────────
-function resolveSkillsDirs(): string[] {
-  const candidates: string[] = [];
-
-  if (process.env.SKILLS_DIR) {
-    candidates.push(path.resolve(process.env.SKILLS_DIR));
-  }
-
-  // Standard locations (workspace & global)
-  candidates.push(
-    path.resolve(process.cwd(), ".agents", "skills"),
-    path.resolve(process.cwd(), ".ggggagents", "skills"),
-    path.resolve(process.cwd(), "skills"),
-    path.resolve(__dirname, "..", ".agents", "skills"),
-    path.resolve(__dirname, "..", ".ggggagents", "skills"),
-    path.resolve(__dirname, "..", "skills"),
-    path.resolve(__dirname, "..", "..", ".agents", "skills"),
-    path.resolve(__dirname, "..", "..", ".ggggagents", "skills"),
-    path.resolve(__dirname, "..", "..", "skills"),
-    path.join(os.homedir(), ".gemini", "config", "skills"),
-    path.join(os.homedir(), ".agents", "skills")
-  );
-
-  const existingDirs = candidates.filter((dir, idx, self) => {
-    return self.indexOf(dir) === idx && fs.existsSync(dir);
-  });
-
-  return existingDirs.length > 0 ? existingDirs : [path.resolve(process.cwd(), "skills")];
-}
-
-const SKILLS_DIRS = resolveSkillsDirs();
-
-// Ensure at least primary skills dir exists
-if (!fs.existsSync(SKILLS_DIRS[0])) {
-  try {
-    fs.mkdirSync(SKILLS_DIRS[0], { recursive: true });
-  } catch (err) {
-    console.error(`[ERROR] Failed to create primary SKILLS_DIR at: ${SKILLS_DIRS[0]}`);
-  }
-}
-
-// ── Bearer Token Auth ──────────────────────────────────────────
-function resolveFallbackToken(): string | null {
-  if (process.env.SKILL_LIBRARY_API_TOKEN) {
-    return process.env.SKILL_LIBRARY_API_TOKEN;
-  }
-  const tokenFile = path.resolve(process.cwd(), ".mcp-token");
-  if (fs.existsSync(tokenFile)) {
-    return fs.readFileSync(tokenFile, "utf-8").trim();
-  }
-  const settingFile = path.resolve(process.cwd(), "setting_mcp.json");
-  if (fs.existsSync(settingFile)) {
-    try {
-      const config = JSON.parse(fs.readFileSync(settingFile, "utf-8"));
-      return (
-        config?.token ??
-        config?.mcpServers?.["skill-library-mcp"]?.env?.SKILL_LIBRARY_API_TOKEN ??
-        null
-      );
-    } catch {
-      // ignore
-    }
-  }
-  return null;
-}
-
-/**
- * Validates incoming Bearer token dynamically against:
- * 1. .data/oauth-keys.json (Checks role: 'admin' vs 'standard')
- * 2. Fallback static token (Always granted 'admin' role)
- */
-async function validateBearerTokenAsync(
-  req: IncomingMessage,
-  fallbackToken?: string | null
-): Promise<{ valid: boolean; role: "admin" | "standard" }> {
-  const authHeader = req.headers.authorization ?? "";
-  if (!authHeader.startsWith("Bearer ")) return { valid: false, role: "standard" };
-  const provided = authHeader.slice(7).trim();
-  if (!provided) return { valid: false, role: "standard" };
-
-  // 1. Check against dynamic OAuth Keys in .data/oauth-keys.json
-  try {
-    const res = await oauthValidateKey({ key: provided });
-    if (res.valid) {
-      return { valid: true, role: res.role };
-    }
-  } catch {
-    // ignore
-  }
-
-  // 2. Check against fallback master token (Full Admin)
-  if (fallbackToken) {
-    const a = Buffer.from(provided);
-    const b = Buffer.from(fallbackToken);
-    if (a.length === b.length && timingSafeEqual(a, b)) {
-      return { valid: true, role: "admin" };
-    }
-  }
-
-  return { valid: false, role: "standard" };
-}
+import {
+  SKILLS_DIRS,
+  getMarkdownFiles,
+  getValidSkillsList,
+  findSkillDirectory,
+  findSkillsHelper,
+  getSkillInfoHelper,
+  installSkillHelper,
+  uninstallSkillHelper,
+  resolveFallbackToken,
+  validateBearerTokenAsync,
+  getSystemStatusData,
+  systemStatusTool,
+  determineExecutionMode,
+} from "./common/index.js";
 
 // ── Global Error Handlers ─────────────────────────────────────
 process.on("uncaughtException", (err: Error) => {
@@ -152,394 +57,6 @@ process.on("uncaughtException", (err: Error) => {
 process.on("unhandledRejection", (reason: unknown) => {
   console.error("[FATAL] Unhandled Rejection:", reason);
 });
-
-// ── Helper: Recursive Markdown File Finder ────────────────────
-async function getMarkdownFiles(dir: string): Promise<string[]> {
-  const mdFiles: string[] = [];
-  async function scan(currentDir: string) {
-    const entries = await fsPromises.readdir(currentDir, { withFileTypes: true });
-    for (const entry of entries) {
-      const fullPath = path.join(currentDir, entry.name);
-      if (entry.isDirectory()) {
-        await scan(fullPath);
-      } else if (entry.isFile() && entry.name.toLowerCase().endsWith(".md")) {
-        mdFiles.push(fullPath);
-      }
-    }
-  }
-  await scan(dir);
-  return mdFiles;
-}
-
-// ── Helper: Network & System Status ───────────────────────────
-async function getSystemStatusData() {
-  const dataDir = resolveDataDir();
-  const hostname = os.hostname();
-  const nets = os.networkInterfaces();
-  const outboundIPs: { name: string; ip: string }[] = [];
-  for (const name of Object.keys(nets)) {
-    for (const net of nets[name] || []) {
-      if (net.family === "IPv4" && !net.internal) {
-        outboundIPs.push({ name, ip: net.address });
-      }
-    }
-  }
-
-  interface ActivityLog {
-    time: string;
-    type: "SERVICE" | "OAUTH" | "SESSION";
-    message: string;
-  }
-  const activityLogs: ActivityLog[] = [];
-
-  try {
-    const services = await readJsonFile<Record<string, any>>(path.join(dataDir, "services.json"), {});
-    const sessions = await readJsonFile<Record<string, any>>(path.join(dataDir, "sessions.json"), {});
-    const oauthKeys = await readJsonFile<Record<string, any>>(path.join(dataDir, "oauth-keys.json"), {});
-
-    for (const [sname, s] of Object.entries(services)) {
-      if (s.startedAt) activityLogs.push({ time: s.startedAt, type: "SERVICE", message: `Service "${sname}" started ${s.port ? `on port ${s.port}` : ""}` });
-      if (s.stoppedAt) activityLogs.push({ time: s.stoppedAt, type: "SERVICE", message: `Service "${sname}" stopped` });
-    }
-    for (const [sname, s] of Object.entries(sessions)) {
-      if (s.updatedAt || s.createdAt) activityLogs.push({ time: s.updatedAt || s.createdAt, type: "SESSION", message: `Session "${sname}" updated/saved` });
-    }
-    for (const [kid, k] of Object.entries(oauthKeys)) {
-      if (k.lastUsedAt) activityLogs.push({ time: k.lastUsedAt, type: "OAUTH", message: `Key "${k.label || kid.slice(0, 8)}" validated successfully` });
-      if (k.createdAt) activityLogs.push({ time: k.createdAt, type: "OAUTH", message: `Key "${k.label || kid.slice(0, 8)}" generated` });
-    }
-  } catch {}
-
-  activityLogs.sort((a, b) => new Date(b.time).getTime() - new Date(a.time).getTime());
-
-  return {
-    hostname,
-    localIp: "127.0.0.1",
-    networkInterfaces: outboundIPs,
-    recentLogs: activityLogs.slice(0, 10),
-  };
-}
-
-// ── Cache State ────────────────────────────────────────────────
-let cachedSkillsList: string[] | null = null;
-let skillsCacheTimestamp = 0;
-const CACHE_TTL_MS = 60 * 1000;
-
-async function getValidSkillsList(): Promise<string[]> {
-  const now = Date.now();
-  if (cachedSkillsList && now - skillsCacheTimestamp < CACHE_TTL_MS) {
-    return cachedSkillsList;
-  }
-
-  const validSkillsSet = new Set<string>();
-
-  for (const dir of SKILLS_DIRS) {
-    try {
-      const dirents = await fsPromises.readdir(dir, { withFileTypes: true });
-      for (const dirent of dirents) {
-        if (dirent.isDirectory()) {
-          const fullPath = path.join(dir, dirent.name);
-          try {
-            const mdFiles = await getMarkdownFiles(fullPath);
-            if (mdFiles.length > 0) {
-              validSkillsSet.add(dirent.name);
-            }
-          } catch {
-            // Skip unreadable directories
-          }
-        }
-      }
-    } catch {
-      // Skip unreadable directories
-    }
-  }
-
-  const validSkills = Array.from(validSkillsSet).sort();
-  cachedSkillsList = validSkills;
-  skillsCacheTimestamp = Date.now();
-  return validSkills;
-}
-
-async function findSkillDirectory(skillName: string): Promise<string | null> {
-  const cleanName = skillName.trim();
-  for (const baseDir of SKILLS_DIRS) {
-    const targetDir = path.resolve(baseDir, cleanName);
-    if (fs.existsSync(targetDir)) {
-      return targetDir;
-    }
-  }
-  return null;
-}
-
-// ── Skills Catalog & Management Helpers ───────────────────────
-interface CatalogSkill {
-  name: string;
-  githubUrl?: string;
-  description?: string;
-  category?: string;
-}
-
-let cachedCatalog: CatalogSkill[] | null = null;
-
-async function getSkillsCatalog(): Promise<CatalogSkill[]> {
-  if (cachedCatalog) return cachedCatalog;
-  const candidates = [
-    path.resolve(process.cwd(), "skills-base.json"),
-    path.resolve(__dirname, "..", "skills-base.json"),
-    path.resolve(__dirname, "..", "..", "skills-base.json"),
-  ];
-  for (const p of candidates) {
-    if (fs.existsSync(p)) {
-      try {
-        const raw = await fsPromises.readFile(p, "utf-8");
-        cachedCatalog = JSON.parse(raw) as CatalogSkill[];
-        return cachedCatalog;
-      } catch {}
-    }
-  }
-  return [];
-}
-
-async function findSkillsHelper(params: {
-  query?: string;
-  category?: string;
-  installed_only?: boolean;
-}) {
-  const query = params.query?.trim().toLowerCase() || "";
-  const categoryFilter = params.category?.trim().toLowerCase() || "";
-  const installedOnly = !!params.installed_only;
-
-  const installedSkills = await getValidSkillsList();
-  const installedSet = new Set(installedSkills.map((s) => s.toLowerCase()));
-
-  const catalog = await getSkillsCatalog();
-  const catalogMap = new Map<string, CatalogSkill>();
-  for (const item of catalog) {
-    catalogMap.set(item.name.toLowerCase(), item);
-  }
-
-  const allNames = new Set<string>([...installedSkills, ...catalog.map((s) => s.name)]);
-  const results: Array<{
-    name: string;
-    description: string;
-    category: string;
-    is_installed: boolean;
-    source: string;
-    is_default?: boolean;
-  }> = [];
-
-  for (const name of allNames) {
-    const isInstalled = installedSet.has(name.toLowerCase());
-    if (installedOnly && !isInstalled) continue;
-
-    const catItem = catalogMap.get(name.toLowerCase());
-    const desc = catItem?.description || (isInstalled ? "Locally installed skill" : "");
-    const cat = catItem?.category || "general";
-    const src = catItem?.githubUrl || (isInstalled ? "local" : "");
-
-    if (categoryFilter && !cat.toLowerCase().includes(categoryFilter)) {
-      continue;
-    }
-
-    if (query) {
-      const matchName = name.toLowerCase().includes(query);
-      const matchDesc = desc.toLowerCase().includes(query);
-      const matchCat = cat.toLowerCase().includes(query);
-      if (!matchName && !matchDesc && !matchCat) {
-        continue;
-      }
-    }
-
-    results.push({
-      name,
-      description: desc || "Skill guideline and best practice rules.",
-      category: cat,
-      is_installed: isInstalled,
-      source: src,
-      is_default: name === "find-skills",
-    });
-  }
-
-  // Sort: default skill first, then installed skills, then alphabetically
-  results.sort((a, b) => {
-    if (a.name === "find-skills") return -1;
-    if (b.name === "find-skills") return 1;
-    if (a.is_installed !== b.is_installed) return a.is_installed ? -1 : 1;
-    return a.name.localeCompare(b.name);
-  });
-
-  return {
-    default_skill: "find-skills",
-    count: results.length,
-    skills: results.slice(0, 60),
-    total_matches: results.length,
-  };
-}
-
-async function getSkillInfoHelper(skillName: string) {
-  const cleanName = skillName.trim();
-  const targetDir = await findSkillDirectory(cleanName);
-  const isInstalled = !!targetDir;
-  let files: string[] = [];
-  let description = "";
-  let category = "";
-  let source = "";
-
-  const catalog = await getSkillsCatalog();
-  const catalogEntry = catalog.find((s) => s.name.toLowerCase() === cleanName.toLowerCase());
-  if (catalogEntry) {
-    description = catalogEntry.description || "";
-    category = catalogEntry.category || "";
-    source = catalogEntry.githubUrl || "";
-  }
-
-  if (targetDir) {
-    const mdFiles = await getMarkdownFiles(targetDir);
-    files = mdFiles.map((f) => path.relative(targetDir, f));
-    if (!description && mdFiles.length > 0) {
-      try {
-        const text = await fsPromises.readFile(mdFiles[0], "utf-8");
-        const match = text.match(/description:\s*(.+)/i);
-        if (match) description = match[1].trim();
-      } catch {}
-    }
-  }
-
-  return {
-    name: cleanName,
-    is_default: cleanName === "find-skills",
-    is_installed: isInstalled,
-    path: targetDir || null,
-    files,
-    description: description || "No description available.",
-    category: category || "general",
-    source: source || (isInstalled ? "local" : "unknown"),
-  };
-}
-
-async function installSkillHelper(params: {
-  skill_name: string;
-  source?: string;
-  content?: string;
-  category?: string;
-  description?: string;
-}): Promise<{ success: boolean; message: string; path: string; skill_name: string }> {
-  const cleanName = params.skill_name.trim().toLowerCase().replace(/[^a-z0-9_-]/g, "-");
-  if (!cleanName) throw new Error("Invalid skill_name provided");
-
-  const primaryDir = SKILLS_DIRS[0] || path.resolve(process.cwd(), ".agents", "skills");
-  const targetDir = path.join(primaryDir, cleanName);
-  await fsPromises.mkdir(targetDir, { recursive: true });
-
-  const skillMdPath = path.join(targetDir, "SKILL.md");
-
-  // 1. If explicit markdown content is provided
-  if (params.content && params.content.trim()) {
-    let mdContent = params.content.trim();
-    if (!mdContent.startsWith("---")) {
-      const header = `---\nname: ${cleanName}\ndescription: ${params.description || cleanName}\n---\n\n`;
-      mdContent = header + mdContent;
-    }
-    await fsPromises.writeFile(skillMdPath, mdContent, "utf-8");
-    cachedSkillsList = null;
-    return { success: true, message: `Skill '${cleanName}' created successfully from provided content.`, path: skillMdPath, skill_name: cleanName };
-  }
-
-  // 2. If source URL is provided or find in catalog
-  let sourceUrl = params.source?.trim();
-  if (!sourceUrl) {
-    const catalog = await getSkillsCatalog();
-    const entry = catalog.find((s) => s.name.toLowerCase() === cleanName);
-    if (entry && entry.githubUrl) {
-      sourceUrl = entry.githubUrl;
-    }
-  }
-
-  if (sourceUrl) {
-    if (sourceUrl.startsWith("http://") || sourceUrl.startsWith("https://")) {
-      if (sourceUrl.endsWith(".md")) {
-        const res = await fetch(sourceUrl);
-        if (res.ok) {
-          const text = await res.text();
-          await fsPromises.writeFile(skillMdPath, text, "utf-8");
-          cachedSkillsList = null;
-          return { success: true, message: `Skill '${cleanName}' downloaded from ${sourceUrl}.`, path: skillMdPath, skill_name: cleanName };
-        }
-      }
-
-      const rawCandidates = [
-        sourceUrl.replace("github.com", "raw.githubusercontent.com") + "/main/SKILL.md",
-        sourceUrl.replace("github.com", "raw.githubusercontent.com") + `/main/skills/${cleanName}/SKILL.md`,
-        sourceUrl.replace("github.com", "raw.githubusercontent.com") + `/main/.agents/skills/${cleanName}/SKILL.md`,
-        sourceUrl.replace("github.com", "raw.githubusercontent.com") + `/main/.github/skills/${cleanName}/SKILL.md`,
-        sourceUrl.replace("github.com", "raw.githubusercontent.com") + "/master/SKILL.md",
-        sourceUrl.replace("github.com", "raw.githubusercontent.com") + `/master/skills/${cleanName}/SKILL.md`,
-      ];
-
-      for (const rawUrl of rawCandidates) {
-        try {
-          const res = await fetch(rawUrl);
-          if (res.ok) {
-            const text = await res.text();
-            if (text && !text.includes("<!DOCTYPE html>") && text.length > 20) {
-              await fsPromises.writeFile(skillMdPath, text, "utf-8");
-              cachedSkillsList = null;
-              return { success: true, message: `Skill '${cleanName}' installed successfully from ${rawUrl}.`, path: skillMdPath, skill_name: cleanName };
-            }
-          }
-        } catch {}
-      }
-    }
-  }
-
-  // Fallback: create structured template
-  const defaultTemplate = `---\nname: ${cleanName}\ndescription: ${params.description || `Rule and guidelines for ${cleanName}`}\n---\n\n# ${cleanName}\n\nGuidelines and best practices for ${cleanName}.\n`;
-  await fsPromises.writeFile(skillMdPath, defaultTemplate, "utf-8");
-  cachedSkillsList = null;
-  return { success: true, message: `Skill '${cleanName}' initialized with default template.`, path: skillMdPath, skill_name: cleanName };
-}
-
-async function uninstallSkillHelper(skillName: string): Promise<{ success: boolean; message: string }> {
-  const cleanName = skillName.trim();
-  let deleted = false;
-  for (const baseDir of SKILLS_DIRS) {
-    const targetDir = path.join(baseDir, cleanName);
-    if (fs.existsSync(targetDir)) {
-      try {
-        await fsPromises.rm(targetDir, { recursive: true, force: true });
-        deleted = true;
-      } catch (err: any) {
-        console.error(`Failed to remove ${targetDir}:`, err);
-      }
-    }
-  }
-  cachedSkillsList = null;
-  if (!deleted) {
-    return { success: false, message: `Skill '${cleanName}' not found in any skill directories.` };
-  }
-  return { success: true, message: `Skill '${cleanName}' uninstalled successfully.` };
-}
-
-const systemStatusTool: Tool = {
-  name: "system_status",
-  description: "Get network IP info (LAN/Tailscale/Localhost) and recent activity logs from the MCP dashboard.",
-  inputSchema: { type: "object", properties: {} },
-  outputSchema: {
-    type: "object",
-    properties: {
-      hostname: { type: "string" },
-      localIp: { type: "string" },
-      networkInterfaces: { type: "array", items: { type: "object" } },
-      recentLogs: { type: "array", items: { type: "object" } },
-    },
-  },
-  annotations: {
-    readOnlyHint: true,
-    destructiveHint: false,
-    idempotentHint: true,
-    openWorldHint: false,
-  },
-};
 
 function createMcpServerInstance(role: "admin" | "standard" = "standard"): Server {
   const srv = new Server(
@@ -793,7 +310,7 @@ function createMcpServerInstance(role: "admin" | "standard" = "standard"): Serve
     },
   ];
 
-  // RBAC: Standard AI tokens see ONLY 2 skills tools. Admin tokens see All 13 tools.
+  // RBAC: Standard AI tokens see ONLY skill tools. Admin tokens see All tools.
   const activeTools = role === "admin" ? [...publicAiTools, ...adminOnlyTools] : publicAiTools;
 
   srv.setRequestHandler(ListToolsRequestSchema, async () => {
@@ -1088,40 +605,6 @@ function createMcpServerInstance(role: "admin" | "standard" = "standard"): Serve
 }
 
 // ── Run ────────────────────────────────────────────────────────
-function determineExecutionMode(): { isHttpMode: boolean; port: number } {
-  const argv = process.argv.slice(2);
-  const hasHttpFlag = argv.includes("--http") || argv.includes("--server") || argv.includes("--sse") || argv.includes("-s");
-  const hasStdioFlag = argv.includes("--stdio") || argv.includes("-i");
-
-  // Check port flag --port 8787 or --port=8787
-  let portFromArg: number | undefined;
-  for (let i = 0; i < argv.length; i++) {
-    if (argv[i] === "--port" && argv[i + 1]) {
-      const p = parseInt(argv[i + 1], 10);
-      if (!isNaN(p)) portFromArg = p;
-    } else if (argv[i].startsWith("--port=")) {
-      const p = parseInt(argv[i].split("=")[1], 10);
-      if (!isNaN(p)) portFromArg = p;
-    }
-  }
-
-  const transportEnv = (process.env.MCP_TRANSPORT || process.env.MCP_MODE || "").toLowerCase();
-
-  // If stdio flag or env is explicitly requested -> Stdio
-  if (hasStdioFlag || transportEnv === "stdio") {
-    return { isHttpMode: false, port: 8787 };
-  }
-
-  // If HTTP flag or env is requested -> HTTP mode
-  if (hasHttpFlag || transportEnv === "http" || transportEnv === "server" || transportEnv === "sse" || portFromArg !== undefined) {
-    const port = portFromArg ?? parseInt(process.env.PORT ?? "8787", 10);
-    return { isHttpMode: true, port: isNaN(port) ? 8787 : port };
-  }
-
-  // Default: STDIO mode (Standard for AI coding tools like Claude Desktop, Antigravity, Roo Code)
-  return { isHttpMode: false, port: 8787 };
-}
-
 async function run() {
   const fallbackToken = resolveFallbackToken();
   const { isHttpMode, port } = determineExecutionMode();
