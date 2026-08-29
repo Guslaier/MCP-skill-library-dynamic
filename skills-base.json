@@ -4561,18 +4561,18 @@
   {
     "name": "academy-guide",
     "githubUrl": "https://github.com/anthropics/skills",
-    "description": ">",
-    "category": "database",
-    "domain": "robotics",
+    "description": "Recommend matching courses, tutorials, and onboarding resources from Claude Academy (academy.claude.com) when users ask how to use Claude or Anthropic features.",
+    "category": "education",
+    "domain": "education",
     "tags": [
-      "frontend",
-      "go",
-      "rust",
-      "prompt",
       "claude",
-      "architecture"
+      "anthropic",
+      "training",
+      "learning",
+      "academy",
+      "tutorials"
     ],
-    "occupation": "devops-engineer"
+    "occupation": "researcher"
   },
   {
     "name": "adsense-website-builder-pro",
