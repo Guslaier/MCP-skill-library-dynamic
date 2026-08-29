@@ -91,18 +91,18 @@
   {
     "name": "agent-reach",
     "githubUrl": "https://github.com/panniantong/agent-reach",
-    "description": "Engineering guidelines, patterns, and best practices for agent reach.",
+    "description": "Professional candidate outreach and talent sourcing via LinkedIn profiles, search queries, and mcporter connectors.",
     "category": "productivity",
-    "occupation": "fullstack-developer",
+    "occupation": "operations-manager",
     "tags": [
-      "ai-ml",
-      "security",
-      "content",
-      "video",
-      "openai",
-      "mcp"
+      "recruiting",
+      "linkedin",
+      "talent-search",
+      "sourcing",
+      "outreach",
+      "mcporter"
     ],
-    "domain": "software"
+    "domain": "business"
   },
   {
     "name": "agent-self-evaluation",
@@ -155,17 +155,17 @@
   {
     "name": "agent-transcript",
     "githubUrl": "https://github.com/openclaw/openclaw",
-    "description": "Add a redacted agent transcript section to GitHub PR or issue bodies during OpenClaw agent-created PR/issue workflows.\" --- # Agent Transcript Best-effort lo...",
-    "category": "frontend-ui",
+    "description": "Add redacted agent provenance and execution transcripts to GitHub PRs and issue descriptions during automated agent workflows.",
+    "category": "devops-cloud",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "devops-engineer",
     "tags": [
-      "frontend",
-      "go",
-      "ai-ml",
-      "prompt",
-      "claude",
-      "transcript"
+      "agent",
+      "provenance",
+      "transcript",
+      "github-pr",
+      "openclaw",
+      "audit"
     ]
   },
   {
@@ -297,15 +297,18 @@
   {
     "name": "cinematic-prompt",
     "githubUrl": "https://github.com/lingyichen-ai/image-prompts",
-    "description": "根据故事类型确定视觉基调，遵循以下原则：",
-    "category": "frontend-ui",
-    "occupation": "frontend-developer",
+    "description": "Generate cinematic AI video prompts, shot-by-shot storyboards, visual tone design, lighting, and camera direction for Seedance and Midjourney.",
+    "category": "ai-ml",
+    "occupation": "content-creator",
     "tags": [
-      "prompt",
-      "architecture",
-      "cinematic"
+      "cinematic",
+      "video-prompt",
+      "storyboard",
+      "camera-angles",
+      "seedance",
+      "midjourney"
     ],
-    "domain": "software"
+    "domain": "media"
   },
   {
     "name": "claude-android-ninja",
@@ -514,31 +517,29 @@
   {
     "name": "discord-clawd",
     "githubUrl": "https://github.com/openclaw/openclaw",
-    "description": "Use to talk to the Discord-backed OpenClaw agent/session; not for archive search. --- # Discord Clawd Use this when the task is to talk with the Discord-back...",
-    "category": "productivity",
+    "description": "Interactive communication and command bridge to talk directly with Discord-backed OpenClaw agents and sessions.",
+    "category": "architecture-workflow",
     "domain": "software",
     "occupation": "fullstack-developer",
     "tags": [
-      "python",
-      "ai-ml",
-      "content",
-      "security",
       "discord",
-      "clawd"
+      "openclaw",
+      "agent-chat",
+      "session-bridge",
+      "bot"
     ]
   },
   {
     "name": "dispatching-parallel-agents",
     "githubUrl": "https://github.com/obra/superpowers",
-    "description": "Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies --- # Dispatching Parallel Agents ## Overview You...",
-    "category": "frontend-ui",
-    "occupation": "frontend-developer",
+    "description": "Orchestrate and dispatch multiple parallel subagents to execute independent, non-blocking tasks without shared state.",
+    "category": "architecture-workflow",
+    "occupation": "fullstack-developer",
     "tags": [
-      "frontend",
-      "go",
-      "ai-ml",
-      "prompt",
-      "review",
+      "parallel-agents",
+      "subagents",
+      "orchestration",
+      "concurrency",
       "dispatching"
     ],
     "domain": "software"
@@ -562,16 +563,15 @@
   {
     "name": "everything-claude-code",
     "githubUrl": "https://github.com/affaan-m/ecc",
-    "description": "Development conventions and patterns for everything-claude-code. JavaScript project with conventional commits. --- # Everything Claude Code Conventions > Gen...",
-    "category": "frontend-ui",
-    "occupation": "frontend-developer",
+    "description": "Development conventions, conventional commits, project structure, and workflow patterns for Everything Claude Code projects.",
+    "category": "architecture-workflow",
+    "occupation": "fullstack-developer",
     "tags": [
-      "frontend",
-      "typescript",
-      "javascript",
-      "rust",
-      "c",
-      "nextjs"
+      "claude-code",
+      "conventions",
+      "git-commit",
+      "architecture",
+      "best-practices"
     ],
     "domain": "software"
   },
@@ -908,34 +908,33 @@
   {
     "name": "model-usage",
     "githubUrl": "https://github.com/openclaw/openclaw",
-    "description": "- macOS and Linux Homebrew formula: `brew install steipete/tap/codexbar",
-    "category": "frontend-ui",
-    "occupation": "frontend-developer",
+    "description": "Inspect and track Codex and Claude token usage, latency, and costs by model using the CodexBar CLI.",
+    "category": "productivity",
+    "occupation": "devops-engineer",
     "tags": [
-      "frontend",
-      "python",
+      "codexbar",
+      "token-usage",
+      "cost-tracking",
+      "metrics",
       "claude",
-      "mcp",
-      "model",
-      "usage"
+      "codex"
     ],
     "domain": "software"
   },
   {
     "name": "novel-claude-ai",
     "githubUrl": "https://github.com/leenbj/novel-creator-skill",
-    "description": "<!-- NOVEL_FLOW_STUB -->",
-    "category": "frontend-ui",
-    "occupation": "frontend-developer",
+    "description": "End-to-end long-form novel and webfiction creation pipeline: outlining, world-building, character tracking, chapter writing, and quality gates.",
+    "category": "productivity",
+    "occupation": "content-creator",
     "tags": [
-      "frontend",
-      "python",
-      "prompt",
-      "ai-ml",
-      "claude",
-      "novel"
+      "novel",
+      "story-writing",
+      "creative-writing",
+      "worldbuilding",
+      "fiction"
     ],
-    "domain": "software"
+    "domain": "media"
   },
   {
     "name": "openai-whisper",
@@ -971,18 +970,17 @@
   {
     "name": "ppt-agent",
     "githubUrl": "https://github.com/sunbigfly/ppt-agent-skills",
-    "description": "<div align=\"center\">",
-    "category": "frontend-ui",
-    "occupation": "frontend-developer",
+    "description": "Automated presentation deck generation framework with software engineering principles for multi-slide slide decks.",
+    "category": "productivity",
+    "occupation": "content-creator",
     "tags": [
-      "frontend",
-      "python",
-      "prompt",
-      "ai-ml",
-      "claude",
-      "ppt"
+      "presentation",
+      "ppt",
+      "powerpoint",
+      "slides",
+      "deck-generation"
     ],
-    "domain": "software"
+    "domain": "media"
   },
   {
     "name": "prompt-lookup",
@@ -1003,17 +1001,16 @@
   {
     "name": "prompt-master",
     "githubUrl": "https://github.com/nidhinjs/prompt-master",
-    "description": "Engineering guidelines, patterns, and best practices for prompt master.",
-    "category": "frontend-ui",
+    "description": "Write, optimize, and refine precise prompts for any AI model with zero wasted tokens, full context retention, and strict output constraints.",
+    "category": "productivity",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "data-scientist",
     "tags": [
-      "vite",
-      "frontend",
-      "python",
-      "go",
-      "c",
-      "react"
+      "prompt-engineering",
+      "prompt-optimizer",
+      "llm-prompts",
+      "claude",
+      "gpt"
     ]
   },
   {
