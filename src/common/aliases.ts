@@ -20,16 +20,46 @@ export const CANONICAL_DOMAINS: Record<string, string[]> = {
 };
 
 export const CANONICAL_CATEGORIES: Record<string, string[]> = {
-  frontend: ["front-end", "ui", "ux", "web-frontend", "client-side", "react", "vue", "angular", "nextjs", "css", "html", "vite", "tailwind"],
-  backend: ["back-end", "server", "server-side", "api", "rest", "graphql", "microservices", "nestjs", "express", "django", "springboot", "fastapi"],
-  database: ["databases", "db", "sql", "rdbms", "nosql", "postgres", "postgresql", "mysql", "mongodb", "redis", "orm", "typeorm", "prisma"],
-  devops: ["dev-ops", "infra", "infrastructure", "ci-cd", "cicd", "cloud", "docker", "kubernetes", "k8s", "aws", "gcp", "azure", "terraform"],
-  "ai-ml": ["ai", "ml", "machine-learning", "deep-learning", "llm", "rag", "nlp", "prompts", "prompting", "agent", "agents", "langchain"],
-  testing: ["tests", "test", "qa", "quality-assurance", "e2e", "unit-testing", "playwright", "cypress", "jest", "vitest", "tdd"],
-  security: ["sec", "cybersecurity", "auth", "authentication", "pentest", "vulnerability", "audit"],
-  architecture: ["system-design", "patterns", "best-practices", "clean-code", "refactoring"],
-  mobile: ["app", "ios", "android", "swift", "swiftui", "kotlin", "flutter", "react-native"],
-  general: ["misc", "common", "generic"],
+  frontend: [
+    "front-end", "ui", "ux", "gui", "web-frontend", "client-side", "react", "recat", "raect", "vue", "angular", 
+    "nextjs", "css", "html", "vite", "tailwind", "หน้าเว็บ", "เว็บ", "ยูไอ"
+  ],
+  backend: [
+    "back-end", "server", "server-side", "api", "rest", "graphql", "microservices", "nestjs", "express", 
+    "django", "springboot", "fastapi", "หลังบ้าน", "เซิร์ฟเวอร์"
+  ],
+  database: [
+    "databases", "db", "sql", "rdbms", "nosql", "postgres", "postgresql", "mysql", "mongodb", "redis", 
+    "orm", "typeorm", "prisma", "ฐานข้อมูล"
+  ],
+  devops: [
+    "dev-ops", "infra", "infrastructure", "ci-cd", "cicd", "cloud", "docker", "kubernetes", "k8s", 
+    "aws", "gcp", "azure", "terraform"
+  ],
+  "ai-ml": [
+    "ai", "ml", "machine-learning", "deep-learning", "llm", "rag", "nlp", "prompts", "prompting", 
+    "agent", "agents", "langchain", "เอไอ"
+  ],
+  testing: [
+    "tests", "test", "qa", "quality-assurance", "e2e", "unit-testing", "playwright", "cypress", 
+    "jest", "vitest", "tdd", "เทส", "ทดสอบ", "เทสต์"
+  ],
+  debugging: [
+    "debug", "debugging", "troubleshoot", "troubleshooting", "fix", "fixing", "bug", "bugs", 
+    "diagnosing", "diagnose", "แกบัค", "แก้บัค", "แก้บั๊ก", "บัค", "บั๊ก", "แก้บัก"
+  ],
+  security: [
+    "sec", "cybersecurity", "auth", "authentication", "pentest", "vulnerability", "audit"
+  ],
+  architecture: [
+    "system-design", "patterns", "best-practices", "clean-code", "refactoring"
+  ],
+  mobile: [
+    "app", "ios", "android", "swift", "swiftui", "kotlin", "flutter", "react-native"
+  ],
+  general: [
+    "misc", "common", "generic"
+  ],
 };
 
 export const CANONICAL_OCCUPATIONS: Record<string, string[]> = {
@@ -53,15 +83,15 @@ export const STOPWORDS = new Set([
 ]);
 
 /**
- * Tokenizes text by hyphens, underscores, dots, and camelCase.
+ * Tokenizes text with Unicode (Thai + Latin + Numbers) support.
  */
 export function tokenizeText(text: string): string[] {
   if (!text) return [];
-  // Split camelCase and all non-alphanumeric delimiters
+  // Split camelCase and non-letter/digit delimiters while preserving Thai Unicode letters
   const separated = text
     .replace(/([a-z])([A-Z])/g, "$1 $2")
     .replace(/([A-Z]+)([A-Z][a-z])/g, "$1 $2")
-    .replace(/[^a-zA-Z0-9]+/g, " ");
+    .replace(/[^\p{L}\p{N}]+/gu, " ");
   return separated.toLowerCase().trim().split(/\s+/).filter(t => t.length > 0);
 }
 
