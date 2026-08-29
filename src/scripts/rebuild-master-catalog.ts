@@ -1,7 +1,7 @@
 import fs, { promises as fsPromises } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { findSkillDirectory } from "../common/paths.js";
+import { findSkillDirectory, getValidSkillsList } from "../common/paths.js";
 import { normalizeTag, normalizeCanonicalTerm } from "../common/aliases.js";
 import { syncTaxonomyCache } from "../common/taxonomy.js";
 
@@ -233,6 +233,29 @@ export async function rebuildMasterCatalog(): Promise<void> {
   const jsonPath = path.resolve(process.cwd(), "skills-base.json");
   const rawJson = await fsPromises.readFile(jsonPath, "utf-8");
   const skillsData: SkillEntry[] = JSON.parse(rawJson);
+  const existingMap = new Map<string, SkillEntry>();
+  for (const s of skillsData) {
+    existingMap.set(s.name.toLowerCase(), s);
+  }
+
+  // Discover all locally installed skills
+  const allInstalled = await getValidSkillsList();
+  console.log(`Discovered ${allInstalled.length} total local and catalog skills...`);
+
+  for (const name of allInstalled) {
+    if (!existingMap.has(name.toLowerCase())) {
+      const newEntry: SkillEntry = {
+        name,
+        description: "",
+        category: "productivity-tools",
+        domain: "software",
+        occupation: "fullstack-developer",
+        tags: []
+      };
+      skillsData.push(newEntry);
+      existingMap.set(name.toLowerCase(), newEntry);
+    }
+  }
 
   console.log(`Rebuilding master catalog for ${skillsData.length} skills...`);
 
