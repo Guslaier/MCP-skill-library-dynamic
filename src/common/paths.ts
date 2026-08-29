@@ -66,6 +66,26 @@ export async function getMarkdownFiles(dir: string): Promise<string[]> {
   return mdFiles;
 }
 
+/**
+ * Recursively find all files (scripts, templates, resources) in a directory.
+ */
+export async function getAllSkillFiles(dir: string): Promise<string[]> {
+  const files: string[] = [];
+  async function scan(currentDir: string) {
+    const entries = await fsPromises.readdir(currentDir, { withFileTypes: true });
+    for (const entry of entries) {
+      const fullPath = path.join(currentDir, entry.name);
+      if (entry.isDirectory()) {
+        await scan(fullPath);
+      } else if (entry.isFile()) {
+        files.push(fullPath);
+      }
+    }
+  }
+  await scan(dir);
+  return files;
+}
+
 // ── Cache State ────────────────────────────────────────────────
 let cachedSkillsList: string[] | null = null;
 let skillsCacheTimestamp = 0;
