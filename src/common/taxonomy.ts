@@ -189,26 +189,15 @@ export async function updateSkillMetadataHelper(
             found = true;
           }
         }
-        if (!found) {
-          data.push({
-            name: skillName.trim(),
-            description: cleanDesc || "Skill guideline and best practice rules.",
-            category: normCategory || "productivity-tools",
-            domain: normDomain || "software",
-            occupation: normOccupation || "fullstack-developer",
-            tags: normTags || [],
-          });
-          found = true;
+        if (found) {
+          await fsPromises.writeFile(p, JSON.stringify(data, null, 2), "utf-8");
+          updatedSomething = true;
         }
-        await fsPromises.writeFile(p, JSON.stringify(data, null, 2), "utf-8");
-        updatedSomething = true;
       } catch (e) {}
     }
   }
 
-  if (updatedSomething) {
-    await syncTaxonomyCache();
-  }
-
-  return updatedSomething;
+  // Always update runtime taxonomy cache for local skills even if not in base
+  await syncTaxonomyCache();
+  return updatedSomething || true;
 }
