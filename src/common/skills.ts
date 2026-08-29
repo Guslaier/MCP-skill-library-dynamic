@@ -88,12 +88,18 @@ async function getOrExtractLocalMetadata(skillName: string): Promise<{ category?
 
     const tagsMatch = content.match(/tags:\s*\[(.*?)\]/i);
     if (tagsMatch && tagsMatch[1]) {
-      meta.tags = tagsMatch[1].split(",").map(t => normalizeCanonicalTerm(t.trim())).filter(t => t);
+      meta.tags = tagsMatch[1].split(",").map(t => normalizeTag(t.trim())).filter(t => t);
     }
 
     const descMatch = content.match(/description:\s*(.+)/i);
     if (descMatch && descMatch[1]) {
-      meta.description = descMatch[1].trim();
+      meta.description = descMatch[1].replace(/^["']|["']$/g, "").trim();
+    } else {
+      // Fallback: use the first meaningful paragraph as description
+      const lines = content.split("\n").map(l => l.trim()).filter(l => l && !l.startsWith("#") && !l.startsWith("---") && !l.startsWith("title:") && !l.startsWith("category:"));
+      if (lines.length > 0) {
+        meta.description = lines[0].substring(0, 200);
+      }
     }
 
     localFrontmatterCache.set(lower, meta);
@@ -101,6 +107,23 @@ async function getOrExtractLocalMetadata(skillName: string): Promise<{ category?
   } catch {
     return null;
   }
+}
+
+async function getTaxonomyCache(): Promise<Record<string, { category?: string; domain?: string; occupation?: string; tags?: string[]; description?: string }>> {
+  try {
+    const candidates = [
+      path.resolve(process.cwd(), ".data", "taxonomy.json"),
+      path.resolve(__dirname, "..", ".data", "taxonomy.json"),
+      path.resolve(__dirname, "..", "..", ".data", "taxonomy.json"),
+    ];
+    for (const taxPath of candidates) {
+      if (fs.existsSync(taxPath)) {
+        const raw = await fsPromises.readFile(taxPath, "utf-8");
+        return JSON.parse(raw);
+      }
+    }
+  } catch {}
+  return {};
 }
 
 /**
@@ -129,29 +152,25 @@ export async function findSkillsHelper(params: {
   const installedSkills = await getValidSkillsList();
   const installedSet = new Set(installedSkills.map((s) => s.toLowerCase()));
 
+  // Dynamic live taxonomy cache
+  const taxonomyMap = await getTaxonomyCache();
   const catalog = await getSkillsCatalog();
   const catalogMap = new Map<string, CatalogSkill>();
   for (const item of catalog) {
     catalogMap.set(item.name.toLowerCase(), item);
   }
 
-  let taxonomyMap: Record<string, { category?: string; domain?: string; occupation?: string; tags?: string[]; description?: string }> = {};
-  try {
-    const candidates = [
-      path.resolve(process.cwd(), ".data", "taxonomy.json"),
-      path.resolve(__dirname, "..", ".data", "taxonomy.json"),
-      path.resolve(__dirname, "..", "..", ".data", "taxonomy.json"),
-    ];
-    for (const taxPath of candidates) {
-      if (fs.existsSync(taxPath)) {
-        const raw = await fsPromises.readFile(taxPath, "utf-8");
-        taxonomyMap = JSON.parse(raw);
-        break;
-      }
-    }
-  } catch {}
+  // Pre-expand query terms with synonyms and weights
+  const { primaryTerms, expandedSynonyms } = expandSearchQueryWithWeights(query);
 
-  const allNames = new Set<string>([...installedSkills, ...catalog.map((s) => s.name)]);
+  const allNames = new Set<string>();
+  for (const name of installedSkills) allNames.add(name);
+  for (const item of catalog) allNames.add(item.name);
+
+  // Pure taxonomy browse mode (no query, but has category/domain/occupation/tags)
+  const isBrowseMode = !query && (!!categoryFilter || !!domainFilter || !!occupationFilter || tagsFilter.length > 0);
+  const isSearchMode = !!query || tagsFilter.length > 0;
+
   const results: Array<{
     name: string;
     description: string;
@@ -172,9 +191,12 @@ export async function findSkillsHelper(params: {
     const catItem = catalogMap.get(name.toLowerCase());
     let taxItem: { category?: string; domain?: string; occupation?: string; tags?: string[]; description?: string } | undefined = taxonomyMap[name.toLowerCase()];
     
-    // Dynamic on-the-fly metadata fallback for local skills
-    if (!taxItem && isInstalled) {
-      taxItem = (await getOrExtractLocalMetadata(name)) || undefined;
+    // Dynamic on-the-fly metadata fallback for local skills if missing or lacking description
+    if ((!taxItem || !taxItem.description) && isInstalled) {
+      const localMeta = await getOrExtractLocalMetadata(name);
+      if (localMeta) {
+        taxItem = { ...taxItem, ...localMeta, description: localMeta.description || taxItem?.description };
+      }
     }
 
     const desc = catItem?.description || taxItem?.description || (isInstalled ? "Locally installed skill" : "");
@@ -189,8 +211,6 @@ export async function findSkillsHelper(params: {
                       cat.toLowerCase() === "general" || 
                       cat.toLowerCase() === "noninit" || 
                       cat.toLowerCase() === "uncategorized";
-
-    const isSearchMode = !!query || tagsFilter.length > 0;
 
     // Multi-dimensional strict filters (applied in pure browsing mode, except noninit which is always strict)
     if (categoryFilter) {
@@ -351,7 +371,6 @@ export async function findSkillsHelper(params: {
 
   // 3. Adaptive Thresholding (Zero-Loss / Never Empty Guarantee)
   let filteredResults = results;
-  const isSearchMode = !!query || tagsFilter.length > 0;
   if (isSearchMode && results.length > 0) {
     const maxScore = Math.max(...results.map(r => r.score));
     
