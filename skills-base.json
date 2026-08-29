@@ -267,16 +267,14 @@
   {
     "name": "character-prompt",
     "githubUrl": "https://github.com/chatfire-ai/huobao-drama",
-    "description": "角色最终提示词规范 — 正脸特写 + 三视图（character turnaround：正面/90 度侧面/背面），作为后续所有生成的形象锚点 --- # 角色最终提示词（左侧正脸特写 + 右侧三视图） 生成的是一张角色设定参考图（character reference sheet），构图固定为： - **左侧：...",
-    "category": "frontend-ui",
-    "occupation": "frontend-developer",
+    "description": "角色最终提示词规范 — 正脸特写 + 三视图（character turnaround：正面/90 度侧面/背面），作为后续所有生成的形象锚点 生成的是一张角色设定参考图（character reference sheet），构图固定为： 左侧：正脸特写——头部与肩部的正面近景，五官、发型、肤质清晰可见...",
+    "category": "ai-ml",
+    "occupation": "content-creator",
     "tags": [
-      "ai-ml",
-      "prompt",
-      "mcp",
-      "character"
+      "character",
+      "prompt"
     ],
-    "domain": "software"
+    "domain": "media"
   },
   {
     "name": "chatcut-plugin-basics-claude",
@@ -393,16 +391,14 @@
   {
     "name": "claude-to-im",
     "githubUrl": "https://github.com/op7418/claude-to-im-skill",
-    "description": "When replying to user-reported issues, always include a **self-help prompt** at the end of the reply. Guide users to use their AI coding assistant (Claude Co...",
-    "category": "frontend-ui",
-    "occupation": "frontend-developer",
+    "description": "domain: marketing category: testing tags: [frontend, frontend, frontend, frontend, go, ai-ml] occupation: content-creator When replying to user-reported...",
+    "category": "ai-ml",
+    "occupation": "content-creator",
     "tags": [
-      "frontend",
-      "go",
-      "ai-ml",
-      "claude"
+      "claude",
+      "prompt"
     ],
-    "domain": "software"
+    "domain": "media"
   },
   {
     "name": "claude-vision-skill",
@@ -609,17 +605,15 @@
   {
     "name": "gc-minimal-zine-poster-v0-3",
     "githubUrl": "https://github.com/liamgvchi/gc-minimal-zine-poster",
-    "description": "English · 简体中文 · **日本語**",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "category: database tags: [frontend, go, prompt, ai-ml, content, workflow] occupation: researcher domain: healthcare English · 简体中文 · 日本語 Minimal Zine Po...",
+    "category": "ai-ml",
+    "domain": "media",
+    "occupation": "content-creator",
     "tags": [
-      "frontend",
-      "go",
-      "prompt",
-      "ai-ml",
-      "content",
-      "workflow"
+      "minimal",
+      "zine",
+      "poster",
+      "prompt"
     ]
   },
   {
@@ -1048,16 +1042,14 @@
   {
     "name": "scene-prompt",
     "githubUrl": "https://github.com/chatfire-ai/huobao-drama",
-    "description": "场景最终提示词规范 — 清晰广角建立镜头：前景/中景/后景/出入口/地面/墙面/主要陈设的固定相对位置，空间连续自洽可复用，无人物 --- # 场景最终提示词（广角建立镜头 · 无人物空镜） 生成的是一张**清晰的广角建立镜头（establishing shot）**场景图：**完全没有人物**的纯场景空镜，完整...",
+    "description": "场景最终提示词规范 — 清晰广角建立镜头：前景/中景/后景/出入口/地面/墙面/主要陈设的固定相对位置，空间连续自洽可复用，无人物 生成的是一张清晰的广角建立镜头（establishing shot）场景图：完全没有人物的纯场景空镜，完整展示前景、中景、后景、出入口、地面、墙面及主要陈设的固定相对位置，...",
     "category": "ai-ml",
-    "occupation": "data-scientist",
+    "occupation": "content-creator",
     "tags": [
-      "ai-ml",
-      "prompt",
-      "mcp",
-      "scene"
+      "scene",
+      "prompt"
     ],
-    "domain": "software"
+    "domain": "media"
   },
   {
     "name": "scientific-agent-skills",
@@ -1094,16 +1086,13 @@
   {
     "name": "seedance-prompt-en",
     "githubUrl": "https://github.com/dexhunter/seedance2-skill",
-    "description": "Engineering guidelines, patterns, and best practices for seedance prompt en.",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "category: testing tags: [frontend, frontend, backend, go, rust, testing] occupation: researcher domain: healthcare English 为即梦 Seedance 2.0 多模态 AI 视频生成模...",
+    "category": "ai-ml",
+    "domain": "media",
+    "occupation": "content-creator",
     "tags": [
-      "frontend",
-      "backend",
-      "go",
-      "rust",
-      "testing",
+      "seedance",
+      "prompt",
       "claude"
     ]
   },
@@ -1142,18 +1131,18 @@
   {
     "name": "short-drama-video-prompts",
     "githubUrl": "https://github.com/worldwonderer/drama-skills",
-    "description": "每行一个交付容器对象。容器只是**已接受镜头的排布方式**：它记录哪些镜头按什么顺序装进",
-    "category": "frontend-ui",
-    "occupation": "frontend-developer",
+    "description": "domain: media category: testing tags: [frontend, python, prompt, video, audio, review] occupation: content-creator 每行一个交付容器对象。容器只是已接受镜头的排布方式：它记录哪些镜头按什么顺...",
+    "category": "ai-ml",
+    "occupation": "content-creator",
     "tags": [
-      "frontend",
-      "python",
-      "prompt",
+      "short",
+      "drama",
       "video",
-      "audio",
-      "review"
+      "prompts",
+      "python",
+      "prompt"
     ],
-    "domain": "software"
+    "domain": "media"
   },
   {
     "name": "social-publisher",
@@ -1254,13 +1243,10 @@
   {
     "name": "travel-agent-skill",
     "githubUrl": "https://github.com/davepoon/buildwithclaude",
-    "description": "私人旅行管家 — 从出发地到目的地的完整行程规划+攻略导出。 输入出发地、目的地、天数、预算、风格偏好，自动输出闭环行程， 包含交通推荐、酒店推荐、美食路线、每日预算，并可选生成攻略。 当用户提到「做攻略」「旅行规划」「旅游计划」「行程安排」时使用。 --- # 私人旅行管家 · Travel Agent Ski...",
-    "category": "frontend-ui",
-    "occupation": "frontend-developer",
+    "description": "私人旅行管家 — 从出发地到目的地的完整行程规划+攻略导出。 输入出发地、目的地、天数、预算、风格偏好，自动输出闭环行程， 包含交通推荐、酒店推荐、美食路线、每日预算，并可选生成攻略。 当用户提到「做攻略」「旅行规划」「旅游计划」「行程安排」时使用。 「不是给你一堆信息，是给你一张可以直接执行的日程表。...",
+    "category": "productivity",
+    "occupation": "fullstack-developer",
     "tags": [
-      "frontend",
-      "ai-ml",
-      "mcp",
       "travel"
     ],
     "domain": "software"
@@ -1316,15 +1302,14 @@
   {
     "name": "video-prompt",
     "githubUrl": "https://github.com/chatfire-ai/huobao-drama",
-    "description": "视频提示词规范 — 根据分镜段落内容生成按时间分段、段内可切镜的视频生成提示词 --- # 视频提示词（分镜段落 → video_prompt） 根据单个分镜段落的 description（含【镜头N】子镜头结构与台词/旁白）/ atmosphere / duration，生成驱动 AI 视频生成的 `video...",
+    "description": "视频提示词规范 — 根据分镜段落内容生成按时间分段、段内可切镜的视频生成提示词 根据单个分镜段落的 description（含【镜头N】子镜头结构与台词/旁白）/ atmosphere / duration，生成驱动 AI 视频生成的 `video_prompt`。一个分镜段落 = 一段 8-15 秒的...",
     "category": "ai-ml",
-    "occupation": "data-scientist",
+    "occupation": "content-creator",
     "tags": [
-      "ai-ml",
-      "prompt",
-      "video"
+      "video",
+      "prompt"
     ],
-    "domain": "software"
+    "domain": "media"
   },
   {
     "name": "video-script",
@@ -1441,17 +1426,16 @@
   {
     "name": "academic-paper-reviewer",
     "githubUrl": "https://github.com/imbad0202/academic-research-skills",
-    "description": "Challenges core arguments and logical coherence as the devils advocate reviewer in the editorial panel\" --- # Devil's Advocate Reviewer Agent — Paper Review...",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "\"Challenges core arguments and logical coherence as the devils advocate reviewer in the editorial panel\" You are the Devil's Advocate for paper review....",
+    "category": "ai-ml",
+    "domain": "media",
+    "occupation": "content-creator",
     "tags": [
-      "frontend",
-      "go",
-      "rust",
+      "academic",
+      "paper",
+      "reviewer",
       "prompt",
-      "ai-ml",
-      "unity"
+      "novel"
     ]
   },
   {
@@ -1567,17 +1551,15 @@
   {
     "name": "binary-analysis-patterns",
     "githubUrl": "https://github.com/wshobson/agents",
-    "description": "Engineering guidelines, patterns, and best practices for binary analysis patterns.",
+    "description": "tags: [python, go, java, workflow] occupation: data-scientist domain: finance category: testing ```asm ; Standard prologue push rbp ; Save base pointer...",
     "category": "productivity",
     "domain": "software",
     "occupation": "fullstack-developer",
     "tags": [
-      "python",
-      "go",
-      "java",
-      "workflow",
       "binary",
-      "analysis"
+      "analysis",
+      "python",
+      "java"
     ]
   },
   {
@@ -1613,17 +1595,16 @@
   {
     "name": "chen-yiwei-perspective",
     "githubUrl": "https://github.com/nigo81/nigo-skills",
-    "description": "- 该观点在≥2个不同领域/话题中出现？",
-    "category": "frontend-ui",
+    "description": "tags: [frontend, go, ai-ml, claude] occupation: data-scientist domain: mcp-ecosystem category: security 该观点在≥2个不同领域/话题中出现？",
+    "category": "productivity",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "fullstack-developer",
     "tags": [
-      "frontend",
-      "go",
-      "ai-ml",
-      "claude",
+      "chen",
+      "yiwei",
+      "perspective",
       "security",
-      "mcp"
+      "claude"
     ]
   },
   {
@@ -1947,17 +1928,14 @@
   {
     "name": "executing-plans",
     "githubUrl": "https://github.com/obra/superpowers",
-    "description": "Use when you have a written implementation plan to execute in a separate session with review checkpoints --- # Executing Plans ## Overview Load plan, review...",
-    "category": "frontend-ui",
+    "description": "Use when you have a written implementation plan to execute in a separate session with review checkpoints Load plan, review critically, execute all tasks...",
+    "category": "productivity",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "fullstack-developer",
     "tags": [
-      "frontend",
-      "ai-ml",
-      "claude",
-      "gemini",
-      "review",
-      "mcp"
+      "executing",
+      "plans",
+      "claude"
     ]
   },
   {
@@ -2086,17 +2064,15 @@
   {
     "name": "github-deep-research",
     "githubUrl": "https://github.com/bytedance/deer-flow",
-    "description": "** {REPOSITORY_DESCRIPTION} - **URL:** {REPOSITORY_URL} - **Stars:** {REPOSITORY_STARS} - **Forks:** {REPOSITORY_FORKS} - **Open Issues:** {REPOSITORY_OPEN_I...",
-    "category": "frontend-ui",
+    "description": "{REPOSITORY_DESCRIPTION} URL: {REPOSITORY_URL} Stars: {REPOSITORY_STARS} Forks: {REPOSITORY_FORKS} Open Issues: {REPOSITORY_OPEN_ISSUES} Language(s): {R...",
+    "category": "productivity",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "fullstack-developer",
     "tags": [
-      "frontend",
-      "python",
-      "go",
-      "ai-ml",
-      "langgraph",
-      "gaming"
+      "github",
+      "deep",
+      "research",
+      "python"
     ]
   },
   {
@@ -2274,17 +2250,14 @@
   {
     "name": "karl-marx-perspective",
     "githubUrl": "https://github.com/digoal/blog",
-    "description": "调研对象：Karl Marx / 卡尔·马克思",
-    "category": "frontend-ui",
+    "description": "tags: [frontend, frontend, backend, go, ai-ml] occupation: researcher domain: academia category: frontend 调研对象：Karl Marx / 卡尔·马克思 调研时间：2026-05-23 模式：纯网络...",
+    "category": "productivity",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "fullstack-developer",
     "tags": [
-      "frontend",
-      "backend",
-      "go",
-      "ai-ml",
       "karl",
-      "marx"
+      "marx",
+      "perspective"
     ]
   },
   {
@@ -2306,18 +2279,18 @@
   {
     "name": "langchain-architecture",
     "githubUrl": "https://github.com/wshobson/agents",
-    "description": "Engineering guidelines, patterns, and best practices for langchain architecture.",
-    "category": "frontend-ui",
-    "occupation": "frontend-developer",
+    "description": "domain: gaming category: testing tags: [frontend, frontend, python, backend, database, pytest] occupation: game-developer ```python from langgraph.graph...",
+    "category": "ai-ml",
+    "occupation": "content-creator",
     "tags": [
-      "frontend",
+      "langchain",
+      "architecture",
+      "react",
       "python",
-      "backend",
-      "database",
-      "pytest",
-      "react"
+      "prompt",
+      "claude"
     ],
-    "domain": "software"
+    "domain": "media"
   },
   {
     "name": "lark-workflow-meeting-summary",
@@ -2383,17 +2356,16 @@
   {
     "name": "literature-review-writer",
     "githubUrl": "https://github.com/yipng05-max/-skills",
-    "description": "1. 漏斗型结构（最常用）",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "tags: [frontend, python, go, security, review] occupation: researcher domain: academia category: security 1.",
+    "category": "productivity",
+    "domain": "academia",
+    "occupation": "researcher",
     "tags": [
-      "frontend",
-      "python",
-      "go",
-      "security",
+      "literature",
       "review",
-      "literature"
+      "writer",
+      "python",
+      "security"
     ]
   },
   {
@@ -2558,17 +2530,15 @@
   {
     "name": "nature-reviewer",
     "githubUrl": "https://github.com/yuan1z0825/nature-skills",
-    "description": "Engineering guidelines, patterns, and best practices for nature reviewer.",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "tags: [frontend, database, ai-ml, ai-ml, security, workflow] occupation: researcher domain: academia category: testing English `nature-reviewer` 用于从审稿人视...",
+    "category": "productivity",
+    "domain": "academia",
+    "occupation": "researcher",
     "tags": [
-      "frontend",
-      "database",
-      "ai-ml",
+      "nature",
+      "reviewer",
       "security",
-      "workflow",
-      "nature"
+      "novel"
     ]
   },
   {
@@ -2606,14 +2576,13 @@
   {
     "name": "novel-review",
     "githubUrl": "https://github.com/wanikua/danghuangshang",
-    "description": "``markdown",
+    "description": "tags: [review, architecture] occupation: content-creator domain: media category: architecture ```markdown [2-3 句整体印象] | 评分: X/5 字数统计: [实际字数] / 10,000 目标...",
     "category": "productivity",
-    "domain": "media",
-    "occupation": "content-creator",
+    "domain": "academia",
+    "occupation": "researcher",
     "tags": [
-      "review",
-      "architecture",
-      "novel"
+      "novel",
+      "review"
     ]
   },
   {
@@ -2651,17 +2620,15 @@
   {
     "name": "openclaw-refactor-docs",
     "githubUrl": "https://github.com/openclaw/openclaw",
-    "description": "Refactor an existing OpenClaw docs page with source-audited preservation, restructuring, and verification. --- # OpenClaw Refactor Docs ## Overview Use this...",
-    "category": "frontend-ui",
+    "description": "Refactor an existing OpenClaw docs page with source-audited preservation, restructuring, and verification. Use this skill when the user gives a target O...",
+    "category": "productivity",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "fullstack-developer",
     "tags": [
-      "frontend",
-      "go",
-      "security",
-      "architecture",
-      "workflow",
-      "openclaw"
+      "openclaw",
+      "refactor",
+      "docs",
+      "security"
     ]
   },
   {
@@ -2712,17 +2679,17 @@
   {
     "name": "paper-workflow-orchestrator",
     "githubUrl": "https://github.com/yushui2022/mathmodel-skill",
-    "description": "MathModel Skill 总入口。触发词：数学建模、生成论文、分析赛题、CUMCM、MathorCup、华数杯、美赛、ICM、MathModel。任何数学建模任务先读本 skill 再路由子 skill。\" --- # 论文生成全流程编排器 ## 全局流程协作约束（长对话防漂移） - 本 skill 不得作...",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "\"MathModel Skill 总入口。触发词：数学建模、生成论文、分析赛题、CUMCM、MathorCup、华数杯、美赛、ICM、MathModel。任何数学建模任务先读本 skill 再路由子 skill。\" 本 skill 不得作为孤立入口。用户要求完整论文、生成 Word、继续流程或不确定阶段...",
+    "category": "productivity",
+    "domain": "academia",
+    "occupation": "researcher",
     "tags": [
-      "frontend",
+      "paper",
+      "workflow",
+      "orchestrator",
       "python",
-      "ai-ml",
-      "claude",
       "security",
-      "workflow"
+      "claude"
     ]
   },
   {
@@ -2856,33 +2823,31 @@
   {
     "name": "planning-with-files",
     "githubUrl": "https://github.com/davila7/claude-code-templates",
-    "description": "**User Request:** \"Research the benefits of morning exercise and write a summary",
-    "category": "frontend-ui",
+    "description": "tags: [frontend, go, ai-ml, claude, content, stt] occupation: researcher domain: academia category: testing User Request: \"Research the benefits of morn...",
+    "category": "productivity",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "fullstack-developer",
     "tags": [
-      "frontend",
-      "go",
-      "ai-ml",
-      "claude",
-      "content",
-      "stt"
+      "planning",
+      "with",
+      "files",
+      "claude"
     ]
   },
   {
     "name": "power-bi-model-design-review",
     "githubUrl": "https://github.com/github/awesome-copilot",
-    "description": "Comprehensive Power BI data model design review prompt for evaluating model architecture, relationships, and optimization opportunities.' --- # Power BI Data...",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "'Comprehensive Power BI data model design review prompt for evaluating model architecture, relationships, and optimization opportunities.' You are a Pow...",
+    "category": "ai-ml",
+    "domain": "media",
+    "occupation": "content-creator",
     "tags": [
-      "frontend",
-      "go",
+      "power",
+      "model",
+      "design",
+      "review",
       "prompt",
-      "ai-ml",
-      "security",
-      "gaming"
+      "security"
     ]
   },
   {
@@ -2920,17 +2885,14 @@
   {
     "name": "product-review-report",
     "githubUrl": "https://github.com/digoal/blog",
-    "description": "``markdown",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "tags: [frontend, go, ai-ml, workflow, review] occupation: data-scientist domain: mcp-ecosystem category: frontend ```markdown 评测对象：{产品名}（v{版本}） 评测日期：{日期...",
+    "category": "productivity",
+    "domain": "academia",
+    "occupation": "researcher",
     "tags": [
-      "frontend",
-      "go",
-      "ai-ml",
-      "workflow",
+      "product",
       "review",
-      "mcp"
+      "report"
     ]
   },
   {
@@ -2952,17 +2914,15 @@
   {
     "name": "protein-design-workflow",
     "githubUrl": "https://github.com/freedomintelligence/openclaw-medical-skills",
-    "description": "- [ ] PDB downloaded from RCSB or AlphaFold DB",
-    "category": "frontend-ui",
+    "description": "tags: [frontend, python, pandas, go, workflow, planning] occupation: researcher domain: healthcare category: database [ ] PDB downloaded from RCSB or Al...",
+    "category": "productivity",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "fullstack-developer",
     "tags": [
-      "frontend",
-      "python",
-      "pandas",
-      "go",
+      "protein",
+      "design",
       "workflow",
-      "planning"
+      "python"
     ]
   },
   {
@@ -3046,13 +3006,11 @@
   {
     "name": "resolving-merge-conflicts",
     "githubUrl": "https://github.com/mattpocock/skills",
-    "description": "Use when you need to resolve an in-progress git merge/rebase conflict.\" --- 1. **See the current state** of the merge/rebase. Check git history, and the conf...",
+    "description": "\"Use when you need to resolve an in-progress git merge/rebase conflict.\" 1. See the current state of the merge/rebase. Check git history, and the confli...",
     "category": "productivity",
     "domain": "software",
     "occupation": "fullstack-developer",
     "tags": [
-      "go",
-      "architecture",
       "resolving",
       "merge",
       "conflicts"
@@ -3125,33 +3083,29 @@
   {
     "name": "seo-review",
     "githubUrl": "https://github.com/leonardomso/33-js-concepts",
-    "description": "Perform a focused SEO audit on JavaScript concept pages to maximize search visibility, featured snippet optimization, and ranking potential --- # Skill: SEO...",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "Perform a focused SEO audit on JavaScript concept pages to maximize search visibility, featured snippet optimization, and ranking potential Use this ski...",
+    "category": "productivity",
+    "domain": "academia",
+    "occupation": "researcher",
     "tags": [
-      "frontend",
-      "javascript",
-      "go",
+      "seo",
+      "review",
       "java",
-      "ai-ml",
-      "claude"
+      "claude",
+      "excel"
     ]
   },
   {
     "name": "sn-da-excel-workflow",
     "githubUrl": "https://github.com/opensensenova/sensenova-skills",
-    "description": "当Excel文件总行数超过1万行时，通过转换为Parquet格式提升读取性能，提取目标指标并计算最大值，最后将结果输出为Excel并对特定行进行高亮标注。\" --- # Skill Steps Step1 读取文件并统计所有 sheet 的行数，汇总后打印总行数，用于判断数据规模是否需要启用大文件处理。 ```p...",
-    "category": "frontend-ui",
+    "description": "\"当Excel文件总行数超过1万行时，通过转换为Parquet格式提升读取性能，提取目标指标并计算最大值，最后将结果输出为Excel并对特定行进行高亮标注。\" Step1 读取文件并统计所有 sheet 的行数，汇总后打印总行数，用于判断数据规模是否需要启用大文件处理。 ```python import...",
+    "category": "productivity",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "fullstack-developer",
     "tags": [
-      "frontend",
-      "python",
-      "pandas",
-      "go",
-      "ai-ml",
-      "workflow"
+      "excel",
+      "workflow",
+      "python"
     ]
   },
   {
@@ -3234,16 +3188,16 @@
   {
     "name": "sun-simiao-perspective",
     "githubUrl": "https://github.com/digoal/blog",
-    "description": "调研日期：2026/06/10",
+    "description": "Traditional Chinese Medicine (TCM) diagnostic analysis, herbal formulation, and classical clinical reasoning from Sun Simiao perspective.",
     "category": "productivity",
-    "domain": "software",
-    "occupation": "fullstack-developer",
+    "domain": "healthcare",
+    "occupation": "researcher",
     "tags": [
-      "ai-ml",
-      "architecture",
-      "sun",
-      "simiao",
-      "perspective"
+      "tcm",
+      "chinese-medicine",
+      "healthcare",
+      "herbal",
+      "clinical"
     ]
   },
   {
@@ -3296,17 +3250,17 @@
   {
     "name": "tong-jincheng-perspective",
     "githubUrl": "https://github.com/hotcoffeeshake/tong-jincheng-skill",
-    "description": "<div align=\"center\">",
-    "category": "frontend-ui",
+    "description": "tags: [frontend, security] occupation: qa-engineer domain: software category: testing 「真诚才是最高级的套路。真诚你不一定会得到爱，但是你不真诚，你一定会失去爱。」 让深情祖师爷童锦程用他的直白和人性洞察，帮你看透关系...",
+    "category": "productivity",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "fullstack-developer",
     "tags": [
-      "frontend",
-      "security",
-      "claude",
       "tong",
       "jincheng",
-      "perspective"
+      "perspective",
+      "security",
+      "claude",
+      "wechat"
     ]
   },
   {
@@ -3328,17 +3282,16 @@
   {
     "name": "treatment-plans",
     "githubUrl": "https://github.com/k-dense-ai/scientific-agent-skills",
-    "description": "Last reviewed: **2026-07-23**",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "Clinical treatment plan generation, evidence-based therapy protocols, and patient healthcare pathway design.",
+    "category": "productivity",
+    "domain": "healthcare",
+    "occupation": "researcher",
     "tags": [
-      "frontend",
-      "python",
-      "go",
-      "ai-ml",
-      "prompt",
-      "security"
+      "treatment-plan",
+      "healthcare",
+      "clinical",
+      "medical",
+      "therapy"
     ]
   },
   {
@@ -3359,14 +3312,11 @@
   {
     "name": "unity-ecs-patterns",
     "githubUrl": "https://github.com/wshobson/agents",
-    "description": "Engineering guidelines, patterns, and best practices for unity ecs patterns.",
+    "description": "occupation: game-developer category: database tags: [frontend, gaming, gaming] domain: gaming ```csharp using Unity.Entities; using Unity.Mathematics; u...",
     "category": "productivity",
     "domain": "gaming",
     "tags": [
-      "frontend",
-      "gaming",
       "unity",
-      "csharp",
       "ecs"
     ],
     "occupation": "game-developer"
@@ -3422,17 +3372,17 @@
   {
     "name": "webnovel-plan",
     "githubUrl": "https://github.com/lingfengqaq/webnovel-writer",
-    "description": "**核心原则**: 每一章都是一个小故事，有开头、发展、高潮、结尾。读者看完后应该有\"爽了\"或\"想看下一章\"的感觉。",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "tags: [frontend, python, go, ai-ml, claude, content] occupation: content-creator domain: media category: database 核心原则: 每一章都是一个小故事，有开头、发展、高潮、结尾。读者看完后应该有...",
+    "category": "productivity",
+    "domain": "media",
+    "occupation": "content-creator",
     "tags": [
-      "frontend",
+      "webnovel",
+      "plan",
       "python",
-      "go",
-      "ai-ml",
+      "novel",
       "claude",
-      "content"
+      "excel"
     ]
   },
   {
@@ -3518,17 +3468,14 @@
   {
     "name": "claude-api",
     "githubUrl": "https://github.com/anthropics/skills",
-    "description": "Engineering guidelines, patterns, and best practices for claude api.",
-    "category": "frontend-ui",
+    "description": "tags: [frontend, frontend, python, typescript, backend, go] occupation: game-developer domain: gaming category: testing ```csharp var batch = await clie...",
+    "category": "backend-api",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "backend-developer",
     "tags": [
-      "frontend",
-      "python",
-      "typescript",
-      "backend",
-      "go",
-      "csharp"
+      "claude",
+      "api",
+      "python"
     ]
   },
   {
@@ -3710,16 +3657,13 @@
   {
     "name": "ego-browser",
     "githubUrl": "https://github.com/citrolabs/ego-lite",
-    "description": "- Search input: `textarea[name=\"q\"]` or `input[name=\"q\"]",
-    "category": "frontend-ui",
+    "description": "tags: [frontend, frontend, javascript, nodejs, backend, go] occupation: content-creator domain: marketing category: testing Search input: `textarea[name...",
+    "category": "productivity",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "fullstack-developer",
     "tags": [
-      "frontend",
-      "javascript",
-      "nodejs",
-      "backend",
-      "go",
+      "ego",
+      "browser",
       "java"
     ]
   },
@@ -3836,49 +3780,43 @@
   {
     "name": "ifind-http-api",
     "githubUrl": "https://github.com/hanlinlibham/skills",
-    "description": "错误码 | 错误信息 | 中文提示 |",
-    "category": "frontend-ui",
+    "description": "tags: [frontend, frontend, python, pandas, go, sqlite] occupation: data-scientist domain: finance category: testing 错误码 | 错误信息 | 中文提示 | 0 | Success | 成功...",
+    "category": "backend-api",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "backend-developer",
     "tags": [
-      "frontend",
-      "python",
-      "pandas",
-      "go",
-      "sqlite",
-      "ifind"
+      "ifind",
+      "http",
+      "api",
+      "python"
     ]
   },
   {
     "name": "java-springboot",
     "githubUrl": "https://github.com/github/awesome-copilot",
-    "description": "Get best practices for developing applications with Spring Boot.' --- # Spring Boot Best Practices Your goal is to help me write high-quality Spring Boot app...",
-    "category": "frontend-ui",
+    "description": "'Get best practices for developing applications with Spring Boot.' Your goal is to help me write high-quality Spring Boot applications by following esta...",
+    "category": "backend-api",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "backend-developer",
     "tags": [
-      "frontend",
-      "go",
       "java",
-      "spring-boot",
-      "backend",
-      "devops"
+      "springboot",
+      "security"
     ]
   },
   {
     "name": "jianying-editor",
     "githubUrl": "https://github.com/luoluoluo22/jianying-editor-skill",
-    "description": "- What changed?",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "tags: [frontend, frontend, python, prompt, ai-ml, claude] occupation: content-creator domain: media category: database What changed?",
+    "category": "ai-ml",
+    "domain": "media",
+    "occupation": "content-creator",
     "tags": [
-      "frontend",
+      "jianying",
+      "editor",
       "python",
       "prompt",
-      "ai-ml",
-      "claude",
-      "jianying"
+      "claude"
     ]
   },
   {
@@ -3979,17 +3917,17 @@
   {
     "name": "nature-downloader",
     "githubUrl": "https://github.com/yuan1z0825/nature-skills",
-    "description": "日期：2026-07-15",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "tags: [frontend, frontend, python, go, prompt, ai-ml] occupation: researcher domain: healthcare category: testing 日期：2026-07-15 本笔记只研究用户指定的两个一手源码仓库，不讨论...",
+    "category": "ai-ml",
+    "domain": "media",
+    "occupation": "content-creator",
     "tags": [
-      "frontend",
+      "nature",
+      "downloader",
       "python",
-      "go",
+      "java",
       "prompt",
-      "ai-ml",
-      "java"
+      "paper"
     ]
   },
   {
@@ -4167,15 +4105,11 @@
   {
     "name": "security-review",
     "githubUrl": "https://github.com/affaan-m/ecc",
-    "description": "name | description |",
+    "description": "tags: [frontend, frontend, frontend, frontend, typescript, backend] occupation: devops-engineer domain: robotics category: testing name | description |...",
     "category": "security",
     "domain": "software",
     "occupation": "security-engineer",
     "tags": [
-      "frontend",
-      "typescript",
-      "backend",
-      "postgres",
       "security",
       "review"
     ]
@@ -4183,32 +4117,31 @@
   {
     "name": "senior-backend",
     "githubUrl": "https://github.com/davila7/claude-code-templates",
-    "description": "** Detailed explanation of the pattern. **When to Use:** - Scenario 1 - Scenario 2 - Scenario 3 **Implementation:** ```typescript // Example code implementat...",
-    "category": "frontend-ui",
+    "description": "Detailed explanation of the pattern. When to Use: Scenario 1 Scenario 2 Scenario 3 Implementation: ```typescript // Example code implementation export c...",
+    "category": "backend-api",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "backend-developer",
     "tags": [
-      "frontend",
+      "senior",
+      "backend",
       "python",
-      "typescript",
-      "javascript",
-      "nodejs",
-      "java"
+      "java",
+      "security"
     ]
   },
   {
     "name": "spring-boot-engineer",
     "githubUrl": "https://github.com/jeffallan/claude-skills",
-    "description": "Engineering guidelines, patterns, and best practices for spring boot engineer.",
-    "category": "devops-cloud",
-    "domain": "devops",
-    "occupation": "devops-engineer",
+    "description": "occupation: researcher domain: healthcare category: testing ```java // Config Server @SpringBootApplication @EnableConfigServer public class ConfigServe...",
+    "category": "backend-api",
+    "domain": "software",
+    "occupation": "backend-developer",
     "tags": [
-      "frontend",
-      "java",
-      "spring-boot",
-      "backend",
+      "spring",
+      "boot",
+      "engineer",
       "react",
+      "java",
       "springboot"
     ]
   },
@@ -4279,17 +4212,16 @@
   {
     "name": "xbot-api",
     "githubUrl": "https://github.com/cicbyte/xbot-api-skill",
-    "description": "Engineering guidelines, patterns, and best practices for xbot api.",
-    "category": "frontend-ui",
+    "description": "tags: [frontend, frontend, python, javascript, go, java] occupation: qa-engineer category: testing package xbot.ado xbot.ai xbot.app xbot.excel xbot.ftp...",
+    "category": "backend-api",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "backend-developer",
     "tags": [
-      "frontend",
+      "xbot",
+      "api",
       "python",
-      "javascript",
-      "go",
       "java",
-      "xbot"
+      "excel"
     ]
   },
   {
@@ -4342,16 +4274,16 @@
   {
     "name": "linkfox-aba-intelligent-query",
     "githubUrl": "https://github.com/linkfox-ai/linkfox-skills",
-    "description": "- **请求地址**：`${LINKFOX_TOOL_GATEWAY}/aba/intelligentQuery",
-    "category": "frontend-ui",
+    "description": "tags: [frontend, python, backend, go, ai-ml, claude] occupation: game-developer domain: gaming category: testing 请求地址：`${LINKFOX_TOOL_GATEWAY}/aba/intel...",
+    "category": "productivity",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "fullstack-developer",
     "tags": [
-      "frontend",
+      "linkfox",
+      "aba",
+      "intelligent",
+      "query",
       "python",
-      "backend",
-      "go",
-      "ai-ml",
       "claude"
     ]
   },
@@ -4502,17 +4434,16 @@
   {
     "name": "azure-devops-cli",
     "githubUrl": "https://github.com/github/awesome-copilot",
-    "description": "description || 'No description'}\" ``` ### Complex Workflows ```bash # Find longest running builds az pipelines build list --query \"sort_by([?result=='succeed...",
-    "category": "devops-cloud",
-    "domain": "devops",
-    "occupation": "devops-engineer",
+    "description": "description || 'No description'}\" ``` ```bash az pipelines build list --query \"sort_by([?result=='succeeded'], &queueTime) | reverse(@) | [0:3].{ID:id,...",
+    "category": "ai-ml",
+    "domain": "media",
+    "occupation": "content-creator",
     "tags": [
-      "frontend",
-      "go",
+      "azure",
       "devops",
-      "ai-ml",
-      "security",
-      "mcp"
+      "cli",
+      "prompt",
+      "security"
     ]
   },
   {
@@ -4548,17 +4479,12 @@
   {
     "name": "ci-cd",
     "githubUrl": "https://github.com/rightnow-ai/openfang",
-    "description": "CI/CD pipeline expert for GitHub Actions, GitLab CI, Jenkins, and deployment automation\" --- # CI/CD Pipeline Engineering You are a senior DevOps engineer sp...",
+    "description": "\"CI/CD pipeline expert for GitHub Actions, GitLab CI, Jenkins, and deployment automation\" You are a senior DevOps engineer specializing in continuous in...",
     "category": "devops-cloud",
     "domain": "devops",
     "occupation": "devops-engineer",
     "tags": [
-      "frontend",
-      "backend",
-      "go",
-      "devops",
-      "github-actions",
-      "ai-ml"
+      "security"
     ]
   },
   {
@@ -4580,17 +4506,17 @@
   {
     "name": "devops-iac-engineer",
     "githubUrl": "https://github.com/davila7/claude-code-templates",
-    "description": "Engineering guidelines, patterns, and best practices for devops iac engineer.",
+    "description": "DevOps infrastructure as code (IaC) engineering with Terraform, Ansible, Docker, Kubernetes, and CI/CD automation.",
     "category": "devops-cloud",
     "domain": "devops",
     "occupation": "devops-engineer",
     "tags": [
-      "frontend",
-      "go",
       "devops",
-      "python",
+      "iac",
+      "terraform",
       "kubernetes",
-      "security"
+      "docker",
+      "ci-cd"
     ]
   },
   {
@@ -4628,17 +4554,17 @@
   {
     "name": "openclaw-docker-e2e-authoring",
     "githubUrl": "https://github.com/openclaw/openclaw",
-    "description": "Author OpenClaw Docker E2E and live provider Docker lanes.\" --- # OpenClaw Docker E2E Authoring Use this when adding or changing Docker E2E lanes, release-pa...",
-    "category": "devops-cloud",
-    "domain": "devops",
-    "occupation": "devops-engineer",
+    "description": "\"Author OpenClaw Docker E2E and live provider Docker lanes.\" Use this when adding or changing Docker E2E lanes, release-path Docker tests, or live-provi...",
+    "category": "ai-ml",
+    "domain": "media",
+    "occupation": "content-creator",
     "tags": [
-      "vite",
-      "frontend",
-      "devops",
-      "testing",
-      "prompt",
-      "docker"
+      "openclaw",
+      "docker",
+      "e2e",
+      "authoring",
+      "vitest",
+      "prompt"
     ]
   },
   {
@@ -4660,33 +4586,30 @@
   {
     "name": "senior-devops",
     "githubUrl": "https://github.com/davila7/claude-code-templates",
-    "description": "** Detailed explanation of the pattern. **When to Use:** - Scenario 1 - Scenario 2 - Scenario 3 **Implementation:** ```typescript // Example code implementat...",
+    "description": "Detailed explanation of the pattern. When to Use: Scenario 1 Scenario 2 Scenario 3 Implementation: ```typescript // Example code implementation export c...",
     "category": "devops-cloud",
     "domain": "devops",
     "occupation": "devops-engineer",
     "tags": [
-      "frontend",
+      "senior",
+      "devops",
       "python",
-      "typescript",
-      "javascript",
-      "backend",
-      "java"
+      "java",
+      "security"
     ]
   },
   {
     "name": "terraform-module-library",
     "githubUrl": "https://github.com/wshobson/agents",
-    "description": "- VPC with public/private subnets",
+    "description": "tags: [frontend, go, devops, devops, devops, devops] occupation: devops-engineer domain: devops category: testing VPC with public/private subnets Intern...",
     "category": "devops-cloud",
     "domain": "devops",
     "occupation": "devops-engineer",
     "tags": [
-      "frontend",
-      "go",
-      "devops",
-      "security",
       "terraform",
-      "module"
+      "module",
+      "library",
+      "security"
     ]
   },
   {
@@ -4788,17 +4711,17 @@
   {
     "name": "analyzing-linux-audit-logs-for-intrusion",
     "githubUrl": "https://github.com/mukul975/anthropic-cybersecurity-skills",
-    "description": "Engineering guidelines, patterns, and best practices for analyzing linux audit logs for intrusion.",
+    "description": "tags: [frontend, frontend, ai-ml, security, security, workflow] occupation: devops-engineer domain: devops category: testing ``` /var/log/audit/audit.lo...",
     "category": "security",
     "domain": "software",
     "occupation": "security-engineer",
     "tags": [
-      "frontend",
-      "ai-ml",
-      "security",
-      "workflow",
-      "python",
-      "cve"
+      "analyzing",
+      "linux",
+      "audit",
+      "logs",
+      "for",
+      "intrusion"
     ]
   },
   {
@@ -4820,31 +4743,24 @@
   {
     "name": "angular-architect",
     "githubUrl": "https://github.com/jeffallan/claude-skills",
-    "description": "``typescript",
+    "description": "tags: [frontend, frontend, frontend, frontend, typescript, go] occupation: data-scientist domain: mcp-ecosystem category: testing ```typescript import {...",
     "category": "frontend-ui",
     "domain": "software",
     "occupation": "frontend-developer",
     "tags": [
-      "frontend",
-      "typescript",
-      "go",
       "angular",
-      "mcp",
       "architect"
     ]
   },
   {
     "name": "angular-developer",
     "githubUrl": "https://github.com/affaan-m/ecc",
-    "description": "When animating elements in Angular, **first analyze the project's Angular version** in `package.json`.",
+    "description": "tags: [frontend, frontend, tailwind, frontend, frontend, frontend] occupation: data-scientist domain: mcp-ecosystem category: testing When animating ele...",
     "category": "frontend-ui",
     "domain": "software",
     "occupation": "frontend-developer",
     "tags": [
-      "frontend",
-      "tailwind",
       "angular",
-      "mcp",
       "developer"
     ]
   },
@@ -5278,28 +5194,26 @@
   {
     "name": "dbs-wechat-html",
     "githubUrl": "https://github.com/dontbesilent2025/dbskill",
-    "description": "把 Markdown 转成可粘贴到微信公众号后台的 HTML，并提供 15 种内置风格。用户要求生成公众号 HTML、制作微信版本或排版公众号文章时使用。 --- # dbs-wechat-html：微信公众号 HTML 生成 你是 dontbesilent 的微信公众号 HTML 生成工具。 你的任务很明确：把...",
+    "description": "Convert Markdown articles into styled WeChat Official Account HTML with 15 built-in themes and one-click copy formatting.",
     "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "domain": "media",
+    "occupation": "content-creator",
     "tags": [
-      "frontend",
-      "javascript",
-      "go",
-      "java",
-      "dbs",
-      "wechat"
+      "wechat",
+      "html",
+      "markdown",
+      "formatting",
+      "wechat-mp"
     ]
   },
   {
     "name": "debian-linux-triage",
     "githubUrl": "https://github.com/github/awesome-copilot",
-    "description": "Triage and resolve Debian Linux issues with apt, systemd, and AppArmor-aware guidance.' --- # Debian Linux Triage You are a Debian Linux expert. Diagnose and...",
-    "category": "frontend-ui",
+    "description": "'Triage and resolve Debian Linux issues with apt, systemd, and AppArmor-aware guidance.' You are a Debian Linux expert. Diagnose and resolve the user’s...",
+    "category": "security",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "security-engineer",
     "tags": [
-      "frontend",
       "debian",
       "linux",
       "triage"
@@ -5388,17 +5302,13 @@
   {
     "name": "diagram-maker",
     "githubUrl": "https://github.com/openclaw/openclaw",
-    "description": "Engineering guidelines, patterns, and best practices for diagram maker.",
-    "category": "frontend-ui",
+    "description": "tags: [frontend, frontend, rust, ai-ml, workflow] occupation: data-scientist domain: mcp-ecosystem category: database Envelope: ```json { \"type\": \"excal...",
+    "category": "productivity",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "fullstack-developer",
     "tags": [
-      "frontend",
-      "rust",
-      "ai-ml",
-      "workflow",
-      "mcp",
-      "diagram"
+      "diagram",
+      "maker"
     ]
   },
   {
@@ -5484,17 +5394,16 @@
   {
     "name": "ecommerce-image-suite",
     "githubUrl": "https://github.com/wzj177/ecommerce-image-suite",
-    "description": "如果你希望基于这套能力做定制化项目，可以通过邮箱联系：wanzij177@163.com。",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "E-commerce product visual suite: background replacement, model generation, product staging, and banner composition.",
+    "category": "ai-ml",
+    "domain": "media",
+    "occupation": "content-creator",
     "tags": [
-      "frontend",
-      "python",
-      "go",
-      "prompt",
       "ecommerce",
-      "image"
+      "image-generation",
+      "product-photography",
+      "banner",
+      "midjourney"
     ]
   },
   {
@@ -5516,16 +5425,14 @@
   {
     "name": "extract-errors",
     "githubUrl": "https://github.com/react/react",
-    "description": "Use when adding new error messages to React, or seeing \"unknown error code\" warnings. --- # Extract Error Codes ## Instructions 1. Run `yarn extract-errors`...",
-    "category": "frontend-ui",
+    "description": "Use when adding new error messages to React, or seeing \"unknown error code\" warnings. 1. Run `yarn extract-errors` 2. Report if any new errors need code...",
+    "category": "productivity",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "fullstack-developer",
     "tags": [
-      "frontend",
-      "architecture",
-      "react",
       "extract",
-      "errors"
+      "errors",
+      "react"
     ]
   },
   {
@@ -5736,32 +5643,32 @@
   {
     "name": "gpt-image-2",
     "githubUrl": "https://github.com/conardli/garden-skills",
-    "description": "**A focused image-generation / editing skill for GPT Image 2, with a single SKILL definition that adapts to three runtime modes — local generation, host-nati...",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "case\" width=\"100%\"> method-pipeline-overview RAG-based long-context QA pipeline for papers.",
+    "category": "ai-ml",
+    "domain": "media",
+    "occupation": "content-creator",
     "tags": [
-      "frontend",
-      "go",
+      "gpt",
+      "image",
       "prompt",
-      "ai-ml",
-      "gemini",
-      "studio"
+      "midjourney",
+      "paper",
+      "claude"
     ]
   },
   {
     "name": "guizang-ppt",
     "githubUrl": "https://github.com/onfire7777/universal-ai-skills-library",
-    "description": "A Claude Code / Claude Agent Skills skill that generates **single-file HTML horizontal-swipe decks** with an \"**editorial magazine × electronic ink**\" aesthe...",
+    "description": "tags: [frontend, frontend, ppt, workflow] occupation: frontend-developer domain: software category: frontend A Claude Code / Claude Agent Skills skill t...",
     "category": "frontend-ui",
     "domain": "software",
     "occupation": "frontend-developer",
     "tags": [
-      "frontend",
+      "guizang",
       "ppt",
-      "workflow",
-      "claude",
-      "guizang"
+      "nature",
+      "paper",
+      "claude"
     ]
   },
   {
@@ -5783,17 +5690,16 @@
   {
     "name": "html-to-miniprogram",
     "githubUrl": "https://github.com/raidenfc/my-skills",
-    "description": "将 HTML/React/Vue 等前端 Demo 页面转换为微信小程序原生开发项目。重点是转换前端页面和简单交互（页面跳转、提醒等），不涉及业务逻辑，数据集中在 mock.js 中管理。 --- # HTML Demo 转微信小程序 Skill 将任意前端 Demo（HTML/React/Vue 单文件或多文件...",
+    "description": "将 HTML/React/Vue 等前端 Demo 页面转换为微信小程序原生开发项目。重点是转换前端页面和简单交互（页面跳转、提醒等），不涉及业务逻辑，数据集中在 mock.js 中管理。 将任意前端 Demo（HTML/React/Vue 单文件或多文件）转换为微信小程序原生开发项目，精准还原 UI...",
     "category": "frontend-ui",
     "domain": "software",
     "occupation": "frontend-developer",
     "tags": [
-      "frontend",
-      "tailwind",
+      "html",
+      "miniprogram",
       "react",
       "vue",
-      "java",
-      "html"
+      "java"
     ]
   },
   {
@@ -5863,17 +5769,14 @@
   {
     "name": "img2threejs",
     "githubUrl": "https://github.com/img2threejs/img2threejs",
-    "description": "Engineering guidelines, patterns, and best practices for img2threejs.",
-    "category": "frontend-ui",
+    "description": "tags: [frontend, python, typescript, go, testing, ai-ml] occupation: game-developer domain: gaming category: testing [ ] `python3 forge/tests/test_pipel...",
+    "category": "productivity",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "fullstack-developer",
     "tags": [
-      "frontend",
+      "img2threejs",
       "python",
-      "typescript",
-      "go",
-      "testing",
-      "ai-ml"
+      "threejs"
     ]
   },
   {
@@ -5911,17 +5814,15 @@
   {
     "name": "json-canvas",
     "githubUrl": "https://github.com/kepano/obsidian-skills",
-    "description": "Engineering guidelines, patterns, and best practices for json canvas.",
-    "category": "frontend-ui",
+    "description": "tags: [frontend, architecture, content, obsidian, workflow, review] occupation: researcher domain: academia category: database ```json { \"nodes\": [ { \"i...",
+    "category": "productivity",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "fullstack-developer",
     "tags": [
-      "frontend",
-      "architecture",
-      "content",
-      "obsidian",
-      "workflow",
-      "review"
+      "json",
+      "canvas",
+      "paper",
+      "obsidian"
     ]
   },
   {
@@ -5958,17 +5859,15 @@
   {
     "name": "legacy-circuit-mockups",
     "githubUrl": "https://github.com/github/awesome-copilot",
-    "description": "The **AT28C256** is a non-volatile, electrically erasable and programmable read-only memory (EEPROM) manufactured by Atmel (now Microchip). It provides **256...",
+    "description": "The AT28C256 is a non-volatile, electrically erasable and programmable read-only memory (EEPROM) manufactured by Atmel (now Microchip). It provides 256...",
     "category": "frontend-ui",
     "domain": "software",
     "occupation": "frontend-developer",
     "tags": [
-      "frontend",
-      "javascript",
-      "java",
-      "ai-ml",
       "legacy",
-      "circuit"
+      "circuit",
+      "mockups",
+      "java"
     ]
   },
   {
@@ -6116,49 +6015,44 @@
   {
     "name": "nature-paper-card",
     "githubUrl": "https://github.com/yuan1z0825/nature-skills",
-    "description": "Engineering guidelines, patterns, and best practices for nature paper card.",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "tags: [frontend, python, go, ai-ml, ai-ml, security] occupation: researcher domain: healthcare category: testing English `nature-paper-card` 用于精读一篇科研论文，...",
+    "category": "productivity",
+    "domain": "academia",
+    "occupation": "researcher",
     "tags": [
-      "frontend",
+      "nature",
+      "paper",
+      "card",
       "python",
-      "go",
-      "ai-ml",
-      "security",
-      "nature"
+      "security"
     ]
   },
   {
     "name": "nature-paper2ppt",
     "githubUrl": "https://github.com/yuan1z0825/nature-skills",
-    "description": "Engineering guidelines, patterns, and best practices for nature paper2ppt.",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "tags: [frontend, python, backend, go, ai-ml, architecture] occupation: researcher domain: healthcare category: testing English `nature-paper2ppt` 用于把科研论...",
+    "category": "productivity",
+    "domain": "academia",
+    "occupation": "researcher",
     "tags": [
-      "frontend",
+      "nature",
+      "paper2ppt",
       "python",
-      "backend",
-      "go",
-      "ai-ml",
-      "architecture"
+      "paper"
     ]
   },
   {
     "name": "nature-reader",
     "githubUrl": "https://github.com/yuan1z0825/nature-skills",
-    "description": "Engineering guidelines, patterns, and best practices for nature reader.",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "tags: [frontend, frontend, backend, ai-ml, security, gaming] occupation: game-developer domain: gaming category: security English `nature-reader` 用于把论文...",
+    "category": "productivity",
+    "domain": "academia",
+    "occupation": "researcher",
     "tags": [
-      "frontend",
-      "backend",
-      "ai-ml",
+      "nature",
+      "reader",
       "security",
-      "gaming",
-      "nature"
+      "paper"
     ]
   },
   {
@@ -6179,13 +6073,11 @@
   {
     "name": "novel-worldbuilding",
     "githubUrl": "https://github.com/wanikua/danghuangshang",
-    "description": "``markdown",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "tags: [frontend, architecture] occupation: content-creator domain: media category: frontend ```markdown 类型：[奇幻/科幻/悬疑/言情/历史/...] 叙事视角：[第一人称/第三人称限知/第三人称全知...",
+    "category": "productivity",
+    "domain": "media",
+    "occupation": "content-creator",
     "tags": [
-      "frontend",
-      "architecture",
       "novel",
       "worldbuilding"
     ]
@@ -6272,17 +6164,15 @@
   {
     "name": "penpot-uiux-design",
     "githubUrl": "https://github.com/github/awesome-copilot",
-    "description": "- [ ] Color contrast 4.5:1 for normal text",
+    "description": "tags: [frontend, frontend, frontend, javascript, go, rust] occupation: data-scientist domain: mcp-ecosystem category: testing [ ] Color contrast 4.5:1 f...",
     "category": "frontend-ui",
     "domain": "software",
     "occupation": "frontend-developer",
     "tags": [
-      "frontend",
-      "javascript",
-      "go",
-      "rust",
-      "java",
-      "mcp"
+      "penpot",
+      "uiux",
+      "design",
+      "java"
     ]
   },
   {
@@ -6304,17 +6194,15 @@
   {
     "name": "powerbi-modeling",
     "githubUrl": "https://github.com/github/awesome-copilot",
-    "description": "Sum of all completed sales transactions. Excludes returns and cancelled orders.\" }] ) ``` ### Format Strings | Data Type | Format String | Example Output | |...",
-    "category": "frontend-ui",
+    "description": "\"Sum of all completed sales transactions. Excludes returns and cancelled orders.\" }] ) ``` Data Type | Format String | Example Output | Currency | $#,##...",
+    "category": "productivity",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "fullstack-developer",
     "tags": [
-      "frontend",
-      "backend",
-      "go",
+      "powerbi",
+      "modeling",
       "security",
-      "workflow",
-      "powerbi"
+      "excel"
     ]
   },
   {
@@ -6352,15 +6240,15 @@
   {
     "name": "prototype",
     "githubUrl": "https://github.com/mattpocock/skills",
-    "description": "A tiny interactive terminal app that lets the user drive a state model by hand. Use this when the question is about **business logic, state transitions, or d...",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "tags: [frontend, python, prompt] occupation: researcher domain: academia category: testing A tiny interactive terminal app that lets the user drive a st...",
+    "category": "ai-ml",
+    "domain": "media",
+    "occupation": "content-creator",
     "tags": [
-      "frontend",
+      "prototype",
       "python",
       "prompt",
-      "prototype"
+      "paper"
     ]
   },
   {
@@ -6414,26 +6302,22 @@
   {
     "name": "quill",
     "githubUrl": "https://github.com/aiskillstore/marketplace",
-    "description": "本示例展示 Quill（羽笔）的 **核心执行阶段**：当用户已拥有 Skill 卡后，如何反复输入文章进行风格化改写，以及如何动态调节各项参数。",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "tags: [frontend, architecture] occupation: frontend-developer domain: software category: frontend 本示例展示 Quill（羽笔）的 核心执行阶段：当用户已拥有 Skill 卡后，如何反复输入文章进行风格化改...",
+    "category": "productivity",
+    "domain": "media",
+    "occupation": "content-creator",
     "tags": [
-      "frontend",
-      "architecture",
       "quill"
     ]
   },
   {
     "name": "quiz",
     "githubUrl": "https://github.com/tencent/wesmartflow",
-    "description": "出题与测验，评估用户对知识节点的掌握情况。 --- # 出题与测验 用 `create_quiz` 工具生成交互式答题卡片，前端会自动渲染供用户作答。 ## 题目类型 | 类型 | quiz_type | 适用场景 | |------|-----------|---------| | 单选题 | `multipl...",
+    "description": "出题与测验，评估用户对知识节点的掌握情况。 用 `create_quiz` 工具生成交互式答题卡片，前端会自动渲染供用户作答。 类型 | quiz_type | 适用场景 | 单选题 | `multiple_choice` | 概念辨析、易混淆点 | 填空题 | `fill_in` | 公式、定义、关键...",
     "category": "frontend-ui",
     "domain": "software",
     "occupation": "frontend-developer",
     "tags": [
-      "frontend",
-      "architecture",
       "quiz"
     ]
   },
@@ -6456,14 +6340,11 @@
   {
     "name": "react-native-design",
     "githubUrl": "https://github.com/wshobson/agents",
-    "description": "**Basic StyleSheet:**",
+    "description": "tags: [frontend, frontend, typescript, content] occupation: qa-engineer domain: software category: testing Basic StyleSheet: ```typescript import { Styl...",
     "category": "frontend-ui",
     "domain": "software",
     "occupation": "frontend-developer",
     "tags": [
-      "frontend",
-      "typescript",
-      "content",
       "react",
       "native",
       "design"
@@ -6694,17 +6575,16 @@
   {
     "name": "tapcanvas-storyboard-expert",
     "githubUrl": "https://github.com/anymouschina/tapcanvas",
-    "description": "你是一个专业的 Seedance 2.0 分镜提示词生成专家，帮助用户将想法转化为专业的 AI 视频分镜提示词。",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "Professional Seedance 2.0 AI video storyboard and visual shot prompt generation expert.",
+    "category": "ai-ml",
+    "domain": "media",
+    "occupation": "content-creator",
     "tags": [
-      "frontend",
-      "backend",
-      "go",
-      "prompt",
-      "ai-ml",
-      "tapcanvas"
+      "seedance",
+      "storyboard",
+      "video-prompt",
+      "shot-composition",
+      "ai-video"
     ]
   },
   {
@@ -6928,17 +6808,17 @@
   {
     "name": "vercel-react-best-practices",
     "githubUrl": "https://github.com/significant-gravitas/autogpt",
-    "description": "**Version 1.0.0**",
+    "description": "sequential user actions hit multiple endpoints needing the same data within seconds.",
     "category": "frontend-ui",
     "domain": "software",
     "occupation": "frontend-developer",
     "tags": [
-      "frontend",
-      "javascript",
-      "backend",
-      "go",
+      "vercel",
       "react",
-      "nextjs"
+      "best",
+      "practices",
+      "java",
+      "security"
     ]
   },
   {
@@ -6992,17 +6872,15 @@
   {
     "name": "visio-image-rebuilder",
     "githubUrl": "https://github.com/pengjunchi0/codex-visio-paper-figure-skill",
-    "description": "当前版本：`v1.1.1",
+    "description": "tags: [frontend, rust, devops, ai-ml, architecture, content] occupation: researcher domain: academia category: database 当前版本：`v1.1.1` `科研论文绘图 Skill` 是一个...",
     "category": "frontend-ui",
     "domain": "software",
     "occupation": "frontend-developer",
     "tags": [
-      "frontend",
-      "rust",
-      "devops",
-      "ai-ml",
-      "architecture",
-      "content"
+      "visio",
+      "image",
+      "rebuilder",
+      "paper"
     ]
   },
   {
@@ -7104,16 +6982,11 @@
   {
     "name": "write-guide",
     "githubUrl": "https://github.com/vercel/next.js",
-    "description": "Generates technical guides that teach real-world use cases through progressive examples. **Auto-activation:** User asks to write, create, or draft a guide or...",
+    "description": "Generates technical guides that teach real-world use cases through progressive examples. Auto-activation: User asks to write, create, or draft a guide o...",
     "category": "frontend-ui",
     "domain": "software",
     "occupation": "frontend-developer",
     "tags": [
-      "frontend",
-      "go",
-      "ai-ml",
-      "content",
-      "workflow",
       "write"
     ]
   },
@@ -7136,17 +7009,15 @@
   {
     "name": "writing-plans",
     "githubUrl": "https://github.com/obra/superpowers",
-    "description": "Review plan document\" prompt: | You are a plan document reviewer. Verify this plan is complete and ready for implementation. **Plan to review:** [PLAN_FILE_P...",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "\"Review plan document\" prompt: | You are a plan document reviewer. Verify this plan is complete and ready for implementation. Plan to review: [PLAN_FILE...",
+    "category": "ai-ml",
+    "domain": "media",
+    "occupation": "content-creator",
     "tags": [
-      "frontend",
+      "writing",
+      "plans",
       "python",
-      "go",
-      "pytest",
-      "testing",
-      "ai-ml"
+      "prompt"
     ]
   },
   {
@@ -7246,15 +7117,14 @@
   {
     "name": "bazi",
     "githubUrl": "https://github.com/affaan-m/ecc",
-    "description": "Engineering guidelines, patterns, and best practices for bazi.",
-    "category": "frontend-ui",
+    "description": "tags: [frontend, python] occupation: frontend-developer domain: software category: frontend 基于 Claude Code 的八字排盘与命理分析工具。通过交互式对话收集出生信息，排出四柱八字，参照九本经典命理典籍进...",
+    "category": "productivity",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "fullstack-developer",
     "tags": [
-      "frontend",
+      "bazi",
       "python",
-      "claude",
-      "bazi"
+      "claude"
     ]
   },
   {
@@ -7276,14 +7146,11 @@
   {
     "name": "brand-discovery",
     "githubUrl": "https://github.com/affaan-m/ecc",
-    "description": "**Frameworks:** Sinek Golden Circle · Lencioni organisational purpose",
-    "category": "frontend-ui",
+    "description": "tags: [frontend, go, content] occupation: content-creator domain: media category: database Frameworks: Sinek Golden Circle · Lencioni organisational pur...",
+    "category": "productivity",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "fullstack-developer",
     "tags": [
-      "frontend",
-      "go",
-      "content",
       "brand",
       "discovery"
     ]
@@ -7321,16 +7188,15 @@
   {
     "name": "chinese-novelist",
     "githubUrl": "https://github.com/affaan-m/ecc",
-    "description": "<div align=\"center\">",
+    "description": "tags: [ai-ml, claude, planning] occupation: devops-engineer domain: media category: devops 🎉 v2.0 重构发布：引入三层递进式问答、偏好记忆系统、中断续写、三种写作模式和自动校验修复！",
     "category": "productivity",
     "domain": "media",
     "occupation": "content-creator",
     "tags": [
-      "ai-ml",
-      "claude",
-      "planning",
       "chinese",
-      "novelist"
+      "novelist",
+      "novel",
+      "claude"
     ]
   },
   {
@@ -7483,16 +7349,13 @@
   {
     "name": "humanizer-zh",
     "githubUrl": "https://github.com/op7418/humanizer-zh",
-    "description": "Engineering guidelines, patterns, and best practices for humanizer zh.",
+    "description": "Humanizer-zh 是一个用于去除文本中 AI 生成痕迹的工具，帮助你将 AI 生成的内容改写得更自然、更像人类书写的文本。",
     "category": "productivity",
-    "domain": "software",
-    "occupation": "fullstack-developer",
+    "domain": "media",
+    "occupation": "content-creator",
     "tags": [
-      "ai-ml",
-      "gpt",
-      "claude",
-      "mcp",
-      "humanizer"
+      "humanizer",
+      "claude"
     ]
   },
   {
@@ -7546,17 +7409,16 @@
   {
     "name": "khazix-writer",
     "githubUrl": "https://github.com/kkkkhazix/khazix-skills",
-    "description": "Engineering guidelines, patterns, and best practices for khazix writer.",
-    "category": "productivity",
-    "domain": "software",
-    "occupation": "fullstack-developer",
+    "description": "tags: [prompt, ai-ml, claude, gaming, content] occupation: game-developer domain: gaming category: ai-ml 1.",
+    "category": "ai-ml",
+    "domain": "media",
+    "occupation": "content-creator",
     "tags": [
+      "khazix",
+      "writer",
       "prompt",
-      "ai-ml",
-      "claude",
-      "gaming",
-      "content",
-      "khazix"
+      "seedance",
+      "claude"
     ]
   },
   {
@@ -7631,33 +7493,27 @@
   {
     "name": "nature-citation",
     "githubUrl": "https://github.com/yuan1z0825/nature-skills",
-    "description": "Engineering guidelines, patterns, and best practices for nature citation.",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "tags: [frontend, frontend, ai-ml, security, architecture, content] occupation: researcher domain: academia category: security English `nature-citation`...",
+    "category": "productivity",
+    "domain": "academia",
+    "occupation": "researcher",
     "tags": [
-      "frontend",
-      "ai-ml",
-      "security",
-      "architecture",
-      "content",
-      "nature"
+      "nature",
+      "citation",
+      "security"
     ]
   },
   {
     "name": "nature-data",
     "githubUrl": "https://github.com/yuan1z0825/nature-skills",
-    "description": "Engineering guidelines, patterns, and best practices for nature data.",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "tags: [frontend, go, ai-ml, security, architecture, content] occupation: researcher domain: academia category: security English `nature-data` 用于准备、审查或修改...",
+    "category": "productivity",
+    "domain": "academia",
+    "occupation": "researcher",
     "tags": [
-      "frontend",
-      "go",
-      "ai-ml",
-      "security",
-      "architecture",
-      "content"
+      "nature",
+      "data",
+      "security"
     ]
   },
   {
@@ -7679,17 +7535,15 @@
   {
     "name": "nature-ref-verifier",
     "githubUrl": "https://github.com/yuan1z0825/nature-skills",
-    "description": "Engineering guidelines, patterns, and best practices for nature ref verifier.",
+    "description": "tags: [go, sqlite, ai-ml, security] occupation: researcher domain: academia category: security English `nature-ref-verifier` 用于对参考文献逐条执行多源交叉验证，比较作者、题名、年...",
     "category": "productivity",
-    "domain": "software",
-    "occupation": "fullstack-developer",
+    "domain": "academia",
+    "occupation": "researcher",
     "tags": [
-      "go",
-      "sqlite",
-      "ai-ml",
-      "security",
       "nature",
-      "ref"
+      "ref",
+      "verifier",
+      "security"
     ]
   },
   {
@@ -7711,32 +7565,27 @@
   {
     "name": "nature-statistics",
     "githubUrl": "https://github.com/yuan1z0825/nature-skills",
-    "description": "Engineering guidelines, patterns, and best practices for nature statistics.",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "tags: [frontend, database, ai-ml, security, gaming, architecture] occupation: game-developer domain: gaming category: testing English `nature-statistics...",
+    "category": "productivity",
+    "domain": "academia",
+    "occupation": "researcher",
     "tags": [
-      "frontend",
-      "database",
-      "ai-ml",
-      "security",
-      "gaming",
-      "architecture"
+      "nature",
+      "statistics",
+      "security"
     ]
   },
   {
     "name": "nestjs-best-practices",
     "githubUrl": "https://github.com/affaan-m/ecc",
-    "description": "Guidelines and best practices for creating NestJS Entities, Services, and Controllers using TypeORM and PostgreSQL.\" --- # NestJS & TypeORM Best Practices Wh...",
+    "description": "\"Guidelines and best practices for creating NestJS Entities, Services, and Controllers using TypeORM and PostgreSQL.\" When writing NestJS code for this...",
     "category": "backend-api",
     "domain": "software",
     "occupation": "backend-developer",
     "tags": [
-      "backend",
-      "database",
       "nestjs",
-      "postgres",
-      "mcp"
+      "best",
+      "practices"
     ]
   },
   {
@@ -7918,17 +7767,16 @@
   {
     "name": "seedance-storyboard-generator",
     "githubUrl": "https://github.com/liangdabiao/seedance2-storyboard-generator",
-    "description": "你是一个专业的 Seedance 2.0 分镜提示词生成专家，帮助用户将想法转化为专业的 AI 视频分镜提示词。",
-    "category": "productivity",
+    "description": "Generate detailed Seedance 2.0 AI video prompts, shot pacing, camera movements, and cinematic scene transitions.",
+    "category": "ai-ml",
     "domain": "media",
     "occupation": "content-creator",
     "tags": [
-      "prompt",
-      "gpt",
-      "architecture",
-      "workflow",
       "seedance",
-      "storyboard"
+      "storyboard",
+      "camera-movement",
+      "ai-video",
+      "cinematics"
     ]
   },
   {
@@ -8050,17 +7898,15 @@
   {
     "name": "wxjava-module-selector",
     "githubUrl": "https://github.com/binarywang/wxjava",
-    "description": "场景 | 核心模块 |",
+    "description": "tags: [java, architecture] occupation: fullstack-developer domain: software category: productivity 场景 | 核心模块 | 微信公众号 | `weixin-java-mp` | 微信小程序 | `weixi...",
     "category": "productivity",
     "domain": "software",
     "occupation": "fullstack-developer",
     "tags": [
-      "java",
-      "architecture",
-      "redis",
       "wxjava",
       "module",
-      "selector"
+      "selector",
+      "java"
     ]
   },
   {
@@ -8240,33 +8086,32 @@
   {
     "name": "openclaw-persona-forge",
     "githubUrl": "https://github.com/affaan-m/ecc",
-    "description": "所有龙虾头像**必须使用统一的视觉风格**，确保龙虾家族的风格一致性。",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "tags: [python, go, prompt, ai-ml, claude, gemini] occupation: game-developer domain: gaming category: frontend 所有龙虾头像必须使用统一的视觉风格，确保龙虾家族的风格一致性。",
+    "category": "ai-ml",
+    "domain": "media",
+    "occupation": "content-creator",
     "tags": [
+      "openclaw",
+      "persona",
+      "forge",
       "python",
-      "go",
       "prompt",
-      "ai-ml",
-      "claude",
-      "gemini"
+      "midjourney"
     ]
   },
   {
     "name": "openclaw-secret-scanning-maintainer",
     "githubUrl": "https://github.com/openclaw/openclaw",
-    "description": "Triage, redact, clean up, and resolve OpenClaw GitHub Secret Scanning alerts in issues or PRs. --- # OpenClaw Secret Scanning Maintainer **Maintainer-only.**...",
-    "category": "frontend-ui",
+    "description": "Triage, redact, clean up, and resolve OpenClaw GitHub Secret Scanning alerts in issues or PRs. Maintainer-only. This skill requires repo admin / maintai...",
+    "category": "productivity",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "fullstack-developer",
     "tags": [
-      "frontend",
-      "go",
-      "ai-ml",
-      "security",
-      "content",
-      "graphql"
+      "openclaw",
+      "secret",
+      "scanning",
+      "maintainer",
+      "security"
     ]
   },
   {
@@ -8288,17 +8133,17 @@
   {
     "name": "performing-plc-firmware-security-analysis",
     "githubUrl": "https://github.com/mukul975/anthropic-cybersecurity-skills",
-    "description": "- **subprocess**: Execute binwalk for firmware extraction",
+    "description": "tags: [frontend, frontend, python, go, java, devops] occupation: data-scientist domain: finance category: testing subprocess: Execute binwalk for firmwa...",
     "category": "security",
     "domain": "software",
     "occupation": "security-engineer",
     "tags": [
-      "frontend",
-      "python",
-      "go",
-      "java",
-      "devops",
-      "security"
+      "performing",
+      "plc",
+      "firmware",
+      "security",
+      "analysis",
+      "python"
     ]
   },
   {
@@ -8431,17 +8276,14 @@
   {
     "name": "security-triage",
     "githubUrl": "https://github.com/openclaw/openclaw",
-    "description": "Triage OpenClaw security advisories, drafts, and GHSA reports with shipped-tag and trust-model proof.\" --- # Security Triage Use when reviewing OpenClaw secu...",
-    "category": "security",
-    "domain": "software",
-    "occupation": "security-engineer",
+    "description": "\"Triage OpenClaw security advisories, drafts, and GHSA reports with shipped-tag and trust-model proof.\" Use when reviewing OpenClaw security advisories,...",
+    "category": "ai-ml",
+    "domain": "media",
+    "occupation": "content-creator",
     "tags": [
-      "frontend",
-      "go",
-      "rust",
-      "prompt",
       "security",
-      "mcp"
+      "triage",
+      "prompt"
     ]
   },
   {
@@ -8494,15 +8336,14 @@
   {
     "name": "sonarqube-audit",
     "githubUrl": "https://github.com/netdata/netdata",
-    "description": "- Triage PR duplication gate failures",
+    "description": "tags: [frontend, frontend, frontend, python, javascript, go] occupation: data-scientist domain: mcp-ecosystem category: security Triage PR duplication g...",
     "category": "security",
     "domain": "software",
     "occupation": "security-engineer",
     "tags": [
-      "frontend",
+      "sonarqube",
+      "audit",
       "python",
-      "javascript",
-      "go",
       "java",
       "security"
     ]
@@ -8526,17 +8367,16 @@
   {
     "name": "xlsx-author",
     "githubUrl": "https://github.com/anthropics/financial-services",
-    "description": "Produce a .xlsx file on disk (headless) instead of driving a live Excel workbook — for managed-agent sessions with no open Office app. --- # xlsx-author Use...",
-    "category": "frontend-ui",
+    "description": "Produce a .xlsx file on disk (headless) instead of driving a live Excel workbook — for managed-agent sessions with no open Office app. Use this skill wh...",
+    "category": "productivity",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "fullstack-developer",
     "tags": [
-      "frontend",
+      "xlsx",
+      "author",
       "python",
-      "ai-ml",
       "security",
-      "review",
-      "mcp"
+      "excel"
     ]
   },
   {
@@ -8574,32 +8414,28 @@
   {
     "name": "agent-testing-bot",
     "githubUrl": "https://github.com/lobehub/lobehub",
-    "description": "**App name:** `Discord` | **Process name:** `Discord",
-    "category": "frontend-ui",
+    "description": "tags: [frontend, ai-ml, security] occupation: content-creator domain: marketing category: testing App name: `Discord` | Process name: `Discord` See refe...",
+    "category": "testing-qa",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "qa-engineer",
     "tags": [
-      "frontend",
-      "ai-ml",
-      "security",
       "testing",
-      "bot"
+      "bot",
+      "security"
     ]
   },
   {
     "name": "antd-test-review",
     "githubUrl": "https://github.com/ant-design/ant-design",
-    "description": "审查 ant-design 测试用例是否值得保留。在用户要求验证测试 case、review 测试质量、判断测试是否合理、是否“用 A 证明 A”、是否重复、是否锁定实现细节，或决定测试应删除、保留还是改写时使用。 --- # Ant Design 测试用例审查 ## 目标 一、只判断测试用例是否合理，不负责创建...",
+    "description": "审查 ant-design 测试用例是否值得保留。在用户要求验证测试 case、review 测试质量、判断测试是否合理、是否“用 A 证明 A”、是否重复、是否锁定实现细节，或决定测试应删除、保留还是改写时使用。 一、只判断测试用例是否合理，不负责创建或补充测试。 二、优先识别“用 a 证明 a”、实...",
     "category": "testing-qa",
     "domain": "software",
     "occupation": "qa-engineer",
     "tags": [
-      "ant-design",
-      "testing",
-      "review",
-      "react",
       "antd",
-      "test"
+      "test",
+      "review",
+      "react"
     ]
   },
   {
@@ -8621,16 +8457,14 @@
   {
     "name": "backtesting-frameworks",
     "githubUrl": "https://github.com/wshobson/agents",
-    "description": "Engineering guidelines, patterns, and best practices for backtesting frameworks.",
-    "category": "frontend-ui",
+    "description": "tags: [frontend, go] occupation: data-scientist domain: finance category: testing ```python from abc import ABC, abstractmethod from dataclasses import...",
+    "category": "testing-qa",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "qa-engineer",
     "tags": [
-      "frontend",
-      "go",
-      "python",
       "backtesting",
-      "frameworks"
+      "frameworks",
+      "python"
     ]
   },
   {
@@ -8681,17 +8515,16 @@
   {
     "name": "benchmark-paper-template",
     "githubUrl": "https://github.com/hkustdial/supervisor-skills",
-    "description": "- Element 1: Design Goals",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "tags: [frontend, backend, go, ai-ml, prompt, ai-ml] occupation: game-developer domain: gaming category: testing Element 1: Design Goals Element 2: Task...",
+    "category": "ai-ml",
+    "domain": "media",
+    "occupation": "content-creator",
     "tags": [
-      "frontend",
-      "backend",
-      "go",
-      "ai-ml",
+      "benchmark",
+      "paper",
+      "template",
       "prompt",
-      "benchmark"
+      "novel"
     ]
   },
   {
@@ -8713,14 +8546,11 @@
   {
     "name": "channel-message-flows",
     "githubUrl": "https://github.com/openclaw/openclaw",
-    "description": "Use when running QA Lab channel message flow evidence.\" --- # Channel Message Flows Use this from the OpenClaw repo root to run the QA Lab evidence for Teleg...",
-    "category": "frontend-ui",
+    "description": "\"Use when running QA Lab channel message flow evidence.\" Use this from the OpenClaw repo root to run the QA Lab evidence for Telegram draft/final delive...",
+    "category": "productivity",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "fullstack-developer",
     "tags": [
-      "frontend",
-      "openai",
-      "mcp",
       "channel",
       "message",
       "flows"
@@ -8745,17 +8575,13 @@
   {
     "name": "codebase-design",
     "githubUrl": "https://github.com/mattpocock/skills",
-    "description": "How to deepen a cluster of shallow modules safely, given its dependencies. Assumes the vocabulary in SKILL.md — **module**, **interface**, **seam**, **adapte...",
-    "category": "frontend-ui",
+    "description": "tags: [frontend, typescript, go, database, ai-ml, ai-ml] occupation: data-scientist domain: mcp-ecosystem category: testing How to deepen a cluster of s...",
+    "category": "productivity",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "fullstack-developer",
     "tags": [
-      "frontend",
-      "typescript",
-      "go",
-      "database",
-      "ai-ml",
-      "postgres"
+      "codebase",
+      "design"
     ]
   },
   {
@@ -8793,14 +8619,15 @@
   {
     "name": "dbs-benchmark",
     "githubUrl": "https://github.com/dontbesilent2025/dbskill",
-    "description": "用五重过滤法寻找值得模仿的对标，并排除主体差异造成的噪音。用户要求找对标、选择模仿对象或分析竞争参照时使用。 --- # dbs-benchmark：对标分析 你是 dontbesilent 的对标分析 AI。你的任务是帮用户找到值得模仿的对标，用五重过滤法排除一切干扰。 **核心信念：模仿不是方法，是信仰。**...",
+    "description": "Competitive benchmarking and reference analysis using the five-filter methodology to identify actionable industry models.",
     "category": "productivity",
-    "domain": "software",
-    "occupation": "fullstack-developer",
+    "domain": "business",
+    "occupation": "product-manager",
     "tags": [
-      "dbs",
-      "architecture",
-      "benchmark"
+      "benchmarking",
+      "competitive-analysis",
+      "market-research",
+      "strategy"
     ]
   },
   {
@@ -8870,14 +8697,11 @@
   {
     "name": "mspm0g-contest",
     "githubUrl": "https://github.com/2262727886-stack/mspm0g-contest-skill",
-    "description": "**单通道连续采样：**",
-    "category": "frontend-ui",
+    "description": "tags: [frontend, go, cpp] occupation: qa-engineer domain: software category: testing 单通道连续采样： ```c volatile uint16_t g_adc_result = 0; void adc_init(voi...",
+    "category": "testing-qa",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "qa-engineer",
     "tags": [
-      "frontend",
-      "go",
-      "cpp",
       "mspm0g",
       "contest"
     ]
@@ -8885,49 +8709,45 @@
   {
     "name": "nature-writing",
     "githubUrl": "https://github.com/yuan1z0825/nature-skills",
-    "description": "Engineering guidelines, patterns, and best practices for nature writing.",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "tags: [frontend, go, ai-ml, security, architecture, content] occupation: researcher domain: academia category: testing English `nature-writing` 用于根据作者提供...",
+    "category": "productivity",
+    "domain": "academia",
+    "occupation": "researcher",
     "tags": [
-      "frontend",
-      "go",
-      "ai-ml",
+      "nature",
+      "writing",
       "security",
-      "architecture",
-      "content"
+      "novel"
     ]
   },
   {
     "name": "openclaw-qa-testing",
     "githubUrl": "https://github.com/openclaw/openclaw",
-    "description": "Run, watch, debug, extend, or explain OpenClaw qa-lab and qa-channel scenarios, artifacts, and live lanes. --- # OpenClaw QA Testing Use this skill for `qa-l...",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "Run, watch, debug, extend, or explain OpenClaw qa-lab and qa-channel scenarios, artifacts, and live lanes. Use this skill for `qa-lab` / `qa-channel` wo...",
+    "category": "ai-ml",
+    "domain": "media",
+    "occupation": "content-creator",
     "tags": [
-      "frontend",
-      "go",
-      "devops",
+      "openclaw",
       "testing",
       "react",
-      "docker"
+      "docker",
+      "prompt"
     ]
   },
   {
     "name": "openclaw-test-heap-leaks",
     "githubUrl": "https://github.com/openclaw/openclaw",
-    "description": "Investigate OpenClaw pnpm test memory growth, Vitest OOMs, RSS spikes, and heap snapshot deltas. --- # OpenClaw Test Heap Leaks Use this skill for test-memor...",
-    "category": "frontend-ui",
+    "description": "Investigate OpenClaw pnpm test memory growth, Vitest OOMs, RSS spikes, and heap snapshot deltas. Use this skill for test-memory investigations. Do not g...",
+    "category": "testing-qa",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "qa-engineer",
     "tags": [
-      "vite",
-      "frontend",
-      "rust",
-      "sqlite",
-      "testing",
-      "unit-test"
+      "openclaw",
+      "test",
+      "heap",
+      "leaks",
+      "vitest"
     ]
   },
   {
@@ -8965,48 +8785,46 @@
   {
     "name": "pentest-tools",
     "githubUrl": "https://github.com/zhaoxuya520/reverse-skill",
-    "description": "本目录用于存放你自己积累的高效 payload。AI 在执行渗透测试时会优先使用这里的 payload，再去尝试通用 payload。",
+    "description": "Custom security penetration testing payload repository, exploit execution, and automated vulnerability verification tools.",
     "category": "security",
     "domain": "software",
     "occupation": "security-engineer",
     "tags": [
-      "frontend",
-      "python",
-      "go",
-      "devops",
-      "prompt",
-      "ai-ml"
+      "pentest",
+      "security",
+      "payloads",
+      "exploits",
+      "vulnerability"
     ]
   },
   {
     "name": "playwright-dev",
     "githubUrl": "https://github.com/microsoft/playwright",
-    "description": "https://github.com/user/repo/issues/123' }); // ... }); ``` **Library/context test:** ```typescript import { contextTest as it, expect } from '../config/brow...",
-    "category": "frontend-ui",
+    "description": "' }); // ... }); ``` Library/context test: ```typescript import { contextTest as it, expect } from '../config/browserTest'; it('should work with context...",
+    "category": "testing-qa",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "qa-engineer",
     "tags": [
-      "frontend",
-      "testing",
-      "ai-ml",
-      "claude",
+      "playwright",
+      "dev",
       "react",
-      "python"
+      "python",
+      "java",
+      "nature"
     ]
   },
   {
     "name": "product-decision-agent",
     "githubUrl": "https://github.com/davila7/claude-code-templates",
-    "description": "本文件只用于维护和审查：确认 Skill 的后台推理来自完整阅读后的方法转译，而不是普通产品管理话术。默认回答用户时不要加载、引用或解释本文件。",
+    "description": "Strategic product decision-making, feature prioritization, opportunity solution trees, and user value validation.",
     "category": "productivity",
-    "domain": "software",
-    "occupation": "fullstack-developer",
+    "domain": "business",
+    "occupation": "product-manager",
     "tags": [
-      "ai-ml",
-      "security",
-      "mcp",
-      "product",
-      "decision"
+      "product-management",
+      "feature-prioritization",
+      "decision-making",
+      "strategy"
     ]
   },
   {
@@ -9028,32 +8846,30 @@
   {
     "name": "qa",
     "githubUrl": "https://github.com/browser-use/browser-use",
-    "description": "Run the QA test as an autonomous **Browser Use cloud agent** instead of driving browser-harness",
-    "category": "frontend-ui",
-    "domain": "software",
-    "occupation": "frontend-developer",
+    "description": "tags: [frontend, python, go, ai-ml, prompt, ai-ml] occupation: data-scientist domain: mcp-ecosystem category: testing Run the QA test as an autonomous B...",
+    "category": "ai-ml",
+    "domain": "media",
+    "occupation": "content-creator",
     "tags": [
-      "frontend",
       "python",
-      "go",
-      "ai-ml",
       "prompt",
-      "rust"
+      "claude"
     ]
   },
   {
     "name": "qa-engineer",
     "githubUrl": "https://github.com/l-lesteryu/openclaw-hot-skills-zh",
-    "description": "软件测试与质量保证专家。负责发现bug、执行测试用例、进行功能/UI/自动化测试、生成测试报告。当需要测试网站、应用、代码功能、验证bug修复、进行兼容性测试或需要专业的质量保证工作时使用。特别适用于：项目经理分配测试任务、验证产品功能、执行回归测试、编写测试计划、生成bug报告。 --- # 测试工程师 (QA...",
-    "category": "frontend-ui",
+    "description": "Comprehensive software quality assurance: functional testing, regression testing, test planning, UI automation, and bug reporting.",
+    "category": "testing-qa",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "qa-engineer",
     "tags": [
-      "frontend",
-      "javascript",
-      "java",
-      "seo",
-      "engineer"
+      "qa",
+      "testing",
+      "regression-testing",
+      "bug-report",
+      "test-plan",
+      "ui-test"
     ]
   },
   {
@@ -9139,48 +8955,40 @@
   {
     "name": "test",
     "githubUrl": "https://github.com/react/react",
-    "description": "Use when you need to run tests for React core. Supports source, www, stable, and experimental channels. --- Run tests for the React codebase.",
-    "category": "frontend-ui",
+    "description": "Use when you need to run tests for React core. Supports source, www, stable, and experimental channels. Run tests for the React codebase.",
+    "category": "testing-qa",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "qa-engineer",
     "tags": [
-      "frontend",
-      "testing",
-      "ai-ml",
-      "react",
-      "test"
+      "test",
+      "react"
     ]
   },
   {
     "name": "test-case",
     "githubUrl": "https://github.com/labring/fastgpt",
-    "description": "当用户需要编写一个单元测试时，触发该 skill，编写单元测试。 --- ## When to Use This Skill 用户需要编写一个单元测试时，触发该 skill，编写单元测试。 ## 测试文件位置 ### packages 测试 packages 里的测试，写在 FastGPT/packages/xx...",
+    "description": "当用户需要编写一个单元测试时，触发该 skill，编写单元测试。 用户需要编写一个单元测试时，触发该 skill，编写单元测试。 packages 里的测试，写在 FastGPT/packages/xxx/test 目录下，子路径对应 packages 的目录结构。例如： `packages/globa...",
     "category": "testing-qa",
     "domain": "software",
     "occupation": "qa-engineer",
     "tags": [
-      "vite",
-      "typescript",
-      "testing",
-      "gpt",
-      "vitest",
-      "test"
+      "test",
+      "case",
+      "vitest"
     ]
   },
   {
     "name": "test-cases",
     "githubUrl": "https://github.com/stellarlinkco/myclaude",
-    "description": "**Test what matters** - Focus on functionality that impacts users: behavior, performance, data integrity, and user experience. Avoid testing implementation d...",
-    "category": "frontend-ui",
+    "description": "tags: [frontend, go, ai-ml, security, workflow, planning] occupation: qa-engineer domain: software category: testing Test what matters - Focus on functi...",
+    "category": "testing-qa",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "qa-engineer",
     "tags": [
-      "frontend",
-      "go",
-      "ai-ml",
+      "test",
+      "cases",
       "security",
-      "workflow",
-      "planning"
+      "claude"
     ]
   },
   {
@@ -9202,17 +9010,14 @@
   {
     "name": "test-driven-development",
     "githubUrl": "https://github.com/obra/superpowers",
-    "description": "Use when implementing any feature or bugfix, before writing implementation code --- # Test-Driven Development (TDD) ## Overview Write the test first. Watch i...",
-    "category": "frontend-ui",
+    "description": "Use when implementing any feature or bugfix, before writing implementation code Write the test first. Watch it fail. Write minimal code to pass. Core pr...",
+    "category": "testing-qa",
     "domain": "software",
-    "occupation": "frontend-developer",
+    "occupation": "qa-engineer",
     "tags": [
-      "frontend",
-      "typescript",
-      "go",
-      "rust",
-      "testing",
-      "jest"
+      "test",
+      "driven",
+      "development"
     ]
   },
   {
