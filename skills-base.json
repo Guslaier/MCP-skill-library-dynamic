@@ -8499,17 +8499,18 @@
   {
     "name": "firmware-pentest",
     "githubUrl": "https://github.com/zhaoxuya520/reverse-skill",
-    "description": "|",
-    "category": "testing",
-    "domain": "robotics",
-    "occupation": "devops-engineer",
+    "description": "Automated firmware security analysis and penetration testing with EMBA, binary extraction, QEMU emulation, and CVE vulnerability scanning.",
+    "category": "security",
+    "domain": "software",
+    "occupation": "security-engineer",
     "tags": [
-      "frontend",
-      "frontend",
-      "frontend",
-      "python",
-      "go",
-      "rust"
+      "firmware",
+      "pentest",
+      "security",
+      "emba",
+      "qemu",
+      "embedded",
+      "cve"
     ]
   },
   {
