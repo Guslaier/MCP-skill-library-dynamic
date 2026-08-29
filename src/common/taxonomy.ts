@@ -46,9 +46,14 @@ export async function syncTaxonomyCache(): Promise<void> {
     };
   }
 
-  // 2. Highest Priority: Local SKILL.md Frontmatter
+  // 2. Fallback: Local SKILL.md Frontmatter ONLY for new skills NOT in master registry
   const installedSkills = await getValidSkillsList();
   for (const skillName of installedSkills) {
+    // If already in master registry cache, do not overwrite with old local frontmatter
+    if (cache[skillName.toLowerCase()]) {
+      continue;
+    }
+
     const targetDir = await findSkillDirectory(skillName);
     if (!targetDir) continue;
 
@@ -58,7 +63,7 @@ export async function syncTaxonomyCache(): Promise<void> {
     try {
       const content = await fsPromises.readFile(mdFiles[0], "utf-8");
       
-      const entry = cache[skillName.toLowerCase()] || { category: "general" };
+      const entry: TaxonomyEntry = { category: "productivity-tools" };
       
       const catMatch = content.match(/category:\s*([a-zA-Z0-9_-]+)/i);
       if (catMatch && catMatch[1]) entry.category = normalizeCanonicalTerm(catMatch[1], "category");
