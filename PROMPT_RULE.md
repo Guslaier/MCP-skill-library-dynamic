@@ -43,3 +43,26 @@ Acknowledge the retrieved guidelines and strictly apply all architectural constr
 In long multi-turn conversations (>8–10 turns) or before major refactoring/new sub-tasks:
 - Check if active skill constraints are still present in context.
 - If context was compressed or memory faded, re-call `fetch_skill_rule` to reload instructions.
+
+---
+
+## 🏷️ PHASE 4: METADATA & DESCRIPTION SYNTHESIS PROTOCOL (AI-Driven)
+
+When creating, updating, or enriching skill metadata, you MUST enforce strict AI reasoning:
+
+### 1. Mandatory Deep Inspection:
+- Call `fetch_skill_rule(skill_name)` or inspect the primary `SKILL.md` to understand core capabilities, workflows, and trigger conditions.
+
+### 2. AI Description Synthesis Standards:
+- **Length:** 80–150 characters.
+- **Content:** Punchy summary of WHAT the skill does and WHEN to invoke it.
+- **Zero Clutter:** Strictly NO raw markdown formatting (`<div`, `![]`, `---`), NO copy-pasted code/command snippets, NO boilerplate generic text (`Engineering guidelines for...`).
+
+### 3. Canonical Taxonomy Fields:
+- **`category`:** `frontend-ui` | `backend-api` | `database` | `testing-qa` | `security` | `ai-ml` | `devops-cloud` | `gaming-3d` | `research-academia` | `media-content` | `productivity-tools`
+- **`domain`:** `software` | `gaming` | `finance` | `healthcare` | `media` | `academia` | `devops` | `business`
+- **`occupation`:** `frontend-developer` | `backend-developer` | `game-developer` | `security-engineer` | `devops-engineer` | `data-scientist` | `qa-engineer` | `researcher` | `content-creator` | `patent-engineer` | `fullstack-developer`
+- **`tags`:** 3–6 specific, deduplicated technical keywords.
+
+### 4. Master Registry Primacy:
+- Call `update_skill_metadata` to persist changes directly into `skills-base.json` (Master Registry) and sync cache without modifying local `SKILL.md` files.
