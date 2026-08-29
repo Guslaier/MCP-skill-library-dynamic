@@ -52,7 +52,7 @@ const C = {
 let serverConfig = {
   name: "mcp-server",
   port: 8787,
-  command: "node dist/index.js",
+  command: "node dist/index.js --http",
 };
 
 // ── Helper: Network IP Detection ──────────────────────────────

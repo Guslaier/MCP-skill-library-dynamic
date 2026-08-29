@@ -1,4 +1,4 @@
-import { spawn, spawnSync } from 'child_process';
+import { spawn } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 
@@ -154,14 +154,7 @@ async function cleanup() {
     const fullPath = path.join(process.cwd(), dir);
     if (fs.existsSync(fullPath)) {
       try {
-        if (process.platform === 'win32') {
-          spawnSync('powershell', ['-Command', `Remove-Item -Recurse -Force -ErrorAction SilentlyContinue '${dir}'`], {
-            cwd: process.cwd(),
-            stdio: 'ignore'
-          });
-        } else {
-          fs.rmSync(fullPath, { recursive: true, force: true });
-        }
+        fs.rmSync(fullPath, { recursive: true, force: true });
         console.log(`  ✓ Removed ${dir}/`);
       } catch (err: any) {
         console.warn(`  ! Could not remove ${dir}/: ${err.message}`);

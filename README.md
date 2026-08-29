@@ -1,12 +1,12 @@
-# 🚀 Skill Library MCP Server
+# Skill Library MCP Server
 
-An enterprise-grade Model Context Protocol (MCP) server for automatically discovering, indexing, and serving **580+ AI Skill Guidelines and Engineering Best Practices**. Features built-in **PM2 Daemon Management**, an interactive **TUI Control Dashboard**, **OAuth Token Lifecycle Management**, and a **Persistent AI Session Memory Store**.
+An enterprise-grade Model Context Protocol (MCP) server for automatically discovering, indexing, and serving 580+ AI Skill Guidelines and Engineering Best Practices. Features an Omni-Search Multi-Dimensional Taxonomy Engine, Semantic Query Expansion, Fuzzy Matching, Weighted Relevance Scoring, PM2 Daemon Management, an interactive TUI Control Dashboard, OAuth Token Lifecycle Management, and a Persistent AI Session Memory Store.
 
 ---
 
-## ⚡ Quick Start
+## Quick Start
 
-### 1. Install & Build
+### 1. Install and Build
 ```bash
 npm install
 npm run build
@@ -16,20 +16,61 @@ npm run build
 ```bash
 npm run menu
 ```
-> 💡 Navigate smoothly using **Arrow Keys (▲ / ▼) + Enter** or press numeric shortcut keys `[0-6]` directly. Mouse tracking is disabled to guarantee 100% native terminal copy/paste.
+> Note: Navigate using Arrow Keys (Up / Down) + Enter or press numeric shortcut keys [0-6] directly. Mouse tracking is disabled to guarantee native terminal copy/paste.
 
 ---
 
-## ⚙️ MCP Client Configuration
+## IMPORTANT: First-Time Setup and Taxonomy Sync
+
+> [!IMPORTANT]
+> When setting up the server for the first time, or after adding/cloning new skills, you must instruct the AI to synchronize and organize the taxonomy metadata to enable full Omni-Search capabilities.
+
+### Example AI Prompt:
+```text
+"Please call sync_skills and organize all uninitialized skills using update_skill_metadata."
+```
+
+### The 7-Step AI Librarian Workflow:
+1. `sync_skills`: Rescan local skill directories to discover newly added skills immediately without restarting the server.
+2. `explore_taxonomy`: Inspect the current breakdown of Domains, Occupations, Categories, and the uninitialized skills count (`noninit_count`).
+3. `find_skills({ category: "noninit", limit: 100 })`: Retrieve unclassified skills page by page.
+4. Analyze Skill: Identify target domains and occupations based on the skill purpose.
+5. Create or Reuse Taxonomy: Reuse existing domain/occupation names if applicable, or create broad new ones (e.g. `gaming`, `finance`, `healthcare`).
+6. Define Specific Tags: Assign specific technology and problem keywords (e.g. `["ecs", "dots", "burst", "optimization"]`).
+7. `update_skill_metadata`: Write updates directly to the local `SKILL.md` frontmatter and the master registry simultaneously.
+
+---
+
+## Omni-Search and Taxonomy Discovery Architecture
+
+Skill Library MCP utilizes a 4-dimensional taxonomy model paired with an intelligent relevance engine:
+
+| Dimension | Description | Example Values |
+| :--- | :--- | :--- |
+| `domain` | Target industry or broad domain | `gaming`, `finance`, `healthcare`, `ecommerce`, `education` |
+| `occupation` | Target role or persona | `game-developer`, `backend-developer`, `data-scientist`, `qa-engineer` |
+| `category` | Technical classification | `frontend`, `backend`, `database`, `devops`, `ai-ml`, `testing`, `security` |
+| `tags` | Specific technologies, libraries, or problem areas | `typeorm`, `postgres`, `playwright`, `jwt-auth`, `memory-leak`, `ecs` |
+
+### 3-Layer Search Intelligence:
+1. **Semantic Query Expansion:** Automatically expands search terms to include domain synonyms and related keywords (e.g. searching `game` expands to `[game, gaming, gamedev, unity, unreal, godot]`).
+2. **Fuzzy String Matching:** Tolerates typographical errors and partial spellings using string similarity metrics (e.g. `gamming`, `postgre`, `optimizaton`).
+3. **Weighted Scoring and 40% Relative Cutoff:**
+   - Dynamically scores candidates (Exact Name: +15, Tag match: +10-12, Domain match: +8, Category match: +4).
+   - Automatically filters out candidates scoring below 40% of the top match score to eliminate noise and save token usage.
+
+---
+
+## MCP Client Configuration
 
 ### 1. Remote HTTP / SSE Mode (Recommended for Antigravity, Gemini IDE, Claude Desktop, Cursor)
-Add to your IDE's `mcp_config.json` or MCP settings:
+Add to your IDE configuration (`mcp_config.json`):
 
 ```json
 {
   "mcpServers": {
     "skill-library": {
-      "url": "http://localhost:8787",
+      "url": "http://localhost:8787/sse",
       "headers": {
         "Authorization": "Bearer <YOUR_API_TOKEN>"
       }
@@ -37,7 +78,7 @@ Add to your IDE's `mcp_config.json` or MCP settings:
   }
 }
 ```
-*(Generate Bearer Tokens anytime from `[3] API Keys & Auth` in `npm run menu`)*
+*(Generate Bearer Tokens from option [3] API Keys and Auth in `npm run menu`)*
 
 ---
 
@@ -60,15 +101,44 @@ Add to your IDE's `mcp_config.json` or MCP settings:
 
 ---
 
-## 🚀 PM2 Background Daemon Management
+## Available MCP Tools and Role Permissions (RBAC)
 
-The project includes built-in PM2 orchestration for running as a reliable background service:
+The server enforces Role-Based Access Control (RBAC):
+
+| Category | Tool Name | Permission Role | Description |
+| :--- | :--- | :---: | :--- |
+| **Discovery and Search** | `find_skills` | Public AI | Omni-Search with weighted scoring, fuzzy matching, multi-dimensional filters, and pagination. |
+| | `list_skills` | Public AI | Browse skills with pagination (`limit`, `page`) and category filtering. |
+| | `explore_taxonomy` | Public AI | View taxonomy summary (Domains, Occupations, Categories) and unclassified (`noninit`) counts. |
+| | `fetch_skill_rule` | Public AI | Fetch full markdown guidelines and best practices for a skill. |
+| | `get_skill_info` | Public AI | Get detailed file breakdown and metadata for a skill. |
+| **Management and Sync** | `sync_skills` | Public AI | Rescan local folders and rebuild taxonomy cache without server restart. |
+| | `update_skill_metadata` | Public AI | Assign Domain, Occupation, Category, and Tags with auto-canonicalization. |
+| | `install_skill` | Public AI | Install skills from repository, URL, or custom markdown content. |
+| | `uninstall_skill` | Public AI | Remove a skill from the library. |
+| **AI Sessions** | `session_create` | Admin Only | Persist arbitrary JSON session state with TTL expiration. |
+| | `session_get` | Admin Only | Retrieve stored session data by name. |
+| | `session_list` | Admin Only | List all active sessions (auto-purges expired records). |
+| | `session_delete` | Admin Only | Delete session record. |
+| **Auth and Keys** | `oauth_generate_key` | Admin Only | Issue new API tokens with custom roles and TTL expiration. |
+| | `oauth_regen_key` | Admin Only | Re-issue new token for an existing key ID. |
+| | `oauth_delete_key` | Admin Only | Delete an API key permanently. |
+| | `oauth_validate_key` | Admin Only | Verify token validity, expiration, and associated role. |
+| | `oauth_list_keys` | Admin Only | List stored API key metadata and usage audit logs. |
+| **System Status** | `system_status` | Admin Only | View network IPs (Tailscale/LAN/Localhost) and recent activity logs. |
+| | `service_list` | Admin Only | List all registered and active background services (read-only). |
+
+---
+
+## PM2 Background Daemon Management
+
+The project includes built-in PM2 orchestration for running as a background service:
 
 ```bash
 # Start server daemon in background
 npm run pm2:start
 
-# View process table, memory usage & uptime
+# View process table, memory usage, and uptime
 npm run pm2:status
 
 # Stream realtime logs
@@ -81,78 +151,21 @@ npm run pm2:stop
 
 ---
 
-## 🎮 Control Dashboard Features (`npm run menu`)
+## Mandatory AI Agent System Prompt
+
+To ensure AI agents utilize this system effectively, include this protocol in your system prompt or custom rules:
 
 ```text
-╔══════════════════════════════════════════════════════════════════════╗
-║  ⚡ SKILL LIBRARY MCP — CONTROL DASHBOARD                            ║
-╠══════════════════════════════════════════════════════════════════════╣
-║  MCP Status: ● ONLINE (Port 8787) Skills: 589  Active Services: 1   ║
-╚══════════════════════════════════════════════════════════════════════╝
-```
+CRITICAL DIRECTIVE: YOUR VERY FIRST ACTION BEFORE DOING ANYTHING ELSE MUST BE TO CALL THE find_skills TOOL.
 
-1. **⚡ MCP Server & Port Config**
-   - Instant 1-click START / STOP toggle.
-   - Dynamic Port switching with port collision prevention.
-2. **🚀 PM2 Process Manager**
-   - Manage background daemon operations (Start, Stop, Restart, Status, Logs) through the TUI.
-3. **🔑 API Keys & Auth**
-   - Generate OAuth Bearer Keys with customizable TTL (Permanent, 1 day, 7 days, 30 days, or custom).
-   - Regenerate existing keys while preserving IDs, and delete keys.
-   - Clean sequential ID formatting (`KEY-001`, `KEY-002`).
-4. **💾 Memory & Sessions**
-   - Store and retrieve cross-session AI state and context notes.
-   - Built-in TTL auto-cleanup to prevent disk bloat.
-5. **📊 Logs & Outbound IP**
-   - Realtime network interface inspection (Tailscale, LAN, Ethernet, Localhost).
-   - Top 5 most recent live activity logs.
-6. **🧠 Skill Library Explorer**
-   - Search and browse 580+ indexed engineering and domain-specific rules.
-
----
-
-## 🛠️ Available MCP Tools & Role Permissions (RBAC)
-
-The server enforces strict **Role-Based Access Control (RBAC)**:
-
-| Category | Tool Name | Permission Role | Description |
-| :--- | :--- | :---: | :--- |
-| **Skill Library** | **`list_skills`** | `🤖 Public AI` | Search available skills/rules by keyword (e.g. `react`, `python`, `nestjs`). |
-| | **`fetch_skill_rule`** | `🤖 Public AI` | Fetch full markdown guidelines and best practices for a skill. |
-| **AI Sessions** | **`session_create`** | `👑 Admin Only` | Persist arbitrary JSON session state with TTL expiration. |
-| | **`session_get`** | `👑 Admin Only` | Retrieve stored session data by name. |
-| | **`session_list`** | `👑 Admin Only` | List all active sessions (auto-purges expired records). |
-| | **`session_delete`** | `👑 Admin Only` | Delete session record. |
-| **Auth & Keys** | **`oauth_generate_key`** | `👑 Admin Only` | Issue new API tokens with custom roles and TTL expiration. |
-| | **`oauth_regen_key`** | `👑 Admin Only` | Re-issue new token for an existing key ID. |
-| | **`oauth_delete_key`** | `👑 Admin Only` | Delete an API key permanently. |
-| | **`oauth_validate_key`** | `👑 Admin Only` | Verify token validity, expiration, and associated role. |
-| | **`oauth_list_keys`** | `👑 Admin Only` | List stored API key metadata and usage audit logs. |
-| **System Status** | **`system_status`** | `👑 Admin Only` | View network IPs (Tailscale/LAN/Localhost) and recent activity logs. |
-| | **`service_list`** | `👑 Admin Only` | List all registered and active background services (read-only). |
-
-> 🔒 **Security Notice:** Starting and stopping the server/services (`service_start`, `service_stop`) is strictly restricted to manual control via **PM2**, **CLI**, and **TUI Menu (`npm run menu`)** to prevent unauthorized AI process modifications.
-
----
-
-## 🛡️ Architecture & Performance Highlights
-
-- **Universal Transport:** Seamlessly handles standard Server-Sent Events (SSE `GET /`, `GET /sse`) and Streamable HTTP JSON-RPC `POST` requests.
-- **Dynamic Multi-Session Pooling:** Multiple concurrent client sessions are isolated dynamically without session collisions or initialization errors.
-- **Zero Memory Leak & GC:** In-memory Garbage Collector periodically purges inactive sessions (30-min TTL) and limits active session pool size with LRU eviction.
-
----
-
-## 🤖 Recommended AI Agent System Prompt
-
-```text
-Before planning, designing, or coding any feature:
-1. Search relevant skills: list_skills({ query: "<keyword>" })
-2. Fetch details: fetch_skill_rule({ skill_name: "<name>" })
-3. Strictly follow fetched guidelines.
+You are equipped with the Skill Library MCP (Dynamic Skills and Best Practice Registry).
+Before analyzing the request, reading files, or planning, you MUST strictly follow this 3-step protocol:
+1. Discover (find_skills({ query: "<task_or_framework>", domain: "<domain>", occupation: "<role>" }))
+2. Ensure Available and Load Rules (fetch_skill_rule({ skill_name: "<skill_name>" }) or install_skill)
+3. Comply and Implement
 ```
 
 ---
 
-## 📜 License
+## License
 MIT

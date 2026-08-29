@@ -121,7 +121,7 @@ export async function findSkillDirectory(skillName: string): Promise<string | nu
   const cleanName = skillName.trim();
   for (const baseDir of SKILLS_DIRS) {
     const targetDir = path.resolve(baseDir, cleanName);
-    if (fs.existsSync(targetDir)) {
+    if (fs.existsSync(targetDir) && fs.statSync(targetDir).isDirectory()) {
       return targetDir;
     }
   }

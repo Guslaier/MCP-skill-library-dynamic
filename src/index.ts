@@ -2,6 +2,7 @@ import {
   resolveFallbackToken,
   determineExecutionMode,
 } from "./common/index.js";
+import { syncTaxonomyCache } from "./common/taxonomy.js";
 import {
   startHttpTransport,
   startStdioTransport,
@@ -18,6 +19,8 @@ process.on("unhandledRejection", (reason: unknown) => {
 
 // ── Run MCP Server ─────────────────────────────────────────────
 async function run() {
+  await syncTaxonomyCache().catch(e => console.error("Failed to sync taxonomy cache:", e));
+
   const fallbackToken = resolveFallbackToken();
   const { isHttpMode, port } = determineExecutionMode();
 

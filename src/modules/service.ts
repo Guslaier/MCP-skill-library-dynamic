@@ -1,6 +1,9 @@
 import path from "node:path";
 import { McpError, ErrorCode, Tool } from "@modelcontextprotocol/sdk/types.js";
+import fs from "node:fs";
+import { spawn } from "node:child_process";
 import { resolveDataDir, readJsonFile, writeJsonFile } from "./storage.js";
+import { execSync } from "node:child_process";
 
 export interface ServiceRecord {
   id: string;
@@ -8,6 +11,7 @@ export interface ServiceRecord {
   command?: string;
   port?: number;
   status: "running" | "stopped";
+  pid?: number;
   startedAt?: string;
   stoppedAt?: string;
 }
@@ -89,6 +93,34 @@ export async function serviceStart(args: unknown) {
     startedAt: now,
     stoppedAt: undefined,
   };
+
+  if (record.command) {
+    try {
+      // If it's our main MCP server, map it to the existing PM2 ecosystem config
+      if (name === "mcp-server") {
+        execSync("npx pm2 start ecosystem.config.cjs", { stdio: "ignore" });
+      } else {
+        // Fallback for generic services if ever used
+        const parts = record.command.split(" ");
+        const cmd = parts[0];
+        const cmdArgs = parts.slice(1);
+
+        const outLog = fs.openSync(path.join(resolveDataDir(), "server.log"), "a");
+        const errLog = fs.openSync(path.join(resolveDataDir(), "server.error.log"), "a");
+        const child = spawn(cmd, cmdArgs, {
+          detached: true,
+          shell: process.platform === "win32",
+          stdio: ["ignore", outLog, errLog],
+          cwd: process.cwd()
+        });
+        child.unref();
+        if (child.pid) record.pid = child.pid;
+      }
+    } catch (e: any) {
+      throw new McpError(ErrorCode.InternalError, `Failed to start process: ${e.message}`);
+    }
+  }
+
   services[name] = record;
   await writeJsonFile(servicesFile(), services);
   return { service: record };
@@ -114,9 +146,28 @@ export async function serviceStop(args: unknown) {
     throw new McpError(ErrorCode.InvalidParams, `Service "${target.name}" is already stopped`);
   }
 
+  if (target.name === "mcp-server") {
+    try {
+      execSync("npx pm2 stop skill-library-mcp", { stdio: "ignore" });
+    } catch (e) {
+      // PM2 might not be running it, ignore
+    }
+  } else if (target.pid) {
+    try {
+      if (process.platform === "win32") {
+        execSync(`taskkill /F /T /PID ${target.pid}`);
+      } else {
+        process.kill(target.pid, "SIGTERM");
+      }
+    } catch (e) {
+      // Process may already be dead
+    }
+  }
+
   const stoppedRecord: ServiceRecord = {
     ...target,
     status: "stopped",
+    pid: undefined,
     stoppedAt: new Date().toISOString(),
   };
   services[stoppedRecord.name] = stoppedRecord;
