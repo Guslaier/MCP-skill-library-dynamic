@@ -151,7 +151,7 @@ export async function getSkillTaxonomy(skillName: string): Promise<TaxonomyEntry
  */
 export async function updateSkillMetadataHelper(
   skillName: string, 
-  metadata: { category?: string, domain?: string, occupation?: string, tags?: string[] }
+  metadata: { category?: string; domain?: string; occupation?: string; tags?: string[]; description?: string }
 ): Promise<boolean> {
   const cleanName = skillName.trim().toLowerCase();
   let updatedSomething = false;
@@ -159,7 +159,8 @@ export async function updateSkillMetadataHelper(
   const normCategory = metadata.category ? normalizeCanonicalTerm(metadata.category, "category") : undefined;
   const normDomain = metadata.domain ? normalizeCanonicalTerm(metadata.domain, "domain") : undefined;
   const normOccupation = metadata.occupation ? normalizeCanonicalTerm(metadata.occupation, "occupation") : undefined;
-  const normTags = metadata.tags ? metadata.tags.map(t => normalizeCanonicalTerm(t)) : undefined;
+  const normTags = metadata.tags ? metadata.tags.map(t => normalizeTag(t)) : undefined;
+  const cleanDesc = metadata.description ? metadata.description.trim() : undefined;
 
   // 1. Update master registry (skills-base.json)
   const candidates = [
@@ -178,6 +179,7 @@ export async function updateSkillMetadataHelper(
             if (normDomain) entry.domain = normDomain;
             if (normOccupation) entry.occupation = normOccupation;
             if (normTags) entry.tags = normTags;
+            if (cleanDesc) entry.description = cleanDesc;
             found = true;
           }
         }
@@ -219,6 +221,9 @@ export async function updateSkillMetadataHelper(
           const tagsStr = `[${normTags.join(", ")}]`;
           updateOrInsert("tags", tagsStr);
         }
+        if (cleanDesc) {
+          updateOrInsert("description", cleanDesc);
+        }
 
         await fsPromises.writeFile(filePath, content, "utf-8");
         updatedSomething = true;
@@ -226,7 +231,9 @@ export async function updateSkillMetadataHelper(
     }
   }
 
-  // Resync cache
-  await syncTaxonomyCache();
+  if (updatedSomething) {
+    await syncTaxonomyCache();
+  }
+
   return updatedSomething;
 }
