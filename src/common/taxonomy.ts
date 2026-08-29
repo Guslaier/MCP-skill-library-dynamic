@@ -147,7 +147,8 @@ export async function getSkillTaxonomy(skillName: string): Promise<TaxonomyEntry
 }
 
 /**
- * Updates a skill's metadata in BOTH the master registry and local SKILL.md.
+ * Updates a skill's metadata in the master registry (skills-base.json) ONLY.
+ * NEVER modifies local SKILL.md files.
  */
 export async function updateSkillMetadataHelper(
   skillName: string, 
@@ -162,7 +163,7 @@ export async function updateSkillMetadataHelper(
   const normTags = metadata.tags ? metadata.tags.map(t => normalizeTag(t)) : undefined;
   const cleanDesc = metadata.description ? metadata.description.trim() : undefined;
 
-  // 1. Update master registry (skills-base.json)
+  // 1. Update master registry (skills-base.json) ONLY
   const candidates = [
     path.resolve(process.cwd(), "skills-base.json"),
     path.resolve(__dirname, "..", "..", "skills-base.json"),
@@ -187,46 +188,6 @@ export async function updateSkillMetadataHelper(
           await fsPromises.writeFile(p, JSON.stringify(data, null, 2), "utf-8");
           updatedSomething = true;
         }
-      } catch (e) {}
-    }
-  }
-
-  // 2. Update local SKILL.md if installed
-  const targetDir = await findSkillDirectory(cleanName);
-  if (targetDir) {
-    const mdFiles = await getMarkdownFiles(targetDir);
-    if (mdFiles.length > 0) {
-      try {
-        const filePath = mdFiles[0];
-        let content = await fsPromises.readFile(filePath, "utf-8");
-        
-        // Helper to update or insert frontmatter property
-        const updateOrInsert = (prop: string, val: string) => {
-          const regex = new RegExp(`${prop}:\\s*(.+)`, "i");
-          if (regex.test(content)) {
-            content = content.replace(regex, `${prop}: ${val}`);
-          } else {
-            if (content.startsWith("---")) {
-              content = content.replace("---", `---\n${prop}: ${val}`);
-            } else {
-              content = `---\n${prop}: ${val}\n---\n\n${content}`;
-            }
-          }
-        };
-
-        if (normCategory) updateOrInsert("category", normCategory);
-        if (normDomain) updateOrInsert("domain", normDomain);
-        if (normOccupation) updateOrInsert("occupation", normOccupation);
-        if (normTags) {
-          const tagsStr = `[${normTags.join(", ")}]`;
-          updateOrInsert("tags", tagsStr);
-        }
-        if (cleanDesc) {
-          updateOrInsert("description", cleanDesc);
-        }
-
-        await fsPromises.writeFile(filePath, content, "utf-8");
-        updatedSomething = true;
       } catch (e) {}
     }
   }
